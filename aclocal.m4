@@ -71,43 +71,31 @@ AC_ARG_WITH([msvcrt],
     sim_ac_msvcrt=singlethread-static
     sim_ac_msvcrt_CFLAGS="/ML"
     sim_ac_msvcrt_CXXFLAGS="/ML"
-    sim_ac_msvcrt_LIBLDFLAGS=""
-    sim_ac_msvcrt_LIBLIBS=""
     ;;
   default-debug | singlethread-static-debug | mld | /mld | libcd | libcd\.lib )
     sim_ac_msvcrt=singlethread-static-debug
     sim_ac_msvcrt_CFLAGS="/MLd"
     sim_ac_msvcrt_CXXFLAGS="/MLd"
-    sim_ac_msvcrt_LIBLDFLAGS="/NODEFAULTLIB:libc"
-    sim_ac_msvcrt_LIBLIBS="-llibcd"
     ;;
   multithread-static | mt | /mt | libcmt | libcmt\.lib )
     sim_ac_msvcrt=multithread-static
     sim_ac_msvcrt_CFLAGS="/MT"
     sim_ac_msvcrt_CXXFLAGS="/MT"
-    sim_ac_msvcrt_LIBLDFLAGS="/NODEFAULTLIB:libc"
-    sim_ac_msvcrt_LIBLIBS="-llibcmt"
     ;;
   multithread-static-debug | mtd | /mtd | libcmtd | libcmtd\.lib )
     sim_ac_msvcrt=multithread-static-debug
     sim_ac_msvcrt_CFLAGS="/MTd"
     sim_ac_msvcrt_CXXFLAGS="/MTd"
-    sim_ac_msvcrt_LIBLDFLAGS="/NODEFAULTLIB:libc"
-    sim_ac_msvcrt_LIBLIBS="-llibcmtd"
     ;;
   multithread-dynamic | md | /md | msvcrt | msvcrt\.lib )
     sim_ac_msvcrt=multithread-dynamic
-    sim_ac_msvcrt_CFLAGS=""
-    sim_ac_msvcrt_CXXFLAGS=""
-    sim_ac_msvcrt_LIBLDFLAGS="/NODEFAULTLIB:libc"
-    sim_ac_msvcrt_LIBLIBS="-lmsvcrt"
+    sim_ac_msvcrt_CFLAGS="/MD"
+    sim_ac_msvcrt_CXXFLAGS="/MD"
     ;;
   multithread-dynamic-debug | mdd | /mdd | msvcrtd | msvcrtd\.lib )
     sim_ac_msvcrt=multithread-dynamic-debug
     sim_ac_msvcrt_CFLAGS="/MDd"
     sim_ac_msvcrt_CXXFLAGS="/MDd"
-    sim_ac_msvcrt_LIBLDFLAGS="/NODEFAULTLIB:libc"
-    sim_ac_msvcrt_LIBLIBS="-lmsvcrtd"
     ;;
   *)
     SIM_AC_ERROR([invalid-msvcrt])
@@ -121,7 +109,6 @@ AC_MSG_RESULT([$sim_ac_msvcrt])
 $1
 ]) # SIM_AC_SETUP_MSVCRT
 
-# EOF **********************************************************************
 # EOF **********************************************************************
 
 # **************************************************************************
@@ -4272,10 +4259,12 @@ AC_ARG_ENABLE(
   esac],
   [enable_symbols=yes])
 
+# FIXME: don't mangle options like -fno-gnu-linker and -fvolatile-global
+# 20020104 larsa
 if test x"$enable_symbols" = x"no"; then
-  CFLAGS="`echo $CFLAGS | sed 's/-g//'`"
-  CPPFLAGS="`echo $CPPFLAGS | sed 's/-g//'`"
-  CXXFLAGS="`echo $CXXFLAGS | sed 's/-g//'`"
+  # CPPFLAGS="`echo $CPPFLAGS | sed 's/-g[0-9]//'`"
+  CFLAGS="`echo $CFLAGS | sed 's/-g[0-9]?//'`"
+  CXXFLAGS="`echo $CXXFLAGS | sed 's/-g[0-9]?//'`"
 fi
 ])
 
@@ -4314,7 +4303,7 @@ fi
 ])
 
 # Usage:
-#   SIM_CHECK_EXCEPTION_HANDLING
+#   SIM_AC_EXCEPTION_HANDLING
 #
 # Description:
 #   Let the user decide if C++ exception handling should be compiled
@@ -4330,7 +4319,7 @@ fi
 #   * [mortene:19991114] make this work with compilers other than gcc/g++
 #
 
-AC_DEFUN([SIM_EXCEPTION_HANDLING], [
+AC_DEFUN([SIM_AC_EXCEPTION_HANDLING], [
 AC_PREREQ([2.13])
 AC_ARG_ENABLE(
   [exceptions],
@@ -4417,7 +4406,7 @@ AC_LANG_RESTORE
 ])
 
 # Usage:
-#   SIM_PROFILING_SUPPORT
+#   SIM_AC_PROFILING_SUPPORT
 #
 # Description:
 #   Let the user decide if profiling code should be compiled
@@ -4434,7 +4423,7 @@ AC_LANG_RESTORE
 #   * [mortene:19991114] make this work with compilers other than gcc/g++
 #
 
-AC_DEFUN([SIM_PROFILING_SUPPORT], [
+AC_DEFUN([SIM_AC_PROFILING_SUPPORT], [
 AC_PREREQ([2.13])
 AC_ARG_ENABLE(
   [profile],
@@ -4460,7 +4449,7 @@ fi
 
 
 # Usage:
-#   SIM_COMPILER_WARNINGS
+#   SIM_AC_COMPILER_WARNINGS
 #
 # Description:
 #   Take care of making a sensible selection of warning messages
@@ -4478,7 +4467,7 @@ fi
 #   * [larsa:20010504] rename to SIM_AC_COMPILER_WARNINGS and clean up
 #     the macro
 
-AC_DEFUN([SIM_COMPILER_WARNINGS], [
+AC_DEFUN([SIM_AC_COMPILER_WARNINGS], [
 AC_ARG_ENABLE(
   [warnings],
   AC_HELP_STRING([--enable-warnings],
