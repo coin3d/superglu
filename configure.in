@@ -143,6 +143,9 @@ SIM_AC_COMPILE_DEBUG([
 #  CPPFLAGS="$CPPFLAGS -DNDEBUG"
 ])
 
+# GLU debug messages are not cool...
+CPPFLAGS="$CPPFLAGS -DNDEBUG"
+
 # huh?  What is this?
 # case $enable_debug in
 # yes | true)  GLU_SHARED=true;;
