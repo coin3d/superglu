@@ -46,7 +46,7 @@
 
 class Backend;
 class TrimVertex;
-class GridVertex;
+struct GridVertex;
 class GridTrimVertex;
 
 class CoveAndTiler : virtual public TrimRegion {
