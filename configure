@@ -1243,7 +1243,7 @@ test -n "$target_alias" &&
 # compiling with it and to generate an MSWindows .dll file.
 
 : ${BUILD_WITH_MSVC=false}
-sim_ac_wrapmsvc=`cd $srcdir; pwd`/cfg/wrapmsvc.exe
+sim_ac_wrapmsvc=`cd $srcdir; pwd`/cfg/m4/wrapmsvc.exe
 if test -z "$CC" -a -z "$CXX" && $sim_ac_wrapmsvc >/dev/null 2>&1; then
 
   CC=$sim_ac_wrapmsvc
@@ -1287,7 +1287,7 @@ BUILD_MICRO_VERSION=0
 
 BUILD_VERSION=1.3.0
 
-VERSION=$1.3.0
+VERSION=1.3.0
 
 # Libtool versioning
 LT_CURRENT=0

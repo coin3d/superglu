@@ -29,7 +29,7 @@ AC_DEFUN([SIM_AC_SETUP_MSVC_IFELSE],
 # compiling with it and to generate an MSWindows .dll file.
 
 : ${BUILD_WITH_MSVC=false}
-sim_ac_wrapmsvc=`cd $srcdir; pwd`/cfg/wrapmsvc.exe
+sim_ac_wrapmsvc=`cd $srcdir; pwd`/cfg/m4/wrapmsvc.exe
 if test -z "$CC" -a -z "$CXX" && $sim_ac_wrapmsvc >/dev/null 2>&1; then
   m4_ifdef([$0_VISITED],
     [AC_FATAL([Macro $0 invoked multiple times])])
