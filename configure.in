@@ -53,7 +53,6 @@ AC_DEFINE_UNQUOTED([BUILD_VERSION], ["$BUILD_VERSION"],
 glu_build_dir=`pwd`
 
 AC_PROG_AWK
-AC_PROG_PERL
 
 # **************************************************************************
 #  Locate C++ compiler and set C++ as the default language to use
@@ -189,8 +188,6 @@ AC_OUTPUT([
   libnurbs/interface/Makefile
   libnurbs/internals/Makefile
   libnurbs/nurbtess/Makefile
-  libspec/Makefile
-  libspec/libspec.sh
   libtess/Makefile
   libutil/Makefile
 ], [
