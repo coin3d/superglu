@@ -429,7 +429,7 @@ gluGetNurbsProperty(GLUnurbs *r, GLenum property, GLfloat *value)
 }
 
 extern "C" void GLAPIENTRY
-gluNurbsCallback(GLUnurbs *r, GLenum which, GLvoid (*fn)())
+gluNurbsCallback(GLUnurbs *r, GLenum which, GLvoid (CALLBACK * fn)())
 {
     switch (which) {
     case GLU_NURBS_BEGIN:
@@ -448,7 +448,7 @@ gluNurbsCallback(GLUnurbs *r, GLenum which, GLvoid (*fn)())
 	break;
 
     case GLU_NURBS_ERROR:
-	r->errorCallback = (void (*)( GLenum )) fn;
+	r->errorCallback = (void (CALLBACK *)( GLenum )) fn;
 	break;
     default:
 	r->postError(GLU_INVALID_ENUM);
