@@ -35,9 +35,17 @@
 ** $Header$
 */
 
+#if HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "gluos.h"
 #include <assert.h>
 #include <GL/glu.h>
+#ifdef HAVE_GL_GLEXT_H
+#include <GL/glext.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

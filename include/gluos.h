@@ -16,6 +16,8 @@
 #pragma warning(disable : 4244)
 #pragma warning(disable : 4761)
 
+#define GLAPIENTRY
+
 #else
 
 /* Disable Microsoft-specific keywords */

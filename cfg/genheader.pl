@@ -181,6 +181,11 @@ typedef struct GLUtesselator GLUtriangulatorObj;
 /* Internal convenience typedefs */
 typedef void (*_GLUfuncptr)();
 
+END
+
+if ( 0 ) {
+print <<"END";
+
 #ifdef GLU_API
 # error Leave the internal GLU_API define alone.
 #endif /* GLU_API */
@@ -236,6 +241,7 @@ typedef void (*_GLUfuncptr)();
 #endif /* !GLU_API */
 
 END
+}
 
 %decls = ();
 for ( $i = 0; $i < scalar(@api); $i++ ) {
@@ -285,7 +291,7 @@ for ( $i = 0; $i < scalar(@api); $i++ ) {
     if ( $arglist =~ /^$/ ) {
       $arglist = "void";
     }
-    $decls{$function} = "GLU_API $return$function ($arglist);";
+    $decls{$function} = "$return$function ($arglist);";
     $i = $j;
     next;
   }

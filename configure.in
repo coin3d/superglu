@@ -118,6 +118,14 @@ yes | true)  GLU_STATIC=false;;
 *)           GLU_STATIC=true;;
 esac
 
+if $GLU_STATIC; then :; else
+  if $BUILD_WITH_MSVC; then
+    AC_MSG_ERROR([GLU as DLL is not supported just yet])
+  fi
+fi
+
+AC_CHECK_HEADERS([GL/glext.h])
+
 SIM_AC_COMPILE_DEBUG([
 #  CPPFLAGS="$CPPFLAGS"
 ], [
