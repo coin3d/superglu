@@ -41,6 +41,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* GL_TABLE_TOO_LARGE was added to the API in OpenGL v1.2.
+ *
+ * We define it if not available, so the GLU code using it will behave
+ * properly at run-time using an OpenGL library of version 1.2 (or
+ * later), even if this code was compiled vs OpenGL 1.1 (or older).
+ */
+#ifndef GL_TABLE_TOO_LARGE
+#define GL_TABLE_TOO_LARGE 0x8031
+#endif /* !GL_TABLE_TOO_LARGE */
+
+
 static const char *glErrorStrings[GL_OUT_OF_MEMORY - GL_INVALID_ENUM + 1] = {
     "invalid enumerant",
     "invalid value",
