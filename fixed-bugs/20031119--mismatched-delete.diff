@@ -1,0 +1,99 @@
+The patch at the bottom fixes a mismatched new[] / delete, as reported
+by Valgrind when loading this scene graph into a Coin examinerviewer:
+
+------------8<-------------- [snip] ----------------8<-------------- [snip]
+#Inventor V2.1 ascii
+
+
+Separator {
+   ShapeHints {
+      vertexOrdering COUNTERCLOCKWISE
+      shapeType UNKNOWN_SHAPE_TYPE
+   }
+   Coordinate4 {
+      point [ -0.000432 144 2895 1 ,
+       35.9996 144 2895 1 ,
+       75.2151 130.277 2860.36 0.988034 ,
+       106.707 103.177 2895 1 ,
+       142.708 40.8232 2895 1 ,
+       150.431 1.51806e-13 2860.36 0.988034 ,
+       142.708 -40.8232 2895 1 ,
+       106.707 -103.177 2895 1 ,
+       75.2151 -130.277 2860.36 0.988034 ,
+       35.9996 -144 2895 1 ,
+       -0.000432 -144 2895 1 ,
+       -0.000432 144 3620 1 ,
+       35.9996 144 3620 1 ,
+       75.2151 130.277 3576.68 0.988034 ,
+       106.707 103.177 3620 1 ,
+       142.708 40.8232 3620 1 ,
+       150.431 2.23438e-13 3576.68 0.988034 ,
+       142.708 -40.8232 3620 1 ,
+       106.707 -103.177 3620 1 ,
+       75.2151 -130.277 3576.68 0.988034 ,
+       35.9996 -144 3620 1 ,
+       -0.000432 -144 3620 1 ]
+   }
+   ProfileCoordinate2 {
+      point [ 1.5708 725 ,
+       3.14159e-06 725 ,
+       3.14159e-06 725 ,
+       3.14159e-06 -1.7053e-12 ,
+       3.14159e-06 -1.7053e-12 ,
+       3.1416 -1.70477e-12 ,
+       3.1416 -1.70477e-12 ,
+       3.1416 725 ,
+       3.1416 725 ,
+       1.5708 725 ]
+   }
+
+   NurbsProfile {
+      index [ 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 ]
+      linkage START_NEW
+      knotVector [ 0 , 0 , 1 , 1 ,
+       2 , 2 , 3 , 3 ,
+       4 , 4 , 5 , 5 ]
+   }
+
+
+   NurbsSurface {
+      numUControlPoints 11
+      numVControlPoints 2
+      uKnotVector [ 0 , 0 , 0 , 0 ,
+       0 , 1.0472 , 1.0472 , 1.0472 ,
+       2.0944 , 2.0944 , 2.0944 , 3.1416 ,
+       3.1416 , 3.1416 , 3.1416 , 3.1416 ]
+      vKnotVector [ -3e-06 , -3e-06 , 725 , 725 ]
+   }	
+}
+
+------------8<-------------- [snip] ----------------8<-------------- [snip]
+
+20031119 mortene.
+
+
+Index: libnurbs/internals/trimvertpool.cc
+===================================================================
+RCS file: /export/cvsroot/superglu/libnurbs/internals/trimvertpool.cc,v
+retrieving revision 1.1.1.1
+diff -u -r1.1.1.1 trimvertpool.cc
+--- libnurbs/internals/trimvertpool.cc	5 Apr 2000 06:43:40 -0000	1.1.1.1
++++ libnurbs/internals/trimvertpool.cc	19 Nov 2003 11:01:09 -0000
+@@ -68,7 +68,7 @@
+ {
+     // free all arrays of TrimVertices vertices
+     while( nextvlistslot ) {
+-	delete vlist[--nextvlistslot];
++	delete[] vlist[--nextvlistslot];
+     }
+ 
+     // reallocate space for array of pointers to vertex lists
+@@ -87,7 +87,7 @@
+ 
+     // free all arrays of TrimVertices vertices
+     while( nextvlistslot ) {
+-	delete vlist[--nextvlistslot];
++	delete[] vlist[--nextvlistslot];
+ 	vlist[nextvlistslot] = 0;
+     }
+ 
