@@ -63,11 +63,10 @@ AC_ARG_WITH(
   [AC_HELP_STRING([--with-libname-prefix=string],
                   [specify library name prefix])],
   [LIBPREFIX=$withval],
-  [LIBPREFIX=])
+  [LIBPREFIX=$SUPERGLUPREFIX])
 
-AC_SUBST(LIBPREFIX)
-libprefix=`echo $LIBPREFIX | tr [A-Z] [a-z]`
-AC_SUBST(libprefix)
+AC_SUBST([LIBPREFIX])
+AC_SUBST([libprefix], [`echo $LIBPREFIX | tr [A-Z] [a-z]`])
 
 # **************************************************************************
 #  Locate C++ compiler and set C++ as the default language to use
