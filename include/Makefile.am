@@ -3,6 +3,8 @@ genheader = $(top_srcdir)/cfg/genheader.pl
 
 BUILT_SOURCES = superglu.h
 
+DISTCLEANFILES = superglu.h
+
 gluincdir = $(includedir)/GL
 gluinc_HEADERS = superglu.h
 

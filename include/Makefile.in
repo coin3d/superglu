@@ -102,6 +102,8 @@ genheader = $(top_srcdir)/cfg/genheader.pl
 
 BUILT_SOURCES = superglu.h
 
+DISTCLEANFILES = superglu.h
+
 gluincdir = $(includedir)/GL
 gluinc_HEADERS = superglu.h
 subdir = include
@@ -247,6 +249,7 @@ clean-generic:
 
 distclean-generic:
 	-rm -f Makefile $(CONFIG_CLEAN_FILES) stamp-h stamp-h[0-9]*
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
