@@ -1,0 +1,197 @@
+#  This can be any file in the package.
+AC_INIT(libutil/gluint.h)
+AC_CONFIG_AUX_DIR(cfg)
+
+# If the Microsoft Visual C++ cl.exe compiler is available, set us up for
+# compiling with it and to generate an MSWindows .dll file.
+
+AC_CANONICAL_SYSTEM
+
+SIM_AC_SETUP_MSVC_IFELSE([], [
+  case $host in
+  *-cygwin)
+    AC_MSG_ERROR([You need Microsoft Visual C++ to build GLU on Cygwin])
+    ;;
+  esac
+])
+
+AM_CONDITIONAL(BUILD_WITH_MSVC, $BUILD_WITH_MSVC)
+
+BUILD_MAJOR_VERSION=1
+BUILD_MINOR_VERSION=3
+BUILD_MICRO_VERSION=0
+BUILD_VERSION=$BUILD_MAJOR_VERSION.$BUILD_MINOR_VERSION.$BUILD_MICRO_VERSION
+VERSION=$BUILD_VERSION
+
+AC_SUBST(BUILD_MAJOR_VERSION)
+AC_SUBST(BUILD_MINOR_VERSION)
+AC_SUBST(BUILD_MICRO_VERSION)
+AC_SUBST(BUILD_VERSION)
+
+# Libtool versioning
+LT_CURRENT=$BUILD_MAJOR_VERSION
+LT_AGE=0
+LT_REVISION=`expr $BUILD_MINOR_VERSION \* 100 + $BUILD_MICRO_VERSION`
+
+AC_SUBST(LT_CURRENT)
+AC_SUBST(LT_REVISION)
+AC_SUBST(LT_AGE)
+
+AC_DEFINE_UNQUOTED([BUILD_MAJOR_VERSION], [$BUILD_MAJOR_VERSION],
+  [define this to the libGLU major version number])
+AC_DEFINE_UNQUOTED([BUILD_MINOR_VERSION], [$BUILD_MINOR_VERSION],
+  [define this to the libGLU minor version number])
+AC_DEFINE_UNQUOTED([BUILD_MICRO_VERSION], [$BUILD_MICRO_VERSION],
+  [define this to the libGLU release version number])
+AC_DEFINE_UNQUOTED([BUILD_VERSION], ["$BUILD_VERSION"],
+  [define this to the full libGLU major.minor.micro version number])
+
+# *******************************************************************
+# Miscellaneous options and initializations.
+
+glu_build_dir=`pwd`
+
+# **************************************************************************
+#  Locate C++ compiler and set C++ as the default language to use
+#  in tests. The configure script will automatically terminate if
+#  it doesn't find a C++ compiler.
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_CXX
+AC_LANG_CPLUSPLUS
+
+AC_CHECK_HEADERS([windows.h unistd.h ctype.h])
+
+AM_INIT_AUTOMAKE(GLU, $VERSION)
+
+#  Files to cram results from the configure tests into.
+AM_CONFIG_HEADER(config.h)
+
+#  Default to not building a shared library.
+#  Can be overridden by the user with --enable-shared.
+AM_DISABLE_SHARED
+
+#  Turn off default maintainer make-rules -- use ./bootstrap instead.
+AM_MAINTAINER_MODE
+
+if $BUILD_WITH_MSVC; then
+  RANLIB=true
+  export RANLIB
+else
+
+#  Initialize libtool
+AC_PROG_LIBTOOL
+
+case "$host_os" in
+  irix*)
+    if test x"${AR+set}" != x"set"; then
+      if test x"$CXX" = xCC; then
+        echo "modifying libtool"
+        mv libtool libtool.orig
+        sed -e 's/\\\$AR cru/CC -ar -o/' <libtool.orig >libtool
+        chmod 755 libtool
+        rm -f libtool.org
+      fi
+    fi
+    ;;
+esac
+
+fi
+
+SIM_AC_DEBUGSYMBOLS
+SIM_AC_RTTI_SUPPORT
+SIM_EXCEPTION_HANDLING
+SIM_PROFILING_SUPPORT
+SIM_COMPILER_WARNINGS
+
+case $enable_static in
+yes | true)  GLU_STATIC=true;;
+*)           GLU_STATIC=false;;
+esac
+
+case $enable_shared in
+yes | true)  GLU_STATIC=false;;
+*)           GLU_STATIC=true;;
+esac
+
+SIM_AC_COMPILE_DEBUG([
+#  CPPFLAGS="$CPPFLAGS"
+], [
+#  CPPFLAGS="$CPPFLAGS -DNDEBUG"
+])
+
+# huh?  What is this?
+# case $enable_debug in
+# yes | true)  GLU_SHARED=true;;
+# *)           GLU_SHARED=false;;
+# esac
+
+CPPFLAGS="-DLIBRARYBUILD $CPPFLAGS"
+
+LIBFLAGS=
+AC_SUBST(LIBFLAGS)
+
+if $BUILD_WITH_MSVC; then
+  if $GLU_STATIC; then
+    :
+  else
+    CPPFLAGS="-DGLU_MAKE_DLL $CPPFLAGS"
+    GLU_EXTRA_CPPFLAGS="$GLU_EXTRA_CPPFLAGS -DGLU_DLL"
+  fi
+  debugfile="`pwd`/GLU.pdb"
+  debugfile=`cygpath -w "$debugfile" | sed 's,\\\\,\\\\\\\\,g'`
+  if $GLU_STATIC; then
+    SIM_AC_CONFIGURATION_SETTING([GLU build type], [static .lib])
+    LIBFLAGS="-LIB"
+    LIBFLAGS="$LIBFLAGS /OUT:GLU.lib"
+    GLU_EXTRA_CPPFLAGS="-I$includedir"
+    GLU_EXTRA_LDFLAGS="-L$libdir"
+    GLU_EXTRA_LIBS=
+  else
+    LIBFLAGS="-DLL /INCREMENTAL:NO"
+    case $enable_symbols in
+    no | false)
+      SIM_AC_CONFIGURATION_SETTING([GLU build type],
+                                   [dynamic .dll, no symbols])
+      LIBFLAGS="$LIBFLAGS /RELEASE"
+      ;;
+    *)
+      SIM_AC_CONFIGURATION_SETTING([GLU build type],
+                                   [dynamic .dll + .pdb])
+      CFLAGS="/Fd$debugfile $CFLAGS"
+      CXXFLAGS="/Fd$debugfile $CXXFLAGS"
+      LIBFLAGS="$LIBFLAGS /DEBUG /PDB:GLU.pdb"
+      ;;
+    esac
+
+    LIBFLAGS="$LIBFLAGS /OUT:GLU.dll"
+  fi
+
+  GLU_EXTRA_LIBS="-lGLU $GLU_EXTRA_LIBS"
+else
+  GLU_EXTRA_LIBS="-lGLU $GLU_EXTRA_LIBS"
+fi
+
+
+SIM_AC_UNIQIFY_LIST(CPPFLAGS, $CPPFLAGS)
+SIM_AC_UNIQIFY_LIST(LDFLAGS, $LDFLAGS)
+SIM_AC_UNIQIFY_LIST(LIBS, $LIBS)
+
+AC_OUTPUT([
+        Makefile
+        libnurbs/Makefile
+        libnurbs/interface/Makefile
+        libnurbs/internals/Makefile
+        libnurbs/nurbtess/Makefile
+        libtess/Makefile
+	libutil/Makefile
+])
+
+SIM_AC_CONFIGURATION_SETTING([Install prefix], [$prefix])
+
+SIM_AC_CONFIGURATION_SUMMARY
+
+echo ""
+echo "Now, run 'make' and 'make install' to install $PACKAGE"
+echo ""
+

@@ -1,0 +1,514 @@
+# Makefile.in generated automatically by automake 1.5 from Makefile.am.
+
+# Copyright 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
+# Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+@SET_MAKE@
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+top_builddir = ../..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+INSTALL_HEADER = $(INSTALL_DATA)
+transform = @program_transform_name@
+NORMAL_INSTALL = :
+PRE_INSTALL = :
+POST_INSTALL = :
+NORMAL_UNINSTALL = :
+PRE_UNINSTALL = :
+POST_UNINSTALL = :
+build_alias = @build_alias@
+build_triplet = @build@
+host_alias = @host_alias@
+host_triplet = @host@
+target_alias = @target_alias@
+target_triplet = @target@
+AMTAR = @AMTAR@
+AS = @AS@
+AWK = @AWK@
+BUILD_WITH_MSVC = @BUILD_WITH_MSVC@
+CC = @CC@
+CPP = @CPP@
+CXX = @CXX@
+DEPDIR = @DEPDIR@
+DLLTOOL = @DLLTOOL@
+DSUFFIX = @DSUFFIX@
+EXEEXT = @EXEEXT@
+GLU_MAJOR_VERSION = @GLU_MAJOR_VERSION@
+GLU_MICRO_VERSION = @GLU_MICRO_VERSION@
+GLU_MINOR_VERSION = @GLU_MINOR_VERSION@
+GLU_VERSION = @GLU_VERSION@
+INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+LIBFLAGS = @LIBFLAGS@
+LIBTOOL = @LIBTOOL@
+LN_S = @LN_S@
+LT_AGE = @LT_AGE@
+LT_CURRENT = @LT_CURRENT@
+LT_REVISION = @LT_REVISION@
+MAINT = @MAINT@
+OBJDUMP = @OBJDUMP@
+OBJEXT = @OBJEXT@
+PACKAGE = @PACKAGE@
+RANLIB = @RANLIB@
+VERSION = @VERSION@
+am__include = @am__include@
+am__quote = @am__quote@
+install_sh = @install_sh@
+
+INCLUDES = -I$(top_srcdir)/include
+
+@BUILD_WITH_MSVC_TRUE@noinst_LIBRARIES = nurbtess.lst
+@BUILD_WITH_MSVC_FALSE@noinst_LTLIBRARIES = libnurbtess.la
+
+libnurbtess_la_SOURCES = \
+	definitions.h \
+	directedLine.cc \
+	directedLine.h \
+	glimports.h \
+	gridWrap.cc \
+	gridWrap.h \
+	monoChain.cc \
+	monoChain.h \
+	monoPolyPart.cc \
+	monoPolyPart.h \
+	monoTriangulation.cc \
+	monoTriangulation.h \
+	mystdio.h \
+	mystdlib.h \
+	partitionX.cc \
+	partitionX.h \
+	partitionY.cc \
+	partitionY.h \
+	polyDBG.cc \
+	polyDBG.h \
+	polyUtil.cc \
+	polyUtil.h \
+	primitiveStream.cc \
+	primitiveStream.h \
+	quicksort.cc \
+	quicksort.h \
+	rectBlock.cc \
+	rectBlock.h \
+	sampleComp.cc \
+	sampleComp.h \
+	sampleCompBot.cc \
+	sampleCompBot.h \
+	sampleCompRight.cc \
+	sampleCompRight.h \
+	sampleCompTop.cc \
+	sampleCompTop.h \
+	sampleMonoPoly.cc \
+	sampleMonoPoly.h \
+	sampledLine.cc \
+	sampledLine.h \
+	searchTree.cc \
+	searchTree.h \
+	zlassert.h
+
+
+nurbtess_lst_SOURCES = \
+	definitions.h \
+	directedLine.cc \
+	directedLine.h \
+	glimports.h \
+	gridWrap.cc \
+	gridWrap.h \
+	monoChain.cc \
+	monoChain.h \
+	monoPolyPart.cc \
+	monoPolyPart.h \
+	monoTriangulation.cc \
+	monoTriangulation.h \
+	mystdio.h \
+	mystdlib.h \
+	partitionX.cc \
+	partitionX.h \
+	partitionY.cc \
+	partitionY.h \
+	polyDBG.cc \
+	polyDBG.h \
+	polyUtil.cc \
+	polyUtil.h \
+	primitiveStream.cc \
+	primitiveStream.h \
+	quicksort.cc \
+	quicksort.h \
+	rectBlock.cc \
+	rectBlock.h \
+	sampleComp.cc \
+	sampleComp.h \
+	sampleCompBot.cc \
+	sampleCompBot.h \
+	sampleCompRight.cc \
+	sampleCompRight.h \
+	sampleCompTop.cc \
+	sampleCompTop.h \
+	sampleMonoPoly.cc \
+	sampleMonoPoly.h \
+	sampledLine.cc \
+	sampledLine.h \
+	searchTree.cc \
+	searchTree.h \
+	zlassert.h
+
+subdir = libnurbs/nurbtess
+mkinstalldirs = $(SHELL) $(top_srcdir)/cfg/mkinstalldirs
+CONFIG_HEADER = $(top_builddir)/config.h
+CONFIG_CLEAN_FILES =
+LIBRARIES = $(noinst_LIBRARIES)
+
+nurbtess_lst_AR = $(AR) cru
+nurbtess_lst_LIBADD =
+am_nurbtess_lst_OBJECTS = directedLine.$(OBJEXT) gridWrap.$(OBJEXT) \
+	monoChain.$(OBJEXT) monoPolyPart.$(OBJEXT) \
+	monoTriangulation.$(OBJEXT) partitionX.$(OBJEXT) \
+	partitionY.$(OBJEXT) polyDBG.$(OBJEXT) polyUtil.$(OBJEXT) \
+	primitiveStream.$(OBJEXT) quicksort.$(OBJEXT) \
+	rectBlock.$(OBJEXT) sampleComp.$(OBJEXT) \
+	sampleCompBot.$(OBJEXT) sampleCompRight.$(OBJEXT) \
+	sampleCompTop.$(OBJEXT) sampleMonoPoly.$(OBJEXT) \
+	sampledLine.$(OBJEXT) searchTree.$(OBJEXT)
+nurbtess_lst_OBJECTS = $(am_nurbtess_lst_OBJECTS)
+LTLIBRARIES = $(noinst_LTLIBRARIES)
+
+libnurbtess_la_LDFLAGS =
+libnurbtess_la_LIBADD =
+am_libnurbtess_la_OBJECTS = directedLine.lo gridWrap.lo monoChain.lo \
+	monoPolyPart.lo monoTriangulation.lo partitionX.lo \
+	partitionY.lo polyDBG.lo polyUtil.lo primitiveStream.lo \
+	quicksort.lo rectBlock.lo sampleComp.lo sampleCompBot.lo \
+	sampleCompRight.lo sampleCompTop.lo sampleMonoPoly.lo \
+	sampledLine.lo searchTree.lo
+libnurbtess_la_OBJECTS = $(am_libnurbtess_la_OBJECTS)
+
+DEFS = @DEFS@
+DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
+CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+depcomp = $(SHELL) $(top_srcdir)/cfg/depcomp
+@AMDEP_TRUE@DEP_FILES = $(DEPDIR)/directedLine.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/directedLine.Po $(DEPDIR)/gridWrap.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/gridWrap.Po $(DEPDIR)/monoChain.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/monoChain.Po $(DEPDIR)/monoPolyPart.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/monoPolyPart.Po \
+@AMDEP_TRUE@	$(DEPDIR)/monoTriangulation.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/monoTriangulation.Po \
+@AMDEP_TRUE@	$(DEPDIR)/partitionX.Plo $(DEPDIR)/partitionX.Po \
+@AMDEP_TRUE@	$(DEPDIR)/partitionY.Plo $(DEPDIR)/partitionY.Po \
+@AMDEP_TRUE@	$(DEPDIR)/polyDBG.Plo $(DEPDIR)/polyDBG.Po \
+@AMDEP_TRUE@	$(DEPDIR)/polyUtil.Plo $(DEPDIR)/polyUtil.Po \
+@AMDEP_TRUE@	$(DEPDIR)/primitiveStream.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/primitiveStream.Po \
+@AMDEP_TRUE@	$(DEPDIR)/quicksort.Plo $(DEPDIR)/quicksort.Po \
+@AMDEP_TRUE@	$(DEPDIR)/rectBlock.Plo $(DEPDIR)/rectBlock.Po \
+@AMDEP_TRUE@	$(DEPDIR)/sampleComp.Plo $(DEPDIR)/sampleComp.Po \
+@AMDEP_TRUE@	$(DEPDIR)/sampleCompBot.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/sampleCompBot.Po \
+@AMDEP_TRUE@	$(DEPDIR)/sampleCompRight.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/sampleCompRight.Po \
+@AMDEP_TRUE@	$(DEPDIR)/sampleCompTop.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/sampleCompTop.Po \
+@AMDEP_TRUE@	$(DEPDIR)/sampleMonoPoly.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/sampleMonoPoly.Po \
+@AMDEP_TRUE@	$(DEPDIR)/sampledLine.Plo $(DEPDIR)/sampledLine.Po \
+@AMDEP_TRUE@	$(DEPDIR)/searchTree.Plo $(DEPDIR)/searchTree.Po
+CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) \
+	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+	$(AM_CXXFLAGS) $(CXXFLAGS)
+CXXLD = $(CXX)
+CXXLINK = $(LIBTOOL) --mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+CXXFLAGS = @CXXFLAGS@
+CFLAGS = @CFLAGS@
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
+	$(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+DIST_SOURCES = $(nurbtess_lst_SOURCES) $(libnurbtess_la_SOURCES)
+DIST_COMMON = Makefile.am Makefile.in
+SOURCES = $(nurbtess_lst_SOURCES) $(libnurbtess_la_SOURCES)
+
+all: all-am
+
+.SUFFIXES:
+.SUFFIXES: .cc .lo .o .obj
+
+mostlyclean-libtool:
+	-rm -f *.lo
+
+clean-libtool:
+	-rm -rf .libs _libs
+
+distclean-libtool:
+	-rm -f libtool
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
+	cd $(top_srcdir) && \
+	  $(AUTOMAKE) --gnu  libnurbs/nurbtess/Makefile
+Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) && \
+	  CONFIG_HEADERS= CONFIG_LINKS= \
+	  CONFIG_FILES=$(subdir)/$@ $(SHELL) ./config.status
+
+AR = ar
+
+clean-noinstLIBRARIES:
+	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
+
+clean-noinstLTLIBRARIES:
+	-test -z "$(noinst_LTLIBRARIES)" || rm -f $(noinst_LTLIBRARIES)
+libnurbtess.la: $(libnurbtess_la_OBJECTS) $(libnurbtess_la_DEPENDENCIES) 
+	$(CXXLINK)  $(libnurbtess_la_LDFLAGS) $(libnurbtess_la_OBJECTS) $(libnurbtess_la_LIBADD) $(LIBS)
+
+mostlyclean-compile:
+	-rm -f *.$(OBJEXT) core *.core
+
+distclean-compile:
+	-rm -f *.tab.c
+
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/directedLine.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/directedLine.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/gridWrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/gridWrap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/monoChain.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/monoChain.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/monoPolyPart.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/monoPolyPart.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/monoTriangulation.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/monoTriangulation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/partitionX.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/partitionX.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/partitionY.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/partitionY.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/polyDBG.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/polyDBG.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/polyUtil.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/polyUtil.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/primitiveStream.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/primitiveStream.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/quicksort.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/quicksort.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/rectBlock.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/rectBlock.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampleComp.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampleComp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampleCompBot.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampleCompBot.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampleCompRight.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampleCompRight.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampleCompTop.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampleCompTop.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampleMonoPoly.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampleMonoPoly.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampledLine.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sampledLine.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/searchTree.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/searchTree.Po@am__quote@
+
+distclean-depend:
+	-rm -rf $(DEPDIR)
+
+.cc.o:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXXCOMPILE) -c -o $@ `test -f $< || echo '$(srcdir)/'`$<
+
+.cc.obj:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXXCOMPILE) -c -o $@ `cygpath -w $<`
+
+.cc.lo:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Plo' tmpdepfile='$(DEPDIR)/$*.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(LTCXXCOMPILE) -c -o $@ `test -f $< || echo '$(srcdir)/'`$<
+CXXDEPMODE = @CXXDEPMODE@
+uninstall-info-am:
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
+	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	mkid -fID $$unique $(LISP)
+
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+		$(TAGS_FILES) $(LISP)
+	tags=; \
+	here=`pwd`; \
+	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
+	  || etags $(ETAGS_ARGS) $$tags  $$unique $(LISP)
+
+GTAGS:
+	here=`CDPATH=: && cd $(top_builddir) && pwd` \
+	  && cd $(top_srcdir) \
+	  && gtags -i $(GTAGS_ARGS) $$here
+
+distclean-tags:
+	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH
+
+DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+
+top_distdir = ../..
+distdir = $(top_distdir)/$(PACKAGE)-$(VERSION)
+
+distdir: $(DISTFILES)
+	@for file in $(DISTFILES); do \
+	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
+	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
+	  if test "$$dir" != "$$file" && test "$$dir" != "."; then \
+	    $(mkinstalldirs) "$(distdir)/$$dir"; \
+	  fi; \
+	  if test -d $$d/$$file; then \
+	    cp -pR $$d/$$file $(distdir) \
+	    || exit 1; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || cp -p $$d/$$file $(distdir)/$$file \
+	    || exit 1; \
+	  fi; \
+	done
+check-am: all-am
+check: check-am
+all-am: Makefile $(LIBRARIES) $(LTLIBRARIES)
+
+installdirs:
+
+install: install-am
+install-exec: install-exec-am
+install-data: install-data-am
+uninstall: uninstall-am
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+
+installcheck: installcheck-am
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
+	  `test -z '$(STRIP)' || \
+	    echo "INSTALL_PROGRAM_ENV=STRIPPROG='$(STRIP)'"` install
+mostlyclean-generic:
+
+clean-generic:
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES) stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+	@echo "This command is intended for maintainers to use"
+	@echo "it deletes files that may require special tools to rebuild."
+clean: clean-am
+
+clean-am: clean-generic clean-libtool clean-noinstLIBRARIES \
+	clean-noinstLTLIBRARIES mostlyclean-am
+
+distclean: distclean-am
+
+distclean-am: clean-am distclean-compile distclean-depend \
+	distclean-generic distclean-libtool distclean-tags
+
+dvi: dvi-am
+
+dvi-am:
+
+info: info-am
+
+info-am:
+
+install-data-am:
+
+install-exec-am:
+
+install-info: install-info-am
+
+install-man:
+
+installcheck-am:
+
+maintainer-clean: maintainer-clean-am
+
+maintainer-clean-am: distclean-am maintainer-clean-generic
+
+mostlyclean: mostlyclean-am
+
+mostlyclean-am: mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool
+
+uninstall-am: uninstall-info-am
+
+.PHONY: GTAGS all all-am check check-am clean clean-generic \
+	clean-libtool clean-noinstLIBRARIES clean-noinstLTLIBRARIES \
+	distclean distclean-compile distclean-depend distclean-generic \
+	distclean-libtool distclean-tags distdir dvi dvi-am info \
+	info-am install install-am install-data install-data-am \
+	install-exec install-exec-am install-info install-info-am \
+	install-man install-strip installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool tags uninstall uninstall-am \
+	uninstall-info-am
+
+
+nurbtess.lst: $(nurbtess_lst_OBJECTS)
+	@echo "Linking $@..."; \
+	rm -f $@; \
+	for i in $(nurbtess_lst_OBJECTS); do echo $$i >>$@; done
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

@@ -1,0 +1,28 @@
+/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+
+/* define this to the libGLU major version number */
+#undef BUILD_MAJOR_VERSION
+
+/* define this to the libGLU release version number */
+#undef BUILD_MICRO_VERSION
+
+/* define this to the libGLU minor version number */
+#undef BUILD_MINOR_VERSION
+
+/* define this to the full libGLU major.minor.micro version number */
+#undef BUILD_VERSION
+
+/* Define if you have the <ctype.h> header file. */
+#undef HAVE_CTYPE_H
+
+/* Define if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define if you have the <windows.h> header file. */
+#undef HAVE_WINDOWS_H
+
+/* Name of package */
+#undef PACKAGE
+
+/* Version number of package */
+#undef VERSION

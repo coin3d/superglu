@@ -1,0 +1,710 @@
+# Makefile.in generated automatically by automake 1.5 from Makefile.am.
+
+# Copyright 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
+# Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+@SET_MAKE@
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+top_builddir = ../..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+INSTALL_HEADER = $(INSTALL_DATA)
+transform = @program_transform_name@
+NORMAL_INSTALL = :
+PRE_INSTALL = :
+POST_INSTALL = :
+NORMAL_UNINSTALL = :
+PRE_UNINSTALL = :
+POST_UNINSTALL = :
+build_alias = @build_alias@
+build_triplet = @build@
+host_alias = @host_alias@
+host_triplet = @host@
+target_alias = @target_alias@
+target_triplet = @target@
+AMTAR = @AMTAR@
+AS = @AS@
+AWK = @AWK@
+BUILD_WITH_MSVC = @BUILD_WITH_MSVC@
+CC = @CC@
+CPP = @CPP@
+CXX = @CXX@
+DEPDIR = @DEPDIR@
+DLLTOOL = @DLLTOOL@
+DSUFFIX = @DSUFFIX@
+EXEEXT = @EXEEXT@
+GLU_MAJOR_VERSION = @GLU_MAJOR_VERSION@
+GLU_MICRO_VERSION = @GLU_MICRO_VERSION@
+GLU_MINOR_VERSION = @GLU_MINOR_VERSION@
+GLU_VERSION = @GLU_VERSION@
+INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+LIBFLAGS = @LIBFLAGS@
+LIBTOOL = @LIBTOOL@
+LN_S = @LN_S@
+LT_AGE = @LT_AGE@
+LT_CURRENT = @LT_CURRENT@
+LT_REVISION = @LT_REVISION@
+MAINT = @MAINT@
+OBJDUMP = @OBJDUMP@
+OBJEXT = @OBJEXT@
+PACKAGE = @PACKAGE@
+RANLIB = @RANLIB@
+VERSION = @VERSION@
+am__include = @am__include@
+am__quote = @am__quote@
+install_sh = @install_sh@
+
+INCLUDES = \
+	-I$(top_srcdir)/include \
+	-I$(top_srcdir)/libnurbs/interface \
+	-I$(top_srcdir)/libnurbs/nurbtess
+
+
+@BUILD_WITH_MSVC_TRUE@noinst_LIBRARIES = internals.lst
+@BUILD_WITH_MSVC_FALSE@noinst_LTLIBRARIES = libinternals.la
+
+libinternals_la_SOURCES = \
+	arc.cc arc.h \
+	arcsorter.cc \
+	arcsorter.h \
+	arctess.cc \
+	arctess.h \
+	backend.cc \
+	backend.h \
+	basiccrveval.cc \
+	basiccrveval.h \
+	basicsurfeval.cc \
+	basicsurfeval.h \
+	bezierarc.h \
+	bin.cc \
+	bin.h \
+	bufpool.cc \
+	bufpool.h \
+	cachingeval.cc \
+	cachingeval.h \
+	ccw.cc \
+	coveandtiler.cc \
+	coveandtiler.h \
+	curve.cc \
+	curve.h \
+	curvelist.cc \
+	curvelist.h \
+	curvesub.cc \
+	dataTransform.cc \
+	dataTransform.h \
+	defines.h \
+	displaylist.cc \
+	displaylist.h \
+	displaymode.h \
+	flist.cc \
+	flist.h \
+	flistsorter.cc \
+	flistsorter.h \
+	gridline.h \
+	gridtrimvertex.h \
+	gridvertex.h \
+	hull.cc \
+	hull.h \
+	intersect.cc \
+	jarcloc.h \
+	knotvector.cc \
+	knotvector.h \
+	mapdesc.cc \
+	mapdesc.h \
+	mapdescv.cc \
+	maplist.cc \
+	maplist.h \
+	mesher.cc \
+	mesher.h \
+	monoTriangulationBackend.cc \
+	monotonizer.cc \
+	monotonizer.h \
+	myassert.h \
+	mycode.cc \
+	mymath.h \
+	mysetjmp.h \
+	mystring.h \
+	nurbsconsts.h \
+	nurbsinterfac.cc \
+	nurbstess.cc \
+	nurbstess.h \
+	patch.cc \
+	patch.h \
+	patchlist.cc \
+	patchlist.h \
+	pwlarc.h \
+	quilt.cc \
+	quilt.h \
+	reader.cc \
+	reader.h \
+	renderhints.cc \
+	renderhints.h \
+	simplemath.h \
+	slicer.cc \
+	slicer.h \
+	sorter.cc \
+	sorter.h \
+	splitarcs.cc \
+	subdivider.cc \
+	subdivider.h \
+	tobezier.cc \
+	trimline.cc \
+	trimline.h \
+	trimregion.cc \
+	trimregion.h \
+	trimvertex.h \
+	trimvertpool.cc \
+	trimvertpool.h \
+	types.h \
+	uarray.cc \
+	uarray.h \
+	varray.cc \
+	varray.h
+
+
+internals_lst_SOURCES = \
+	arc.cc arc.h \
+	arcsorter.cc \
+	arcsorter.h \
+	arctess.cc \
+	arctess.h \
+	backend.cc \
+	backend.h \
+	basiccrveval.cc \
+	basiccrveval.h \
+	basicsurfeval.cc \
+	basicsurfeval.h \
+	bezierarc.h \
+	bin.cc \
+	bin.h \
+	bufpool.cc \
+	bufpool.h \
+	cachingeval.cc \
+	cachingeval.h \
+	ccw.cc \
+	coveandtiler.cc \
+	coveandtiler.h \
+	curve.cc \
+	curve.h \
+	curvelist.cc \
+	curvelist.h \
+	curvesub.cc \
+	dataTransform.cc \
+	dataTransform.h \
+	defines.h \
+	displaylist.cc \
+	displaylist.h \
+	displaymode.h \
+	flist.cc \
+	flist.h \
+	flistsorter.cc \
+	flistsorter.h \
+	gridline.h \
+	gridtrimvertex.h \
+	gridvertex.h \
+	hull.cc \
+	hull.h \
+	intersect.cc \
+	jarcloc.h \
+	knotvector.cc \
+	knotvector.h \
+	mapdesc.cc \
+	mapdesc.h \
+	mapdescv.cc \
+	maplist.cc \
+	maplist.h \
+	mesher.cc \
+	mesher.h \
+	monoTriangulationBackend.cc \
+	monotonizer.cc \
+	monotonizer.h \
+	myassert.h \
+	mycode.cc \
+	mymath.h \
+	mysetjmp.h \
+	mystring.h \
+	nurbsconsts.h \
+	nurbsinterfac.cc \
+	nurbstess.cc \
+	nurbstess.h \
+	patch.cc \
+	patch.h \
+	patchlist.cc \
+	patchlist.h \
+	pwlarc.h \
+	quilt.cc \
+	quilt.h \
+	reader.cc \
+	reader.h \
+	renderhints.cc \
+	renderhints.h \
+	simplemath.h \
+	slicer.cc \
+	slicer.h \
+	sorter.cc \
+	sorter.h \
+	splitarcs.cc \
+	subdivider.cc \
+	subdivider.h \
+	tobezier.cc \
+	trimline.cc \
+	trimline.h \
+	trimregion.cc \
+	trimregion.h \
+	trimvertex.h \
+	trimvertpool.cc \
+	trimvertpool.h \
+	types.h \
+	uarray.cc \
+	uarray.h \
+	varray.cc \
+	varray.h
+
+subdir = libnurbs/internals
+mkinstalldirs = $(SHELL) $(top_srcdir)/cfg/mkinstalldirs
+CONFIG_HEADER = $(top_builddir)/config.h
+CONFIG_CLEAN_FILES =
+LIBRARIES = $(noinst_LIBRARIES)
+
+internals_lst_AR = $(AR) cru
+internals_lst_LIBADD =
+am_internals_lst_OBJECTS = arc.$(OBJEXT) arcsorter.$(OBJEXT) \
+	arctess.$(OBJEXT) backend.$(OBJEXT) basiccrveval.$(OBJEXT) \
+	basicsurfeval.$(OBJEXT) bin.$(OBJEXT) bufpool.$(OBJEXT) \
+	cachingeval.$(OBJEXT) ccw.$(OBJEXT) coveandtiler.$(OBJEXT) \
+	curve.$(OBJEXT) curvelist.$(OBJEXT) curvesub.$(OBJEXT) \
+	dataTransform.$(OBJEXT) displaylist.$(OBJEXT) flist.$(OBJEXT) \
+	flistsorter.$(OBJEXT) hull.$(OBJEXT) intersect.$(OBJEXT) \
+	knotvector.$(OBJEXT) mapdesc.$(OBJEXT) mapdescv.$(OBJEXT) \
+	maplist.$(OBJEXT) mesher.$(OBJEXT) \
+	monoTriangulationBackend.$(OBJEXT) monotonizer.$(OBJEXT) \
+	mycode.$(OBJEXT) nurbsinterfac.$(OBJEXT) nurbstess.$(OBJEXT) \
+	patch.$(OBJEXT) patchlist.$(OBJEXT) quilt.$(OBJEXT) \
+	reader.$(OBJEXT) renderhints.$(OBJEXT) slicer.$(OBJEXT) \
+	sorter.$(OBJEXT) splitarcs.$(OBJEXT) subdivider.$(OBJEXT) \
+	tobezier.$(OBJEXT) trimline.$(OBJEXT) trimregion.$(OBJEXT) \
+	trimvertpool.$(OBJEXT) uarray.$(OBJEXT) varray.$(OBJEXT)
+internals_lst_OBJECTS = $(am_internals_lst_OBJECTS)
+LTLIBRARIES = $(noinst_LTLIBRARIES)
+
+libinternals_la_LDFLAGS =
+libinternals_la_LIBADD =
+am_libinternals_la_OBJECTS = arc.lo arcsorter.lo arctess.lo backend.lo \
+	basiccrveval.lo basicsurfeval.lo bin.lo bufpool.lo \
+	cachingeval.lo ccw.lo coveandtiler.lo curve.lo curvelist.lo \
+	curvesub.lo dataTransform.lo displaylist.lo flist.lo \
+	flistsorter.lo hull.lo intersect.lo knotvector.lo mapdesc.lo \
+	mapdescv.lo maplist.lo mesher.lo monoTriangulationBackend.lo \
+	monotonizer.lo mycode.lo nurbsinterfac.lo nurbstess.lo patch.lo \
+	patchlist.lo quilt.lo reader.lo renderhints.lo slicer.lo \
+	sorter.lo splitarcs.lo subdivider.lo tobezier.lo trimline.lo \
+	trimregion.lo trimvertpool.lo uarray.lo varray.lo
+libinternals_la_OBJECTS = $(am_libinternals_la_OBJECTS)
+
+DEFS = @DEFS@
+DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
+CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+depcomp = $(SHELL) $(top_srcdir)/cfg/depcomp
+@AMDEP_TRUE@DEP_FILES = $(DEPDIR)/arc.Plo $(DEPDIR)/arc.Po \
+@AMDEP_TRUE@	$(DEPDIR)/arcsorter.Plo $(DEPDIR)/arcsorter.Po \
+@AMDEP_TRUE@	$(DEPDIR)/arctess.Plo $(DEPDIR)/arctess.Po \
+@AMDEP_TRUE@	$(DEPDIR)/backend.Plo $(DEPDIR)/backend.Po \
+@AMDEP_TRUE@	$(DEPDIR)/basiccrveval.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/basiccrveval.Po \
+@AMDEP_TRUE@	$(DEPDIR)/basicsurfeval.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/basicsurfeval.Po $(DEPDIR)/bin.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/bin.Po $(DEPDIR)/bufpool.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/bufpool.Po $(DEPDIR)/cachingeval.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/cachingeval.Po $(DEPDIR)/ccw.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/ccw.Po $(DEPDIR)/coveandtiler.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/coveandtiler.Po $(DEPDIR)/curve.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/curve.Po $(DEPDIR)/curvelist.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/curvelist.Po $(DEPDIR)/curvesub.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/curvesub.Po $(DEPDIR)/dataTransform.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/dataTransform.Po \
+@AMDEP_TRUE@	$(DEPDIR)/displaylist.Plo $(DEPDIR)/displaylist.Po \
+@AMDEP_TRUE@	$(DEPDIR)/flist.Plo $(DEPDIR)/flist.Po \
+@AMDEP_TRUE@	$(DEPDIR)/flistsorter.Plo $(DEPDIR)/flistsorter.Po \
+@AMDEP_TRUE@	$(DEPDIR)/hull.Plo $(DEPDIR)/hull.Po \
+@AMDEP_TRUE@	$(DEPDIR)/intersect.Plo $(DEPDIR)/intersect.Po \
+@AMDEP_TRUE@	$(DEPDIR)/knotvector.Plo $(DEPDIR)/knotvector.Po \
+@AMDEP_TRUE@	$(DEPDIR)/mapdesc.Plo $(DEPDIR)/mapdesc.Po \
+@AMDEP_TRUE@	$(DEPDIR)/mapdescv.Plo $(DEPDIR)/mapdescv.Po \
+@AMDEP_TRUE@	$(DEPDIR)/maplist.Plo $(DEPDIR)/maplist.Po \
+@AMDEP_TRUE@	$(DEPDIR)/mesher.Plo $(DEPDIR)/mesher.Po \
+@AMDEP_TRUE@	$(DEPDIR)/monoTriangulationBackend.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/monoTriangulationBackend.Po \
+@AMDEP_TRUE@	$(DEPDIR)/monotonizer.Plo $(DEPDIR)/monotonizer.Po \
+@AMDEP_TRUE@	$(DEPDIR)/mycode.Plo $(DEPDIR)/mycode.Po \
+@AMDEP_TRUE@	$(DEPDIR)/nurbsinterfac.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/nurbsinterfac.Po $(DEPDIR)/nurbstess.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/nurbstess.Po $(DEPDIR)/patch.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/patch.Po $(DEPDIR)/patchlist.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/patchlist.Po $(DEPDIR)/quilt.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/quilt.Po $(DEPDIR)/reader.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/reader.Po $(DEPDIR)/renderhints.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/renderhints.Po $(DEPDIR)/slicer.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/slicer.Po $(DEPDIR)/sorter.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/sorter.Po $(DEPDIR)/splitarcs.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/splitarcs.Po $(DEPDIR)/subdivider.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/subdivider.Po $(DEPDIR)/tobezier.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/tobezier.Po $(DEPDIR)/trimline.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/trimline.Po $(DEPDIR)/trimregion.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/trimregion.Po $(DEPDIR)/trimvertpool.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/trimvertpool.Po $(DEPDIR)/uarray.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/uarray.Po $(DEPDIR)/varray.Plo \
+@AMDEP_TRUE@	$(DEPDIR)/varray.Po
+CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) \
+	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+	$(AM_CXXFLAGS) $(CXXFLAGS)
+CXXLD = $(CXX)
+CXXLINK = $(LIBTOOL) --mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+CXXFLAGS = @CXXFLAGS@
+CFLAGS = @CFLAGS@
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
+	$(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+DIST_SOURCES = $(internals_lst_SOURCES) $(libinternals_la_SOURCES)
+DIST_COMMON = Makefile.am Makefile.in
+SOURCES = $(internals_lst_SOURCES) $(libinternals_la_SOURCES)
+
+all: all-am
+
+.SUFFIXES:
+.SUFFIXES: .cc .lo .o .obj
+
+mostlyclean-libtool:
+	-rm -f *.lo
+
+clean-libtool:
+	-rm -rf .libs _libs
+
+distclean-libtool:
+	-rm -f libtool
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
+	cd $(top_srcdir) && \
+	  $(AUTOMAKE) --gnu  libnurbs/internals/Makefile
+Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) && \
+	  CONFIG_HEADERS= CONFIG_LINKS= \
+	  CONFIG_FILES=$(subdir)/$@ $(SHELL) ./config.status
+
+AR = ar
+
+clean-noinstLIBRARIES:
+	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
+
+clean-noinstLTLIBRARIES:
+	-test -z "$(noinst_LTLIBRARIES)" || rm -f $(noinst_LTLIBRARIES)
+libinternals.la: $(libinternals_la_OBJECTS) $(libinternals_la_DEPENDENCIES) 
+	$(CXXLINK)  $(libinternals_la_LDFLAGS) $(libinternals_la_OBJECTS) $(libinternals_la_LIBADD) $(LIBS)
+
+mostlyclean-compile:
+	-rm -f *.$(OBJEXT) core *.core
+
+distclean-compile:
+	-rm -f *.tab.c
+
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/arc.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/arc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/arcsorter.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/arcsorter.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/arctess.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/arctess.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/backend.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/backend.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/basiccrveval.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/basiccrveval.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/basicsurfeval.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/basicsurfeval.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bin.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bin.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bufpool.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bufpool.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/cachingeval.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/cachingeval.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/ccw.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/ccw.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/coveandtiler.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/coveandtiler.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/curve.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/curve.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/curvelist.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/curvelist.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/curvesub.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/curvesub.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/dataTransform.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/dataTransform.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/displaylist.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/displaylist.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/flist.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/flist.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/flistsorter.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/flistsorter.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/hull.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/hull.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/intersect.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/intersect.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/knotvector.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/knotvector.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/mapdesc.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/mapdesc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/mapdescv.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/mapdescv.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/maplist.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/maplist.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/mesher.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/mesher.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/monoTriangulationBackend.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/monoTriangulationBackend.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/monotonizer.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/monotonizer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/mycode.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/mycode.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/nurbsinterfac.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/nurbsinterfac.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/nurbstess.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/nurbstess.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/patch.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/patch.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/patchlist.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/patchlist.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/quilt.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/quilt.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/reader.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/reader.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/renderhints.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/renderhints.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/slicer.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/slicer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sorter.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/sorter.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/splitarcs.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/splitarcs.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/subdivider.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/subdivider.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/tobezier.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/tobezier.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/trimline.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/trimline.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/trimregion.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/trimregion.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/trimvertpool.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/trimvertpool.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/uarray.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/uarray.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/varray.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/varray.Po@am__quote@
+
+distclean-depend:
+	-rm -rf $(DEPDIR)
+
+.cc.o:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXXCOMPILE) -c -o $@ `test -f $< || echo '$(srcdir)/'`$<
+
+.cc.obj:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXXCOMPILE) -c -o $@ `cygpath -w $<`
+
+.cc.lo:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Plo' tmpdepfile='$(DEPDIR)/$*.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(LTCXXCOMPILE) -c -o $@ `test -f $< || echo '$(srcdir)/'`$<
+CXXDEPMODE = @CXXDEPMODE@
+uninstall-info-am:
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
+	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	mkid -fID $$unique $(LISP)
+
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+		$(TAGS_FILES) $(LISP)
+	tags=; \
+	here=`pwd`; \
+	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
+	  || etags $(ETAGS_ARGS) $$tags  $$unique $(LISP)
+
+GTAGS:
+	here=`CDPATH=: && cd $(top_builddir) && pwd` \
+	  && cd $(top_srcdir) \
+	  && gtags -i $(GTAGS_ARGS) $$here
+
+distclean-tags:
+	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH
+
+DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+
+top_distdir = ../..
+distdir = $(top_distdir)/$(PACKAGE)-$(VERSION)
+
+distdir: $(DISTFILES)
+	@for file in $(DISTFILES); do \
+	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
+	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
+	  if test "$$dir" != "$$file" && test "$$dir" != "."; then \
+	    $(mkinstalldirs) "$(distdir)/$$dir"; \
+	  fi; \
+	  if test -d $$d/$$file; then \
+	    cp -pR $$d/$$file $(distdir) \
+	    || exit 1; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || cp -p $$d/$$file $(distdir)/$$file \
+	    || exit 1; \
+	  fi; \
+	done
+check-am: all-am
+check: check-am
+all-am: Makefile $(LIBRARIES) $(LTLIBRARIES)
+
+installdirs:
+
+install: install-am
+install-exec: install-exec-am
+install-data: install-data-am
+uninstall: uninstall-am
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+
+installcheck: installcheck-am
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
+	  `test -z '$(STRIP)' || \
+	    echo "INSTALL_PROGRAM_ENV=STRIPPROG='$(STRIP)'"` install
+mostlyclean-generic:
+
+clean-generic:
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES) stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+	@echo "This command is intended for maintainers to use"
+	@echo "it deletes files that may require special tools to rebuild."
+clean: clean-am
+
+clean-am: clean-generic clean-libtool clean-noinstLIBRARIES \
+	clean-noinstLTLIBRARIES mostlyclean-am
+
+distclean: distclean-am
+
+distclean-am: clean-am distclean-compile distclean-depend \
+	distclean-generic distclean-libtool distclean-tags
+
+dvi: dvi-am
+
+dvi-am:
+
+info: info-am
+
+info-am:
+
+install-data-am:
+
+install-exec-am:
+
+install-info: install-info-am
+
+install-man:
+
+installcheck-am:
+
+maintainer-clean: maintainer-clean-am
+
+maintainer-clean-am: distclean-am maintainer-clean-generic
+
+mostlyclean: mostlyclean-am
+
+mostlyclean-am: mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool
+
+uninstall-am: uninstall-info-am
+
+.PHONY: GTAGS all all-am check check-am clean clean-generic \
+	clean-libtool clean-noinstLIBRARIES clean-noinstLTLIBRARIES \
+	distclean distclean-compile distclean-depend distclean-generic \
+	distclean-libtool distclean-tags distdir dvi dvi-am info \
+	info-am install install-am install-data install-data-am \
+	install-exec install-exec-am install-info install-info-am \
+	install-man install-strip installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool tags uninstall uninstall-am \
+	uninstall-info-am
+
+
+internals.lst: $(internals_lst_OBJECTS)
+	@echo "Linking $@..."; \
+	rm -f $@; \
+	for i in $(internals_lst_OBJECTS); do echo $$i >>$@; done
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:
