@@ -16,12 +16,11 @@
 #pragma warning(disable : 4244)
 #pragma warning(disable : 4761)
 
-#define GLAPIENTRY
+#define GLAPIENTRY APIENTRY
 
 #else
 
-/* Disable Microsoft-specific keywords */
+/* Disable Microsoft-specific keyword for calling convention */
 #define GLAPIENTRY
-#define WINGDIAPI
 
 #endif
