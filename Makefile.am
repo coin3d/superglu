@@ -30,7 +30,8 @@ lib@LIBPREFIX@GLU_la_LDFLAGS = \
 
 @LIBPREFIX@GLU.lib: Makefile \
   $(lib@LIBPREFIX@GLU_lib_OBJECTS) \
-  $(lib@LIBPREFIX@GLU_lib_DEPENDENCIES)
+  $(lib@LIBPREFIX@GLU_lib_DEPENDENCIES) \
+  @LIBPREFIX@GLU.lst
 	@basename="@LIBPREFIX@GLU"; \
 	rm -f "$$basename.dll" "$$basename.lib"; \
 	echo "Linking $$basename.lib..."; \
@@ -40,6 +41,16 @@ lib@LIBPREFIX@GLU_la_LDFLAGS = \
 	$(CC) $(LDFLAGS) $(LIBFLAGS) \
 	  $(@LIBPREFIX@GLU_lib_OBJECTS) \
 	  $(@LIBPREFIX@GLU_lib_LIBADD) $(LIBS);
+
+# This file is need when superglu is used from Coin.
+@LIBPREFIX@GLU.lst: $(@LIBPREFIX@GLU_lib_LIBADD)
+	@echo "Linking $@..."; \
+	rm -f $@; \
+	for i in $(@LIBPREFIX@GLU_lib_LIBADD); do \
+	  LSTDIRCAT=`dirname $$i`; \
+	  cat $$i | sed s%^%$$LSTDIRCAT/% >> $@; \
+	done
+
 
 # **************************************************************************
 
