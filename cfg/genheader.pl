@@ -122,15 +122,12 @@ print <<"END";
 extern "C" {
 #endif
 
-/* These two defines are used to tag all functions with the default
-   Win32 calling convention. If we are not under Win32, make
-   them empty to avoid compilation errors. */
+/* This define is used to tag all functions with the default
+   Win32 calling convention. If we are not under Win32, we make
+   it empty to avoid compilation errors. */
 #ifndef APIENTRY
 #define APIENTRY
 #endif /* APIENTRY */
-#ifndef CALLBACK
-#define CALLBACK
-#endif /* CALLBACK */
 
 /*************************************************************/
 END
@@ -189,7 +186,7 @@ typedef struct GLUtesselator GLUtriangulatorObj;
 #define GLU_TESS_MAX_COORD 1.0e150
 
 /* Internal convenience typedefs */
-typedef void (CALLBACK * _GLUfuncptr)();
+typedef void (APIENTRY * _GLUfuncptr)();
 
 END
 
