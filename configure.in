@@ -89,6 +89,8 @@ if $BUILD_WITH_MSVC; then
     LDFLAGS="$LDFLAGS $sim_ac_msvcrt_LDFLAGS"
     LIBS="$LIBS $sim_ac_msvcrt_LIBS"
   ])
+
+  SIM_AC_CONFIGURATION_SETTING([C library version], [$sim_ac_msvcrt])
 fi
 
 # **************************************************************************
