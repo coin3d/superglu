@@ -181,6 +181,60 @@ typedef struct GLUtesselator GLUtriangulatorObj;
 /* Internal convenience typedefs */
 typedef void (*_GLUfuncptr)();
 
+#ifdef GLU_API
+# error Leave the internal GLU_API define alone.
+#endif /* GLU_API */
+
+/*
+  On MSWindows platforms, one of these defines must always be set when
+  building application programs:
+
+   - "GLU_DLL", when the application programmer is using the library
+     in the form of a dynamic link library (DLL)
+
+   - "GLU_NOT_DLL", when the application programmer is using the
+     library in the form of a static object library (LIB)
+
+  Note that either GLU_DLL or GLU_NOT_DLL _must_ be defined by the
+  application programmer on MSWindows platforms, or else the #error
+  statement will hit. Set up one or the other of these two defines in
+  your compiler environment according to how the library was built --
+  as a DLL (use "GLU_DLL") or as a static LIB (use "GLU_NOT_DLL").
+  Chances are you are using a DLL and need to define GLU_DLL.
+
+  (Setting up defines for the compiler is typically done by either
+  adding something like "/DGLU_DLL" to the compiler's argument line
+  (for command-line build processes), or by adding the define to the
+  list of preprocessor symbols in your IDE GUI (in the MSVC IDE, this
+  is done from the "Project"->"Settings" menu, choose the "C/C++" tab,
+  then "Preprocessor" from the dropdown box and add the appropriate
+  define)).
+
+  It is extremely important that the application programmer uses the
+  correct define, as using "GLU_NOT_DLL" when "GLU_DLL" is correct
+  will cause mysterious crashes.
+ */
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+# ifdef GLU_INTERNAL
+#  ifdef GLU_MAKE_DLL
+#   define GLU_API __declspec(dllexport)
+#  endif /* GLU_MAKE_DLL */
+# else /* !GLU_INTERNAL */
+#  ifdef GLU_DLL
+#   define GLU_API __declspec(dllimport)
+#  else /* !GLU_DLL */
+#   ifndef GLU_NOT_DLL
+#    error Define either GLU_DLL or GLU_NOT_DLL as appropriate for your linkage! See GL/glu.h for further instructions.
+#   endif /* GLU_NOT_DLL */
+#  endif /* !GLU_DLL */
+# endif /* !GLU_INTERNAL */
+#endif /* Microsoft Windows */
+
+#ifndef GLU_API
+# define GLU_API
+#endif /* !GLU_API */
+
 END
 
 %decls = ();
@@ -231,7 +285,7 @@ for ( $i = 0; $i < scalar(@api); $i++ ) {
     if ( $arglist =~ /^$/ ) {
       $arglist = "void";
     }
-    $decls{$function} = "extern $return$function ($arglist);";
+    $decls{$function} = "GLU_API $return$function ($arglist);";
     $i = $j;
     next;
   }
