@@ -122,6 +122,16 @@ print <<"END";
 extern "C" {
 #endif
 
+/* These two defines are used to tag all functions with the default
+   Win32 calling convention. If we are not under Win32, make
+   them empty to avoid compilation errors. */
+#ifndef APIENTRY
+#define APIENTRY
+#endif /* APIENTRY */
+#ifndef CALLBACK
+#define CALLBACK
+#endif /* CALLBACK */
+
 /*************************************************************/
 END
 
@@ -179,7 +189,7 @@ typedef struct GLUtesselator GLUtriangulatorObj;
 #define GLU_TESS_MAX_COORD 1.0e150
 
 /* Internal convenience typedefs */
-typedef void (*_GLUfuncptr)();
+typedef void (CALLBACK * _GLUfuncptr)();
 
 END
 
@@ -291,7 +301,7 @@ for ( $i = 0; $i < scalar(@api); $i++ ) {
     if ( $arglist =~ /^$/ ) {
       $arglist = "void";
     }
-    $decls{$function} = "$return$function ($arglist);";
+    $decls{$function} = "${return}APIENTRY $function ($arglist);";
     $i = $j;
     next;
   }
