@@ -55,7 +55,7 @@
 #define ELIMINATE_REDUNDANT_POINTS 
 
 #ifdef  ELIMINATE_REDUNDANT_POINTS 
-#define equal(x,y) ( abs(x-y) <= 0.00001)
+#define equal(x,y) ( glu_abs(x-y) <= 0.00001)
 #endif
 
 #ifdef ELIMINATE_REDUNDANT_POINTS 

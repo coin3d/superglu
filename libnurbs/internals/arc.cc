@@ -332,7 +332,7 @@ Arc::check( void )
 
 inline long tooclose( REAL x, REAL y )
 {
-    return (abs(x-y) < TOL) ?  1 : 0;
+    return (glu_abs(x-y) < TOL) ?  1 : 0;
 }
 
 

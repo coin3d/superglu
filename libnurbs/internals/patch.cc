@@ -49,7 +49,7 @@
 #include "mapdesc.h"
 #include "quilt.h"
 #include "nurbsconsts.h"
-#include "simplemath.h" //for abs function in ::singleStep();
+#include "simplemath.h" //for glu_abs() function in ::singleStep();
 
 
 /*--------------------------------------------------------------------------
@@ -464,7 +464,7 @@ Patch::getstepsize( void )
 void
 Patchspec::singleStep()
 {
-    stepsize =  sidestep[0] =  sidestep[1] = abs(range[2]);
+    stepsize =  sidestep[0] =  sidestep[1] = glu_abs(range[2]);
 }
 
 void 

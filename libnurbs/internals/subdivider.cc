@@ -245,7 +245,7 @@ Subdivider::drawSurfaces( long nuid )
 	REAL rate[2];
 	qlist->findRates( spbrkpts, tpbrkpts, rate );
 
-    	if( decompose( initialbin, min(rate[0], rate[1]) ) ) 
+    	if( decompose( initialbin, glu_min(rate[0], rate[1]) ) ) 
 	    mylongjmp( jumpbuffer, 31 );
     }
 

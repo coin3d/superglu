@@ -51,7 +51,7 @@
 
 #define NOELIMINATION
 
-#define steps_function(large, small, rate) (max(1, 1+ (int) ((large-small)/rate)));
+#define steps_function(large, small, rate) (glu_max(1, 1+ (int) ((large-small)/rate)));
 
 /*-----------------------------------------------------------------------------
  * ArcTessellator - construct an ArcTessellator
@@ -247,9 +247,9 @@ ArcTessellator::pwl( Arc *arc, REAL s1, REAL s2, REAL t1, REAL t2, REAL rate )
 
 /*    if(rate <= 0.06) rate = 0.06;*/
 
-    int snsteps = 1 + (int) (abs(s2 - s1) / rate );
-    int tnsteps = 1 + (int) (abs(t2 - t1) / rate );
-    int nsteps = max(1,max( snsteps, tnsteps ));
+    int snsteps = 1 + (int) (glu_abs(s2 - s1) / rate );
+    int tnsteps = 1 + (int) (glu_abs(t2 - t1) / rate );
+    int nsteps = glu_max(1,glu_max( snsteps, tnsteps ));
 
     REAL sstepsize = (s2 - s1) / (REAL) nsteps;
     REAL tstepsize = (t2 - t1) / (REAL) nsteps;
@@ -395,8 +395,8 @@ ArcTessellator::tessellateNonlinear( Arc *arc, REAL geo_stepsize, REAL arc_steps
             vert->param[0] = u/w;
     	    vert->param[1] = v/w;
 #ifndef NOELIMINATION
-	    REAL ds = abs(vert[0].param[0] - vert[-1].param[0]);
-	    REAL dt = abs(vert[0].param[1] - vert[-1].param[1]);
+	    REAL ds = glu_abs(vert[0].param[0] - vert[-1].param[0]);
+	    REAL dt = glu_abs(vert[0].param[1] - vert[-1].param[1]);
 	    int canremove = (ds<geo_stepsize && dt<geo_stepsize) ? 1 : 0;
 	    REAL ods=0.0, odt=0.0;
 
@@ -454,8 +454,8 @@ ArcTessellator::tessellateNonlinear( Arc *arc, REAL geo_stepsize, REAL arc_steps
             vert->param[0] = u;
 	    vert->param[1] = v;
 #ifndef NOELIMINATION
-	    REAL ds = abs(vert[0].param[0] - vert[-1].param[0]);
-	    REAL dt = abs(vert[0].param[1] - vert[-1].param[1]);
+	    REAL ds = glu_abs(vert[0].param[0] - vert[-1].param[0]);
+	    REAL dt = glu_abs(vert[0].param[1] - vert[-1].param[1]);
 	    int canremove = (ds<geo_stepsize && dt<geo_stepsize) ? 1 : 0;
 	    REAL ods=0.0, odt=0.0;
 

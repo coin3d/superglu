@@ -49,7 +49,7 @@
 #include "knotvector.h"
 #include "patchlist.h"
 #include "math.h"     //fabs()
-#include "simplemath.h" //min()
+#include "simplemath.h" //glu_min()
 
 /* local preprocessor definitions */
 #define DEF_PATCH_STEPSIZE	.4
@@ -265,8 +265,8 @@ Quilt::findSampleRates( Flist& slist, Flist& tlist )
 	    patchlist.getstepsize();
 	    
 	    {
-	    float edge_len_s = min(fabs(ptb[0]-pta[0]),1.0);
-	    float edge_len_t = min(fabs(ptb[1]-pta[1]),1.0);
+	    float edge_len_s = glu_min(fabs(ptb[0]-pta[0]),1.0);
+	    float edge_len_t = glu_min(fabs(ptb[1]-pta[1]),1.0);
 
 	    if( patchlist.getStepsize(0)/edge_len_s < qspec[0].step_size ) 
 	       qspec[0].step_size = patchlist.getStepsize(0)/edge_len_s;

@@ -45,12 +45,12 @@
 /* simple inline routines */
 
 inline int 
-max( int x, int y ) { return ( x < y ) ? y : x; }
+glu_max( int x, int y ) { return ( x < y ) ? y : x; }
 
 inline REAL 
-min( REAL x, REAL y ) { return ( x > y ) ? y : x; }
+glu_min( REAL x, REAL y ) { return ( x > y ) ? y : x; }
 
 inline REAL 
-abs( REAL x ) { return ( x < 0.0 ) ? -x : x; }
+glu_abs( REAL x ) { return ( x < 0.0 ) ? -x : x; }
 
 #endif /* __glusimplemath_h_ */
