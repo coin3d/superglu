@@ -93,7 +93,7 @@ am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
 
-SUBDIRS = include libnurbs libtess libutil .
+SUBDIRS = libspec include libnurbs libtess libutil .
 
 @BUILD_WITH_MSVC_TRUE@lib_LIBRARIES = GLU.lib
 @BUILD_WITH_MSVC_FALSE@lib_LTLIBRARIES = libGLU.la
@@ -356,7 +356,7 @@ GZIP_ENV = --best
 distdir: $(DISTFILES)
 	-chmod -R a+w $(distdir) >/dev/null 2>&1; rm -rf $(distdir)
 	mkdir $(distdir)
-	$(mkinstalldirs) $(distdir)/cfg
+	$(mkinstalldirs) $(distdir)/cfg $(distdir)/libspec
 	@for file in $(DISTFILES); do \
 	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
 	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \

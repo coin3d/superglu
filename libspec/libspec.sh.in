@@ -1,4 +1,4 @@
-#! /bin/sh
+#! @SHELL@
 
 ################################################################################
 #
@@ -93,7 +93,7 @@ trap abnormalstop 1 2 3 9 15
 #
 #  Constants
 #
-AWK=/usr/bin/awk
+AWK=@AWK@
 TMPDIR=${TMPDIR:-/usr/tmp}
 PROGRAM=$TMPDIR/libspec$$.pgm
 PARSER=$TOOLROOT/usr/lib/libspec.awk

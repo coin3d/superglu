@@ -1,5 +1,5 @@
 
-SUBDIRS = include libnurbs libtess libutil .
+SUBDIRS = libspec include libnurbs libtess libutil .
 
 if BUILD_WITH_MSVC
 lib_LIBRARIES = GLU.lib
