@@ -331,7 +331,7 @@ gluUnProject4(GLdouble winx, GLdouble winy, GLdouble winz, GLdouble clipw,
 	      const GLdouble modelMatrix[16], 
 	      const GLdouble projMatrix[16],
 	      const GLint viewport[4],
-	      GLclampd near, GLclampd far,		    
+	      GLclampd zNear, GLclampd zFar,		    
 	      GLdouble *objx, GLdouble *objy, GLdouble *objz,
 	      GLdouble *objw)
 {
@@ -350,7 +350,7 @@ gluUnProject4(GLdouble winx, GLdouble winy, GLdouble winz, GLdouble clipw,
     /* Map x and y from window coordinates */
     in[0] = (in[0] - viewport[0]) / viewport[2];
     in[1] = (in[1] - viewport[1]) / viewport[3];
-    in[2] = (in[2] - near) / (far - near);
+    in[2] = (in[2] - zNear) / (zFar - zNear);
 
     /* Map to range -1 to 1 */
     in[0] = in[0] * 2 - 1;
