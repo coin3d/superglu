@@ -55,6 +55,18 @@ AC_DEFINE_UNQUOTED([BUILD_VERSION], ["$BUILD_VERSION"],
 
 glu_build_dir=`pwd`
 
+# *******************************************************************
+# Library name prefix.
+
+AC_ARG_WITH(
+  [libname-prefix],
+  [AC_HELP_STRING([--with-libname-prefix=string],
+                  [specify library name prefix])],
+  [LIBPREFIX=$withval],
+  [LIBPREFIX=])
+
+AC_SUBST(LIBPREFIX)
+
 # **************************************************************************
 #  Locate C++ compiler and set C++ as the default language to use
 #  in tests. The configure script will automatically terminate if
@@ -148,12 +160,12 @@ if $BUILD_WITH_MSVC; then
     CPPFLAGS="-DGLU_MAKE_DLL $CPPFLAGS"
     GLU_EXTRA_CPPFLAGS="$GLU_EXTRA_CPPFLAGS -DGLU_DLL"
   fi
-  debugfile="`pwd`/GLU.pdb"
+  debugfile="`pwd`/${LIBPREFIX}GLU.pdb"
   debugfile=`cygpath -w "$debugfile" | sed 's,\\\\,\\\\\\\\,g'`
   if $GLU_STATIC; then
     SIM_AC_CONFIGURATION_SETTING([GLU build type], [static .lib])
     LIBFLAGS="-LIB"
-    LIBFLAGS="$LIBFLAGS /OUT:GLU.lib"
+    LIBFLAGS="$LIBFLAGS /OUT:${LIBPREFIX}GLU.lib"
     GLU_EXTRA_CPPFLAGS="-I$includedir"
     GLU_EXTRA_LDFLAGS="-L$libdir"
     GLU_EXTRA_LIBS=
@@ -170,17 +182,15 @@ if $BUILD_WITH_MSVC; then
                                    [dynamic .dll + .pdb])
       CFLAGS="/Fd$debugfile $CFLAGS"
       CXXFLAGS="/Fd$debugfile $CXXFLAGS"
-      LIBFLAGS="$LIBFLAGS /DEBUG /PDB:GLU.pdb"
+      LIBFLAGS="$LIBFLAGS /DEBUG /PDB:${LIBPREFIX}GLU.pdb"
       ;;
     esac
 
-    LIBFLAGS="$LIBFLAGS /OUT:GLU.dll"
+    LIBFLAGS="$LIBFLAGS /OUT:${LIBPREFIX}GLU.dll"
   fi
-
-  GLU_EXTRA_LIBS="-lGLU $GLU_EXTRA_LIBS"
-else
-  GLU_EXTRA_LIBS="-lGLU $GLU_EXTRA_LIBS"
 fi
+
+GLU_EXTRA_LIBS="-l${LIBPREFIX}GLU $GLU_EXTRA_LIBS"
 
 
 SIM_AC_UNIQIFY_LIST(CPPFLAGS, $CPPFLAGS)
