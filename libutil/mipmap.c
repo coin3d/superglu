@@ -35,16 +35,10 @@
 ** $Header$
 */
 
-#if HAVE_CONFIG_H
-#include <config.h>
-#endif
 
 #include "gluos.h"
 #include <assert.h>
 #include <GL/glu.h>
-#ifdef HAVE_GL_GLEXT_H
-#include <GL/glext.h>
-#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -7387,6 +7381,7 @@ int gluScaleImage3D(GLenum format,
    return 0;
 } /* gluScaleImage3D() */
 
+#ifdef GL_VERSION_1_2
 static void closestFit3D(GLenum target, GLint width, GLint height, GLint depth,
 			 GLint internalFormat, GLenum format, GLenum type, 
 			 GLint *newWidth, GLint *newHeight, GLint *newDepth)
@@ -7442,6 +7437,7 @@ static void closestFit3D(GLenum target, GLint width, GLint height, GLint depth,
    *newDepth= depthPowerOf2;
 /*printf("Proxy Textures\n");*/
 } /* closestFit3D() */
+#endif /* GL_VERSION_1_2 */
 
 static void halveImagePackedPixelSlice(int components,
 				       void (*extractPackedPixel)

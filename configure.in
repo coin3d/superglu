@@ -124,8 +124,6 @@ if $GLU_STATIC; then :; else
   fi
 fi
 
-AC_CHECK_HEADERS([GL/glext.h])
-
 SIM_AC_COMPILE_DEBUG([
 #  CPPFLAGS="$CPPFLAGS"
 ], [
