@@ -19,7 +19,6 @@ libtess_la_SOURCES = \
 	mesh.h \
 	normal.c \
 	normal.h \
-	priorityq-heap.c \
 	priorityq-heap.h \
 	priorityq-sort.h \
 	priorityq.c \
@@ -45,7 +44,6 @@ tess_lst_SOURCES = \
 	mesh.h \
 	normal.c \
 	normal.h \
-	priorityq-heap.c \
 	priorityq-heap.h \
 	priorityq-sort.h \
 	priorityq.c \
@@ -58,6 +56,14 @@ tess_lst_SOURCES = \
 	tess.h \
 	tessmono.c \
 	tessmono.h
+
+# priorityq-heap.c is included from priorityq.c and shouldn't be compiled
+
+EXTRA_libtess_la_SOURCES = \
+	priorityq-heap.c
+
+EXTRA_tess_lst_SOURCES = \
+	priorityq-heap.c
 
 tess.lst: $(tess_lst_OBJECTS)
 	@echo "Linking $@..."; \
