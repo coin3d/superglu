@@ -77,6 +77,22 @@ AC_PROG_CPP
 AC_PROG_CXX
 AC_LANG_CPLUSPLUS
 
+# **************************************************************************
+# NOTE: if we touch CFLAGS/CXXFLAGS before AC_PROG_CC is invoked, the -g
+# flag will be lost  20020104 larsa
+
+if $BUILD_WITH_MSVC; then
+  SIM_AC_SETUP_MSVCRT([
+    CPPFLAGS="$CPPFLAGS $sim_ac_msvcrt_CPPFLAGS"
+    CFLAGS="$CFLAGS $sim_ac_msvcrt_CFLAGS"
+    CXXFLAGS="$CXXFLAGS $sim_ac_msvcrt_CXXFLAGS"
+    LDFLAGS="$LDFLAGS $sim_ac_msvcrt_LDFLAGS"
+    LIBS="$LIBS $sim_ac_msvcrt_LIBS"
+  ])
+fi
+
+# **************************************************************************
+
 AC_CHECK_HEADERS([windows.h unistd.h ctype.h])
 
 AM_INIT_AUTOMAKE(GLU, $VERSION)
