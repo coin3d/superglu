@@ -2,36 +2,6 @@ SUBDIRS = include libnurbs libtess libutil .
 
 EXTRA_DIST = \
         cfg/genheader.pl \
-        cfg/m4/README \
-        cfg/m4/check_dl.m4 \
-        cfg/m4/check_mathlib.m4 \
-        cfg/m4/check_nprintf.m4 \
-        cfg/m4/check_opengl.m4 \
-        cfg/m4/check_pthread.m4 \
-        cfg/m4/check_x11.m4 \
-        cfg/m4/compile_debug.m4 \
-        cfg/m4/compile_exceptions.m4 \
-        cfg/m4/compile_functionname.m4 \
-        cfg/m4/compile_profiling.m4 \
-        cfg/m4/compile_rtti.m4 \
-        cfg/m4/compile_symbols.m4 \
-        cfg/m4/compile_warnings.m4 \
-        cfg/m4/compiler_capabilities.m4 \
-        cfg/m4/configuration_summary.m4 \
-        cfg/m4/cvschanges.m4 \
-        cfg/m4/dates.m4 \
-        cfg/m4/doxygen_detection.m4 \
-        cfg/m4/errors.m4 \
-        cfg/m4/errors.txt \
-        cfg/m4/general.m4 \
-        cfg/m4/macro_quoting.m4 \
-        cfg/m4/misc_compiler.m4 \
-        cfg/m4/network.m4 \
-        cfg/m4/simage.m4 \
-        cfg/m4/uniqify.m4 \
-        cfg/m4/wrapmsvc.m4 \
-        cfg/m4/wrapmsvc.cpp \
-        cfg/m4/wrapmsvc.exe \
 	specs/glu.spec \
 	specs/enumglu.spec \
 	include/gluos.h

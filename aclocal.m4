@@ -23,34 +23,51 @@
 
 # **************************************************************************
 
-AC_DEFUN([SIM_AC_SETUP_MSVC_IFELSE],
-[# **************************************************************************
+AC_DEFUN([SIM_AC_MSVC_DISABLE_OPTION], [
+AC_ARG_ENABLE([msvc],
+  [AC_HELP_STRING([--disable-msvc], [don't require MS Visual C++ on Cygwin])],
+  [case $enableval in
+  no | false) sim_ac_try_msvc=false ;;
+  *)          sim_ac_try_msvc=true ;;
+  esac],
+  [sim_ac_try_msvc=true])
+])
+
+# **************************************************************************
+# Note: the SIM_AC_SETUP_MSVC_IFELSE macro has been OBSOLETED and
+# replaced by the one below.
+#
 # If the Microsoft Visual C++ cl.exe compiler is available, set us up for
 # compiling with it and to generate an MSWindows .dll file.
 
-: ${BUILD_WITH_MSVC=false}
-sim_ac_wrapmsvc=`cd $srcdir; pwd`/cfg/m4/wrapmsvc.exe
-if test -z "$CC" -a -z "$CXX" && $sim_ac_wrapmsvc >/dev/null 2>&1; then
-  m4_ifdef([$0_VISITED],
-    [AC_FATAL([Macro $0 invoked multiple times])])
-  m4_define([$0_VISITED], 1)
-  CC=$sim_ac_wrapmsvc
-  CXX=$sim_ac_wrapmsvc
-  export CC CXX
-  BUILD_WITH_MSVC=true
+AC_DEFUN([SIM_AC_SETUP_MSVCPP_IFELSE],
+[
+AC_REQUIRE([SIM_AC_MSVC_DISABLE_OPTION])
+
+BUILD_WITH_MSVC=false
+if $sim_ac_try_msvc; then
+  sim_ac_wrapmsvc=`cd $srcdir; pwd`/cfg/wrapmsvc.exe
+  if test -z "$CC" -a -z "$CXX" && $sim_ac_wrapmsvc >/dev/null 2>&1; then
+    m4_ifdef([$0_VISITED],
+      [AC_FATAL([Macro $0 invoked multiple times])])
+    m4_define([$0_VISITED], 1)
+    CC=$sim_ac_wrapmsvc
+    CXX=$sim_ac_wrapmsvc
+    export CC CXX
+    BUILD_WITH_MSVC=true
+  else
+    case $host in
+    *-cygwin) SIM_AC_ERROR([no-msvc++]) ;;
+    esac
+  fi
 fi
 AC_SUBST(BUILD_WITH_MSVC)
 
-case $CXX in
-*wrapmsvc.exe)
-  BUILD_WITH_MSVC=true
-  $1
-  ;;
-*)
-  BUILD_WITH_MSVC=false
-  $2
-  ;;
-esac
+if $BUILD_WITH_MSVC; then
+  ifelse([$1], , :, [$1])
+else
+  ifelse([$2], , :, [$2])
+fi
 ]) # SIM_AC_SETUP_MSVC_IFELSE
 
 # **************************************************************************
@@ -135,7 +152,7 @@ sim_ac_message_file=$1
 ]) # SIM_AC_ERROR_MESSAGE_FILE
 
 AC_DEFUN([SIM_AC_ONE_MESSAGE], [
-: ${sim_ac_message_file=$ac_aux_dir/m4/errors.txt}
+: ${sim_ac_message_file=$ac_aux_dir/errors.txt}
 if test -f $sim_ac_message_file; then
   sim_ac_message="`sed -n -e '/^!$1$/,/^!/ { /^!/ d; p; }' <$sim_ac_message_file`"
   if test x"$sim_ac_message" = x""; then
@@ -216,10 +233,10 @@ fi])
 # SIM_AC_CONFIGURATION_SUMMARY macro.
 
 AC_DEFUN([SIM_AC_CONFIGURATION_SETTING],
-[if test x${sim_ac_configuration_settings+set} != xset; then
-  sim_ac_configuration_settings="$1:$2"
-else
+[if test x"${sim_ac_configuration_settings+set}" = x"set"; then
   sim_ac_configuration_settings="$sim_ac_configuration_settings|$1:$2"
+else
+  sim_ac_configuration_settings="$1:$2"
 fi
 ]) # SIM_AC_CONFIGURATION_SETTING
 
@@ -230,10 +247,10 @@ fi
 # SIM_AC_CONFIGURATION_SUMMARY macro.
 
 AC_DEFUN([SIM_AC_CONFIGURATION_WARNING],
-[if test x${sim_ac_configuration_warnings+set} != xset; then
-  sim_ac_configuration_warnings="$1"
-else
+[if test x"${sim_ac_configuration_warnings+set}" = x"set"; then
   sim_ac_configuration_warnings="$sim_ac_configuration_warnings|$1"
+else
+  sim_ac_configuration_warnings="$1"
 fi
 ]) # SIM_AC_CONFIGURATION_WARNING
 
@@ -243,7 +260,7 @@ fi
 # This macro dumps the settings and warnings summary.
 
 AC_DEFUN([SIM_AC_CONFIGURATION_SUMMARY],
-[sim_ac_settings=$sim_ac_configuration_settings
+[sim_ac_settings="$sim_ac_configuration_settings"
 sim_ac_num_settings=`echo "$sim_ac_settings" | tr -d -c "|" | wc -c`
 sim_ac_maxlength=0
 while test $sim_ac_num_settings -ge 0; do
@@ -2337,8 +2354,9 @@ else
     rhapsody* | darwin1.[[012]])
       allow_undefined_flag='-undefined suppress'
       ;;
-    *) # Darwin 1.3 on
-      allow_undefined_flag='-flat_namespace -undefined suppress'
+    *) # On Mac OS 10.1 and above, two-level namespace libraries are the
+       # default, where undefined symbols are not allowed.
+      allow_undefined_flag=''
       ;;
     esac
     # FIXME: Relying on posixy $() will cause problems for
@@ -4351,11 +4369,12 @@ AC_ARG_ENABLE(
 # FIXME: don't mangle options like -fno-gnu-linker and -fvolatile-global
 # 20020104 larsa
 if test x"$enable_symbols" = x"no"; then
-  # CPPFLAGS="`echo $CPPFLAGS | sed 's/-g[0-9]//'`"
-  CFLAGS="`echo $CFLAGS | sed 's/-g[0-9]?//'`"
-  CXXFLAGS="`echo $CXXFLAGS | sed 's/-g[0-9]?//'`"
+  # CPPFLAGS="`echo $CPPFLAGS | sed 's/-g\>//'`"
+  CFLAGS="`echo $CFLAGS | sed 's/-g\>//'`"
+  CXXFLAGS="`echo $CXXFLAGS | sed 's/-g\>//'`"
 fi
-])
+]) # SIM_AC_DEBUGSYMBOLS
+
 
 # Usage:
 #   SIM_AC_RTTI_SUPPORT
@@ -4569,29 +4588,37 @@ AC_ARG_ENABLE(
   [enable_warnings=yes])
 
 if test x"$enable_warnings" = x"yes"; then
-  if test x"$GCC" = x"yes"; then
-    SIM_AC_CC_COMPILER_OPTION([-W -Wall -Wno-unused],
-                              [CFLAGS="$CFLAGS -W -Wall -Wno-unused"])
-    SIM_AC_CC_COMPILER_OPTION([-Wno-multichar],
-                              [CFLAGS="$CFLAGS -Wno-multichar"])
-  fi
 
-  if test x"$GXX" = x"yes"; then
-    SIM_AC_CXX_COMPILER_OPTION([-W -Wall -Wno-unused],
-                               [CXXFLAGS="$CXXFLAGS -W -Wall -Wno-unused"])
-    SIM_AC_CXX_COMPILER_OPTION([-Wno-multichar],
-                               [CXXFLAGS="$CXXFLAGS -Wno-multichar"])
-  fi
+  for sim_ac_try_warning_option in \
+    "-W" "-Wall" "-Wno-unused" "-Wno-multichar" "-Woverloaded-virtual"; do
 
+    if test x"$GCC" = x"yes"; then
+      SIM_AC_CC_COMPILER_OPTION([$sim_ac_try_warning_option],
+                                [CFLAGS="$CFLAGS $sim_ac_try_warning_option"])
+    fi
+  
+    if test x"$GXX" = x"yes"; then
+      SIM_AC_CXX_COMPILER_OPTION([$sim_ac_try_warning_option],
+                                 [CXXFLAGS="$CXXFLAGS $sim_ac_try_warning_option"])
+    fi
+
+  done
+    
   case $host in
   *-*-irix*) 
     ### Turn on all warnings ######################################
-    if test x"$CC" = xcc || test x"$CC" = xCC; then
+    # we try to catch settings like CC="CC -n32" too, even though the
+    # -n32 option belongs to C[XX]FLAGS
+    case $CC in
+    cc | "cc "* | CC | "CC "* )
       SIM_AC_CC_COMPILER_OPTION([-fullwarn], [CFLAGS="$CFLAGS -fullwarn"])
-    fi
-    if test x"$CXX" = xCC; then
+      ;;
+    esac
+    case $CXX in
+    CC | "CC "* )
       SIM_AC_CXX_COMPILER_OPTION([-fullwarn], [CXXFLAGS="$CXXFLAGS -fullwarn"])
-    fi
+      ;;
+    esac
 
     ### Turn off specific (bogus) warnings ########################
 
@@ -4615,17 +4642,22 @@ if test x"$enable_warnings" = x"yes"; then
     ##       SbTime.h in SGI/TGS Inventor does this, so we need to kill
     ##       this warning to avoid all the output clutter when compiling
     ##       the SoQt, SoGtk or SoXt libraries on IRIX with SGI MIPSPro CC.
+    ## 1169: External/internal linkage conflicts with a previous declaration.
+    ##       We get this for the "friend operators" in SbString.h
 
-    sim_ac_bogus_warnings="-woff 3115,3262,1174,1209,1355,1375,3201,1110,1506"
+    sim_ac_bogus_warnings="-woff 3115,3262,1174,1209,1355,1375,3201,1110,1506,1169"
 
-    if test x"$CC" = xcc || test x"$CC" = xCC; then
+    case $CC in
+    cc | "cc "* | CC | "CC "* )
       SIM_AC_CC_COMPILER_OPTION([$sim_ac_bogus_warnings],
                                 [CFLAGS="$CFLAGS $sim_ac_bogus_warnings"])
-    fi
-    if test x"$CXX" = xCC; then
+    esac
+    case $CXX in
+    CC | "CC "* )
       SIM_AC_CXX_COMPILER_OPTION([$sim_ac_bogus_warnings],
                                  [CXXFLAGS="$CXXFLAGS $sim_ac_bogus_warnings"])
-    fi
+      ;;
+    esac
   ;;
   esac
 fi
