@@ -75,9 +75,11 @@ CXX = @CXX@
 DEPDIR = @DEPDIR@
 DLLTOOL = @DLLTOOL@
 DSUFFIX = @DSUFFIX@
+ECHO = @ECHO@
 EXEEXT = @EXEEXT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LIBFLAGS = @LIBFLAGS@
+LIBPREFIX = @LIBPREFIX@
 LIBTOOL = @LIBTOOL@
 LN_S = @LN_S@
 LT_AGE = @LT_AGE@
@@ -88,6 +90,7 @@ OBJDUMP = @OBJDUMP@
 OBJEXT = @OBJEXT@
 PACKAGE = @PACKAGE@
 RANLIB = @RANLIB@
+STRIP = @STRIP@
 VERSION = @VERSION@
 am__include = @am__include@
 am__quote = @am__quote@
@@ -95,12 +98,12 @@ install_sh = @install_sh@
 
 SUBDIRS = include libnurbs libtess libutil .
 
-@BUILD_WITH_MSVC_TRUE@lib_LIBRARIES = GLU.lib
-@BUILD_WITH_MSVC_FALSE@lib_LTLIBRARIES = libGLU.la
+@BUILD_WITH_MSVC_TRUE@lib_LIBRARIES = @LIBPREFIX@GLU.lib
+@BUILD_WITH_MSVC_FALSE@lib_LTLIBRARIES = lib@LIBPREFIX@GLU.la
 
-libGLU_la_SOURCES = 
+lib@LIBPREFIX@GLU_la_SOURCES = 
 
-libGLU_la_LIBADD = \
+lib@LIBPREFIX@GLU_la_LIBADD = \
 	libnurbs/interface/libinterface.la \
 	libnurbs/internals/libinternals.la \
 	libnurbs/nurbtess/libnurbtess.la \
@@ -108,13 +111,13 @@ libGLU_la_LIBADD = \
 	libutil/libutil.la
 
 
-libGLU_la_LDFLAGS = \
+lib@LIBPREFIX@GLU_la_LDFLAGS = \
 	-no-undefined \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 
 
-GLU_lib_SOURCES = 
-GLU_lib_LIBADD = \
+@LIBPREFIX@GLU_lib_SOURCES = 
+@LIBPREFIX@GLU_lib_LIBADD = \
 	libnurbs/interface/interface.lst \
 	libnurbs/internals/internals.lst \
 	libnurbs/nurbtess/nurbtess.lst \
@@ -128,20 +131,20 @@ CONFIG_HEADER = $(top_builddir)/include/config.h
 CONFIG_CLEAN_FILES =
 LIBRARIES = $(lib_LIBRARIES)
 
-GLU_lib_AR = $(AR) cru
-GLU_lib_DEPENDENCIES = libnurbs/interface/interface.lst \
+@LIBPREFIX@GLU_lib_AR = $(AR) cru
+@LIBPREFIX@GLU_lib_DEPENDENCIES = libnurbs/interface/interface.lst \
 	libnurbs/internals/internals.lst libnurbs/nurbtess/nurbtess.lst \
 	libtess/tess.lst libutil/util.lst
-am_GLU_lib_OBJECTS =
-GLU_lib_OBJECTS = $(am_GLU_lib_OBJECTS)
+am_@LIBPREFIX@GLU_lib_OBJECTS =
+@LIBPREFIX@GLU_lib_OBJECTS = $(am_@LIBPREFIX@GLU_lib_OBJECTS)
 LTLIBRARIES = $(lib_LTLIBRARIES)
 
-libGLU_la_DEPENDENCIES = libnurbs/interface/libinterface.la \
+lib@LIBPREFIX@GLU_la_DEPENDENCIES = libnurbs/interface/libinterface.la \
 	libnurbs/internals/libinternals.la \
 	libnurbs/nurbtess/libnurbtess.la libtess/libtess.la \
 	libutil/libutil.la
-am_libGLU_la_OBJECTS =
-libGLU_la_OBJECTS = $(am_libGLU_la_OBJECTS)
+am_lib@LIBPREFIX@GLU_la_OBJECTS =
+lib@LIBPREFIX@GLU_la_OBJECTS = $(am_lib@LIBPREFIX@GLU_la_OBJECTS)
 
 DEFS = @DEFS@
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)/include
@@ -156,7 +159,8 @@ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
 CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-DIST_SOURCES = $(GLU_lib_SOURCES) $(libGLU_la_SOURCES)
+DIST_SOURCES = $(@LIBPREFIX@GLU_lib_SOURCES) \
+	$(lib@LIBPREFIX@GLU_la_SOURCES)
 
 RECURSIVE_TARGETS = info-recursive dvi-recursive install-info-recursive \
 	uninstall-info-recursive all-recursive install-data-recursive \
@@ -167,7 +171,7 @@ DIST_COMMON = README AUTHORS COPYING ChangeLog INSTALL Makefile.am \
 	cfg/depcomp cfg/install-sh cfg/ltconfig cfg/ltmain.sh \
 	cfg/missing cfg/mkinstalldirs configure configure.in
 DIST_SUBDIRS = $(SUBDIRS)
-SOURCES = $(GLU_lib_SOURCES) $(libGLU_la_SOURCES)
+SOURCES = $(@LIBPREFIX@GLU_lib_SOURCES) $(lib@LIBPREFIX@GLU_la_SOURCES)
 
 all: all-recursive
 
@@ -243,8 +247,8 @@ uninstall-libLTLIBRARIES:
 
 clean-libLTLIBRARIES:
 	-test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
-libGLU.la: $(libGLU_la_OBJECTS) $(libGLU_la_DEPENDENCIES) 
-	$(LINK) -rpath $(libdir) $(libGLU_la_LDFLAGS) $(libGLU_la_OBJECTS) $(libGLU_la_LIBADD) $(LIBS)
+lib@LIBPREFIX@GLU.la: $(lib@LIBPREFIX@GLU_la_OBJECTS) $(lib@LIBPREFIX@GLU_la_DEPENDENCIES) 
+	$(LINK) -rpath $(libdir) $(lib@LIBPREFIX@GLU_la_LDFLAGS) $(lib@LIBPREFIX@GLU_la_OBJECTS) $(lib@LIBPREFIX@GLU_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT) core *.core
@@ -522,23 +526,23 @@ uninstall-info: uninstall-info-recursive
 	uninstall-recursive
 
 
-GLU.lib: Makefile \
-  $(libGLU_lib_OBJECTS) \
-  $(libGLU_lib_DEPENDENCIES)
-	@basename="GLU"; \
+@LIBPREFIX@GLU.lib: Makefile \
+  $(lib@LIBPREFIX@GLU_lib_OBJECTS) \
+  $(lib@LIBPREFIX@GLU_lib_DEPENDENCIES)
+	@basename="@LIBPREFIX@GLU"; \
 	rm -f "$$basename.dll" "$$basename.lib"; \
 	echo "Linking $$basename.lib..."; \
 	echo $(CC) $(LDFLAGS) $(LIBFLAGS) \
-	  $(GLU_lib_OBJECTS) \
-	  $(GLU_lib_LIBADD) $(LIBS); \
+	  $(@LIBPREFIX@GLU_lib_OBJECTS) \
+	  $(@LIBPREFIX@GLU_lib_LIBADD) $(LIBS); \
 	$(CC) $(LDFLAGS) $(LIBFLAGS) \
-	  $(GLU_lib_OBJECTS) \
-	  $(GLU_lib_LIBADD) $(LIBS);
+	  $(@LIBPREFIX@GLU_lib_OBJECTS) \
+	  $(@LIBPREFIX@GLU_lib_LIBADD) $(LIBS);
 
 # **************************************************************************
 
 install-exec-local:
-	@basename="GLU"; \
+	@basename="@LIBPREFIX@GLU"; \
 	for ext in dll pdb; do \
 	  file="$$basename.$$ext"; \
 	  if test -s "$$file"; then \
@@ -549,7 +553,7 @@ install-exec-local:
 	done
 
 install-data-local:
-	@basename="GLU"; \
+	@basename="@LIBPREFIX@GLU"; \
 	for ext in lib; do \
 	  file="$$basename.$$ext"; \
 	  if test -s "$$file"; then \
@@ -560,7 +564,7 @@ install-data-local:
 	done
 
 uninstall-local:
-	@basename="GLU"; \
+	@basename="@LIBPREFIX@GLU"; \
 	for file in \
 	  "$(DESTDIR)$(bindir)/$$basename.dll" \
 	  "$(DESTDIR)$(bindir)/$$basename.pdb" \
