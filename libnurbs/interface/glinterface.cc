@@ -429,8 +429,10 @@ gluGetNurbsProperty(GLUnurbs *r, GLenum property, GLfloat *value)
 }
 
 extern "C" void GLAPIENTRY
-gluNurbsCallback(GLUnurbs *r, GLenum which, GLvoid (CALLBACK * fn)())
+gluNurbsCallback(GLUnurbs *r, GLenum which, _GLUfuncptr fn)
 {
+    assert(r != NULL);
+
     switch (which) {
     case GLU_NURBS_BEGIN:
     case GLU_NURBS_END:
@@ -444,11 +446,11 @@ gluNurbsCallback(GLUnurbs *r, GLenum which, GLvoid (CALLBACK * fn)())
     case GLU_NURBS_NORMAL_DATA:
     case GLU_NURBS_TEXTURE_COORD_DATA:
     case GLU_NURBS_COLOR_DATA: 
-	r->putSurfCallBack(which, (GLvoid (*)(...))fn);	
+  	r->putSurfCallBack(which, (GLvoid (GLAPIENTRY *)(...))fn);	
 	break;
 
     case GLU_NURBS_ERROR:
-	r->errorCallback = (void (CALLBACK *)( GLenum )) fn;
+  	r->errorCallback = (void (GLAPIENTRY *)( GLenum )) fn;
 	break;
     default:
 	r->postError(GLU_INVALID_ENUM);
