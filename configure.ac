@@ -143,7 +143,10 @@ yes | true)  GLU_STATIC=false;;
 *)           GLU_STATIC=true;;
 esac
 
-if $GLU_STATIC; then :; else
+if $GLU_STATIC; then
+  SIM_AC_CONFIGURATION_SETTING([Install as], [static library])
+else
+  SIM_AC_CONFIGURATION_SETTING([Install as], [shared library])
   if $BUILD_WITH_MSVC; then
     AC_MSG_ERROR([GLU as DLL is not supported just yet])
   fi
