@@ -130,5 +130,8 @@ echo "Running automake (generating the Makefile.in files)..."
 ( automake $AUTOMAKE_ADD 3>&1 1>&2 2>&3 | \
   grep -v 'not a standard library name' ) 3>&1 1>&2 2>&3
 
+echo "Removing GNUmakefiles..."
+find . -name GNUmakefile | xargs rm
+
 echo "Done."
 

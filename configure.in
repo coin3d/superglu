@@ -65,7 +65,7 @@ AC_CHECK_HEADERS([windows.h unistd.h ctype.h])
 AM_INIT_AUTOMAKE(GLU, $VERSION)
 
 #  Files to cram results from the configure tests into.
-AM_CONFIG_HEADER(config.h)
+AM_CONFIG_HEADER([include/config.h])
 
 #  Default to not building a shared library.
 #  Can be overridden by the user with --enable-shared.
@@ -179,6 +179,8 @@ SIM_AC_UNIQIFY_LIST(LIBS, $LIBS)
 
 AC_OUTPUT([
         Makefile
+	include/Makefile
+	include/GL/Makefile
         libnurbs/Makefile
         libnurbs/interface/Makefile
         libnurbs/internals/Makefile

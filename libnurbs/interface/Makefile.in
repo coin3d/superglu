@@ -64,6 +64,10 @@ target_triplet = @target@
 AMTAR = @AMTAR@
 AS = @AS@
 AWK = @AWK@
+BUILD_MAJOR_VERSION = @BUILD_MAJOR_VERSION@
+BUILD_MICRO_VERSION = @BUILD_MICRO_VERSION@
+BUILD_MINOR_VERSION = @BUILD_MINOR_VERSION@
+BUILD_VERSION = @BUILD_VERSION@
 BUILD_WITH_MSVC = @BUILD_WITH_MSVC@
 CC = @CC@
 CPP = @CPP@
@@ -72,10 +76,6 @@ DEPDIR = @DEPDIR@
 DLLTOOL = @DLLTOOL@
 DSUFFIX = @DSUFFIX@
 EXEEXT = @EXEEXT@
-GLU_MAJOR_VERSION = @GLU_MAJOR_VERSION@
-GLU_MICRO_VERSION = @GLU_MICRO_VERSION@
-GLU_MINOR_VERSION = @GLU_MINOR_VERSION@
-GLU_VERSION = @GLU_VERSION@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LIBFLAGS = @LIBFLAGS@
 LIBTOOL = @LIBTOOL@
@@ -94,7 +94,6 @@ am__quote = @am__quote@
 install_sh = @install_sh@
 
 INCLUDES = \
-	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/libnurbs/interface \
 	-I$(top_srcdir)/libnurbs/internals \
 	-I$(top_srcdir)/libnurbs/nurbtess
@@ -126,7 +125,7 @@ interface_lst_SOURCES = \
 
 subdir = libnurbs/interface
 mkinstalldirs = $(SHELL) $(top_srcdir)/cfg/mkinstalldirs
-CONFIG_HEADER = $(top_builddir)/config.h
+CONFIG_HEADER = $(top_builddir)/include/config.h
 CONFIG_CLEAN_FILES =
 LIBRARIES = $(noinst_LIBRARIES)
 
@@ -147,7 +146,7 @@ am_libinterface_la_OBJECTS = bezierEval.lo bezierPatch.lo \
 libinterface_la_OBJECTS = $(am_libinterface_la_OBJECTS)
 
 DEFS = @DEFS@
-DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
+DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)/include
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@

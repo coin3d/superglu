@@ -64,6 +64,10 @@ target_triplet = @target@
 AMTAR = @AMTAR@
 AS = @AS@
 AWK = @AWK@
+BUILD_MAJOR_VERSION = @BUILD_MAJOR_VERSION@
+BUILD_MICRO_VERSION = @BUILD_MICRO_VERSION@
+BUILD_MINOR_VERSION = @BUILD_MINOR_VERSION@
+BUILD_VERSION = @BUILD_VERSION@
 BUILD_WITH_MSVC = @BUILD_WITH_MSVC@
 CC = @CC@
 CPP = @CPP@
@@ -72,10 +76,6 @@ DEPDIR = @DEPDIR@
 DLLTOOL = @DLLTOOL@
 DSUFFIX = @DSUFFIX@
 EXEEXT = @EXEEXT@
-GLU_MAJOR_VERSION = @GLU_MAJOR_VERSION@
-GLU_MICRO_VERSION = @GLU_MICRO_VERSION@
-GLU_MINOR_VERSION = @GLU_MINOR_VERSION@
-GLU_VERSION = @GLU_VERSION@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LIBFLAGS = @LIBFLAGS@
 LIBTOOL = @LIBTOOL@
@@ -93,16 +93,7 @@ am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
 
-INCLUDES = \
-	-I$(top_srcdir)/include \
-	-I$(top_srcdir)/libnurbs/interface \
-	-I$(top_srcdir)/libnurbs/internals \
-	-I$(top_srcdir)/libnurbs/nurbtess \
-	-I$(top_srcdir)/libutil \
-	-I$(top_srcdir)/libtess
-
-
-SUBDIRS = libnurbs libtess libutil .
+SUBDIRS = include libnurbs libtess libutil .
 
 @BUILD_WITH_MSVC_TRUE@lib_LIBRARIES = GLU.lib
 @BUILD_WITH_MSVC_FALSE@lib_LTLIBRARIES = libGLU.la
@@ -133,7 +124,7 @@ GLU_lib_LIBADD = \
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/cfg/mkinstalldirs
-CONFIG_HEADER = config.h
+CONFIG_HEADER = $(top_builddir)/include/config.h
 CONFIG_CLEAN_FILES =
 LIBRARIES = $(lib_LIBRARIES)
 
@@ -153,7 +144,7 @@ am_libGLU_la_OBJECTS =
 libGLU_la_OBJECTS = $(am_libGLU_la_OBJECTS)
 
 DEFS = @DEFS@
-DEFAULT_INCLUDES =  -I. -I$(srcdir) -I.
+DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)/include
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
@@ -171,16 +162,14 @@ RECURSIVE_TARGETS = info-recursive dvi-recursive install-info-recursive \
 	uninstall-info-recursive all-recursive install-data-recursive \
 	install-exec-recursive installdirs-recursive install-recursive \
 	uninstall-recursive check-recursive installcheck-recursive
-DIST_COMMON = README ./stamp-h.in AUTHORS COPYING ChangeLog INSTALL \
-	Makefile.am Makefile.in NEWS aclocal.m4 cfg/config.guess \
-	cfg/config.sub cfg/depcomp cfg/install-sh cfg/ltconfig \
-	cfg/ltmain.sh cfg/missing cfg/mkinstalldirs cfg/texinfo.tex \
-	config.h.in configure configure.in
+DIST_COMMON = README AUTHORS COPYING ChangeLog INSTALL Makefile.am \
+	Makefile.in NEWS aclocal.m4 cfg/config.guess cfg/config.sub \
+	cfg/depcomp cfg/install-sh cfg/ltconfig cfg/ltmain.sh \
+	cfg/missing cfg/mkinstalldirs configure configure.in
 DIST_SUBDIRS = $(SUBDIRS)
 SOURCES = $(GLU_lib_SOURCES) $(libGLU_la_SOURCES)
 
-all: config.h
-	$(MAKE) $(AM_MAKEFLAGS) all-recursive
+all: all-recursive
 
 .SUFFIXES:
 
@@ -207,31 +196,6 @@ $(srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(srcdir)/configure.in $(ACLOCAL_M4)
 
 $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ configure.in 
 	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
-config.h: stamp-h
-	@if test ! -f $@; then \
-		rm -f stamp-h; \
-		$(MAKE) stamp-h; \
-	else :; fi
-stamp-h: $(srcdir)/config.h.in $(top_builddir)/config.status
-	@rm -f stamp-h stamp-hT
-	@echo timestamp > stamp-hT 2> /dev/null
-	cd $(top_builddir) \
-	  && CONFIG_FILES= CONFIG_HEADERS=config.h \
-	     $(SHELL) ./config.status
-	@mv stamp-hT stamp-h
-$(srcdir)/config.h.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/./stamp-h.in
-	@if test ! -f $@; then \
-		rm -f $(srcdir)/./stamp-h.in; \
-		$(MAKE) $(srcdir)/./stamp-h.in; \
-	else :; fi
-$(srcdir)/./stamp-h.in: $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-	@rm -f $(srcdir)/./stamp-h.in $(srcdir)/./stamp-h.inT
-	@echo timestamp > $(srcdir)/./stamp-h.inT 2> /dev/null
-	cd $(top_srcdir) && $(AUTOHEADER)
-	@mv $(srcdir)/./stamp-h.inT $(srcdir)/./stamp-h.in
-
-distclean-hdr:
-	-rm -f config.h
 
 AR = ar
 install-libLIBRARIES: $(lib_LIBRARIES)
@@ -355,7 +319,7 @@ ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	       END { for (i in files) print i; }'`; \
 	mkid -fID $$unique $(LISP)
 
-TAGS: tags-recursive $(HEADERS) $(SOURCES) config.h.in $(TAGS_DEPENDENCIES) \
+TAGS: tags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 		$(TAGS_FILES) $(LISP)
 	tags=; \
 	here=`pwd`; \
@@ -370,8 +334,8 @@ TAGS: tags-recursive $(HEADERS) $(SOURCES) config.h.in $(TAGS_DEPENDENCIES) \
 	  done | \
 	  $(AWK) '    { files[$$0] = 1; } \
 	       END { for (i in files) print i; }'`; \
-	test -z "$(ETAGS_ARGS)config.h.in$$unique$(LISP)$$tags" \
-	  || etags $(ETAGS_ARGS) $$tags config.h.in $$unique $(LISP)
+	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
+	  || etags $(ETAGS_ARGS) $$tags  $$unique $(LISP)
 
 GTAGS:
 	here=`CDPATH=: && cd $(top_builddir) && pwd` \
@@ -463,7 +427,7 @@ distcheck: dist
 	  sed 'h;s/./=/g;p;x;p;x'
 check-am: all-am
 check: check-recursive
-all-am: Makefile $(LIBRARIES) $(LTLIBRARIES) config.h
+all-am: Makefile $(LIBRARIES) $(LTLIBRARIES)
 installdirs: installdirs-recursive
 installdirs-am:
 	$(mkinstalldirs) $(DESTDIR)$(libdir) $(DESTDIR)$(libdir)
@@ -501,7 +465,7 @@ dist-all: distdir
 	-chmod -R a+w $(distdir) >/dev/null 2>&1; rm -rf $(distdir)
 distclean: distclean-recursive
 	-rm -f config.status config.cache config.log
-distclean-am: clean-am distclean-compile distclean-generic distclean-hdr \
+distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-libtool distclean-tags
 
 dvi: dvi-recursive
@@ -540,10 +504,10 @@ uninstall-info: uninstall-info-recursive
 .PHONY: $(RECURSIVE_TARGETS) GTAGS all all-am check check-am clean \
 	clean-generic clean-libLIBRARIES clean-libLTLIBRARIES \
 	clean-libtool clean-recursive dist dist-all distcheck distclean \
-	distclean-compile distclean-generic distclean-hdr \
-	distclean-libtool distclean-recursive distclean-tags distdir \
-	dvi dvi-am dvi-recursive info info-am info-recursive install \
-	install-am install-data install-data-am install-data-local \
+	distclean-compile distclean-generic distclean-libtool \
+	distclean-recursive distclean-tags distdir dvi dvi-am \
+	dvi-recursive info info-am info-recursive install install-am \
+	install-data install-data-am install-data-local \
 	install-data-recursive install-exec install-exec-am \
 	install-exec-local install-exec-recursive install-info \
 	install-info-am install-info-recursive install-libLIBRARIES \

@@ -1,13 +1,5 @@
 
-INCLUDES = \
-	-I$(top_srcdir)/include \
-	-I$(top_srcdir)/libnurbs/interface \
-	-I$(top_srcdir)/libnurbs/internals \
-	-I$(top_srcdir)/libnurbs/nurbtess \
-	-I$(top_srcdir)/libutil \
-	-I$(top_srcdir)/libtess
-
-SUBDIRS = libnurbs libtess libutil .
+SUBDIRS = include libnurbs libtess libutil .
 
 if BUILD_WITH_MSVC
 lib_LIBRARIES = GLU.lib

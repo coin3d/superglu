@@ -64,6 +64,10 @@ target_triplet = @target@
 AMTAR = @AMTAR@
 AS = @AS@
 AWK = @AWK@
+BUILD_MAJOR_VERSION = @BUILD_MAJOR_VERSION@
+BUILD_MICRO_VERSION = @BUILD_MICRO_VERSION@
+BUILD_MINOR_VERSION = @BUILD_MINOR_VERSION@
+BUILD_VERSION = @BUILD_VERSION@
 BUILD_WITH_MSVC = @BUILD_WITH_MSVC@
 CC = @CC@
 CPP = @CPP@
@@ -72,10 +76,6 @@ DEPDIR = @DEPDIR@
 DLLTOOL = @DLLTOOL@
 DSUFFIX = @DSUFFIX@
 EXEEXT = @EXEEXT@
-GLU_MAJOR_VERSION = @GLU_MAJOR_VERSION@
-GLU_MICRO_VERSION = @GLU_MICRO_VERSION@
-GLU_MINOR_VERSION = @GLU_MINOR_VERSION@
-GLU_VERSION = @GLU_VERSION@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LIBFLAGS = @LIBFLAGS@
 LIBTOOL = @LIBTOOL@
@@ -92,8 +92,6 @@ VERSION = @VERSION@
 am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
-
-INCLUDES = -I$(top_srcdir)/include
 
 @BUILD_WITH_MSVC_TRUE@noinst_LIBRARIES = tess.lst
 @BUILD_WITH_MSVC_FALSE@noinst_LTLIBRARIES = libtess.la
@@ -153,7 +151,7 @@ tess_lst_SOURCES = \
 
 subdir = libtess
 mkinstalldirs = $(SHELL) $(top_srcdir)/cfg/mkinstalldirs
-CONFIG_HEADER = $(top_builddir)/config.h
+CONFIG_HEADER = $(top_builddir)/include/config.h
 CONFIG_CLEAN_FILES =
 LIBRARIES = $(noinst_LIBRARIES)
 
@@ -174,7 +172,7 @@ am_libtess_la_OBJECTS = dict.lo geom.lo memalloc.lo mesh.lo normal.lo \
 libtess_la_OBJECTS = $(am_libtess_la_OBJECTS)
 
 DEFS = @DEFS@
-DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
+DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)/include
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
