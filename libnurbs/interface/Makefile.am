@@ -1,5 +1,6 @@
 
 INCLUDES = \
+	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/libnurbs/interface \
 	-I$(top_srcdir)/libnurbs/internals \
 	-I$(top_srcdir)/libnurbs/nurbtess

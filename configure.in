@@ -52,8 +52,6 @@ AC_DEFINE_UNQUOTED([BUILD_VERSION], ["$BUILD_VERSION"],
 
 glu_build_dir=`pwd`
 
-AC_PROG_AWK
-
 # **************************************************************************
 #  Locate C++ compiler and set C++ as the default language to use
 #  in tests. The configure script will automatically terminate if
@@ -190,8 +188,6 @@ AC_OUTPUT([
   libnurbs/nurbtess/Makefile
   libtess/Makefile
   libutil/Makefile
-], [
-  chmod a+x libspec/libspec.sh
 ])
 
 SIM_AC_CONFIGURATION_SETTING([Install prefix], [$prefix])

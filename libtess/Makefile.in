@@ -93,6 +93,8 @@ am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
 
+INCLUDES = -I$(top_srcdir)/include
+
 @BUILD_WITH_MSVC_TRUE@noinst_LIBRARIES = tess.lst
 @BUILD_WITH_MSVC_FALSE@noinst_LTLIBRARIES = libtess.la
 

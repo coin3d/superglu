@@ -1,4 +1,6 @@
 
+INCLUDES = -I$(top_srcdir)/include
+
 if BUILD_WITH_MSVC
 noinst_LIBRARIES = util.lst
 else
