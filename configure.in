@@ -66,6 +66,8 @@ AC_ARG_WITH(
   [LIBPREFIX=])
 
 AC_SUBST(LIBPREFIX)
+libprefix=`echo $LIBPREFIX | tr [A-Z] [a-z]`
+AC_SUBST(libprefix)
 
 # **************************************************************************
 #  Locate C++ compiler and set C++ as the default language to use
@@ -200,7 +202,6 @@ SIM_AC_UNIQIFY_LIST(LIBS, $LIBS)
 AC_OUTPUT([
   Makefile
   include/Makefile
-  include/GL/Makefile
   libnurbs/Makefile
   libnurbs/interface/Makefile
   libnurbs/internals/Makefile
@@ -209,11 +210,33 @@ AC_OUTPUT([
   libutil/Makefile
 ])
 
-SIM_AC_CONFIGURATION_SETTING([Install prefix], [$prefix])
+SIM_AC_CONFIGURATION_SETTING([Install path prefix], [$prefix])
+if $BUILD_WITH_MSVC; then
+  SIM_AC_CONFIGURATION_SETTING([Library installation], [$libdir/${LIBPREFIX}GLU.dll])
+else
+  SIM_AC_CONFIGURATION_SETTING([Library installation], [$libdir/lib${LIBPREFIX}GLU])
+fi
+SIM_AC_CONFIGURATION_SETTING([Header installation], [$includedir/GL/${libprefix}glu.h])
 
 SIM_AC_CONFIGURATION_SUMMARY
+
+if test x"$libprefix" = x""; then
+  cat <<EOF
+
+Warning:
+   You are now installing the GLU library and include header file with
+   no prefix to their names.  This means they could clash with the
+   GLU-library and GL/glu.h files from some other installation, which
+   could cause mysterious bugs and crashes in your application
+   programs.  You can add a library prefix by re-running configure with
+   the --with-libname-prefix=PREFIX option.
+
+EOF
+else
+  echo ""
+fi
+
 
 echo ""
 echo "Now, run 'make' and 'make install' to install $PACKAGE"
 echo ""
-

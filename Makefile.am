@@ -1,4 +1,3 @@
-
 SUBDIRS = include libnurbs libtess libutil .
 
 if BUILD_WITH_MSVC
@@ -7,7 +6,7 @@ else
 lib_LTLIBRARIES = lib@LIBPREFIX@GLU.la
 endif
 
-lib@LIBPREFIX@GLU_la_SOURCES =
+lib@LIBPREFIX@GLU_la_SOURCES = 
 
 lib@LIBPREFIX@GLU_la_LIBADD = \
 	libnurbs/interface/libinterface.la \

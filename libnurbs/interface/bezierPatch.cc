@@ -41,7 +41,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
-#include <GL/glu.h> /*for drawing bzier patch*/
+#include <superglu.h> /*for drawing bzier patch*/
 #include "bezierPatch.h"
 #include "bezierEval.h"
 

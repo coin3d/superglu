@@ -39,7 +39,7 @@
 
 #include "gluos.h"
 #include <GL/gl.h>
-#include <GL/glu.h>
+#include <superglu.h>
 #include <stdio.h>
 #include "glimports.h"
 #include "glrenderer.h"

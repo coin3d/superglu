@@ -43,7 +43,7 @@
 #define __gluglrenderer_h_
 
 #include <GL/gl.h>
-#include <GL/glu.h>
+#include <superglu.h>
 #include "nurbstess.h"
 #include "glsurfeval.h"
 #include "glcurveval.h"

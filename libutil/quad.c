@@ -41,7 +41,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <GL/gl.h>
-#include <GL/glu.h>
+#include <superglu.h>
 
 /* Make it not a power of two to avoid cache thrashing on the chip */
 #define CACHE_SIZE	240

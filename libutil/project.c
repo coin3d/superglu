@@ -38,7 +38,7 @@
 #include "gluos.h"
 #include <math.h>
 #include <GL/gl.h>
-#include <GL/glu.h>
+#include <superglu.h>
 #include "gluint.h"
 
 /*

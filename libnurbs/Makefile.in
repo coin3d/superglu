@@ -95,6 +95,7 @@ VERSION = @VERSION@
 am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
+libprefix = @libprefix@
 
 SUBDIRS = interface internals nurbtess
 subdir = libnurbs
