@@ -105,16 +105,15 @@ BUILT_SOURCES = superglu.h
 DISTCLEANFILES = superglu.h
 
 gluincdir = $(includedir)/GL
-gluinc_HEADERS = superglu.h
+nodist_gluinc_HEADERS = superglu.h
 subdir = include
 mkinstalldirs = $(SHELL) $(top_srcdir)/cfg/mkinstalldirs
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES =
 DIST_SOURCES =
-HEADERS = $(gluinc_HEADERS)
+HEADERS = $(nodist_gluinc_HEADERS)
 
-DIST_COMMON = $(gluinc_HEADERS) ./stamp-h.in Makefile.am Makefile.in \
-	config.h.in
+DIST_COMMON = ./stamp-h.in Makefile.am Makefile.in config.h.in
 all: $(BUILT_SOURCES) config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -162,9 +161,9 @@ distclean-hdr:
 	-rm -f config.h
 uninstall-info-am:
 
-uninstall-gluincHEADERS:
+uninstall-nodist_gluincHEADERS:
 	@$(NORMAL_UNINSTALL)
-	@list='$(gluinc_HEADERS)'; for p in $$list; do \
+	@list='$(nodist_gluinc_HEADERS)'; for p in $$list; do \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
 	  echo " rm -f $(DESTDIR)$(gluincdir)/$$f"; \
 	  rm -f $(DESTDIR)$(gluincdir)/$$f; \
@@ -272,7 +271,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-gluincHEADERS
+install-data-am: install-nodist_gluincHEADERS
 
 install-exec-am:
 
@@ -290,27 +289,27 @@ mostlyclean: mostlyclean-am
 
 mostlyclean-am: mostlyclean-generic mostlyclean-libtool
 
-uninstall-am: uninstall-gluincHEADERS uninstall-info-am
+uninstall-am: uninstall-info-am uninstall-nodist_gluincHEADERS
 
 .PHONY: GTAGS all all-am check check-am clean clean-generic \
 	clean-libtool distclean distclean-generic distclean-hdr \
 	distclean-libtool distclean-tags distdir dvi dvi-am info \
 	info-am install install-am install-data install-data-am \
-	install-exec install-exec-am install-gluincHEADERS install-info \
-	install-info-am install-man install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
+	install-exec install-exec-am install-info install-info-am \
+	install-man install-nodist_gluincHEADERS install-strip \
+	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic \
 	mostlyclean-libtool tags uninstall uninstall-am \
-	uninstall-gluincHEADERS uninstall-info-am
+	uninstall-info-am uninstall-nodist_gluincHEADERS
 
 
 superglu.h: $(specdir)/enumglu.spec $(specdir)/glu.spec $(genheader)
 	$(genheader) $(specdir)/enumglu.spec $(specdir)/glu.spec >$@
 
-install-gluincHEADERS: $(gluinc_HEADERS)
+install-nodist_gluincHEADERS: $(nodist_gluinc_HEADERS)
 	@$(NORMAL_INSTALL)
 	$(mkinstalldirs) $(DESTDIR)$(gluincdir)
-	@list='$(gluinc_HEADERS)'; for p in $$list; do \
+	@list='$(nodist_gluinc_HEADERS)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
 	  src="$$d$$p"; dst="$(DESTDIR)$(gluincdir)/@libprefix@`echo $$f | sed 's|superglu.h|glu.h|'`"; \
