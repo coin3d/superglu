@@ -110,7 +110,6 @@ libtess_la_SOURCES = \
 	mesh.h \
 	normal.c \
 	normal.h \
-	priorityq-heap.c \
 	priorityq-heap.h \
 	priorityq-sort.h \
 	priorityq.c \
@@ -137,7 +136,6 @@ tess_lst_SOURCES = \
 	mesh.h \
 	normal.c \
 	normal.h \
-	priorityq-heap.c \
 	priorityq-heap.h \
 	priorityq-sort.h \
 	priorityq.c \
@@ -151,6 +149,16 @@ tess_lst_SOURCES = \
 	tessmono.c \
 	tessmono.h
 
+
+
+# priorityq-heap.c is included from priorityq.c and shouldn't be compiled
+EXTRA_libtess_la_SOURCES = \
+	priorityq-heap.c
+
+
+EXTRA_tess_lst_SOURCES = \
+	priorityq-heap.c
+
 subdir = libtess
 mkinstalldirs = $(SHELL) $(top_srcdir)/cfg/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/include/config.h
@@ -160,17 +168,16 @@ LIBRARIES = $(noinst_LIBRARIES)
 tess_lst_AR = $(AR) cru
 tess_lst_LIBADD =
 am_tess_lst_OBJECTS = dict.$(OBJEXT) geom.$(OBJEXT) memalloc.$(OBJEXT) \
-	mesh.$(OBJEXT) normal.$(OBJEXT) priorityq-heap.$(OBJEXT) \
-	priorityq.$(OBJEXT) render.$(OBJEXT) sweep.$(OBJEXT) \
-	tess.$(OBJEXT) tessmono.$(OBJEXT)
+	mesh.$(OBJEXT) normal.$(OBJEXT) priorityq.$(OBJEXT) \
+	render.$(OBJEXT) sweep.$(OBJEXT) tess.$(OBJEXT) \
+	tessmono.$(OBJEXT)
 tess_lst_OBJECTS = $(am_tess_lst_OBJECTS)
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 
 libtess_la_LDFLAGS =
 libtess_la_LIBADD =
 am_libtess_la_OBJECTS = dict.lo geom.lo memalloc.lo mesh.lo normal.lo \
-	priorityq-heap.lo priorityq.lo render.lo sweep.lo tess.lo \
-	tessmono.lo
+	priorityq.lo render.lo sweep.lo tess.lo tessmono.lo
 libtess_la_OBJECTS = $(am_libtess_la_OBJECTS)
 
 DEFS = @DEFS@
@@ -199,9 +206,10 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
-DIST_SOURCES = $(tess_lst_SOURCES) $(libtess_la_SOURCES)
+DIST_SOURCES = $(tess_lst_SOURCES) $(EXTRA_tess_lst_SOURCES) \
+	$(libtess_la_SOURCES) $(EXTRA_libtess_la_SOURCES)
 DIST_COMMON = README Makefile.am Makefile.in
-SOURCES = $(tess_lst_SOURCES) $(libtess_la_SOURCES)
+SOURCES = $(tess_lst_SOURCES) $(EXTRA_tess_lst_SOURCES) $(libtess_la_SOURCES) $(EXTRA_libtess_la_SOURCES)
 
 all: all-am
 
