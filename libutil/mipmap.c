@@ -7696,6 +7696,7 @@ static void halveImagePackedPixel3D(int components,
 
 } /* halveImagePackedPixel3D() */
 
+#ifdef GL_VERSION_1_2
 static int gluBuild3DMipmapLevelsCore(GLenum target, GLint internalFormat, 
 				      GLsizei width, 
 				      GLsizei height, 
@@ -8418,7 +8419,9 @@ static int gluBuild3DMipmapLevelsCore(GLenum target, GLint internalFormat,
    }
    return 0;
 } /* gluBuild3DMipmapLevelsCore() */
+#endif
 
+#ifdef GL_VERSION_1_2
 GLint GLAPIENTRY
 gluBuild3DMipmapLevels(GLenum target, GLint internalFormat, 
 			     GLsizei width, GLsizei height, GLsizei depth,
@@ -8456,7 +8459,9 @@ gluBuild3DMipmapLevels(GLenum target, GLint internalFormat,
 				     userLevel, baseLevel, maxLevel,
 				     data);
 } /* gluBuild3DMipmapLevels() */
+#endif
 
+#ifdef GL_VERSION_1_2
 GLint GLAPIENTRY
 gluBuild3DMipmaps(GLenum target, GLint internalFormat, 
 			GLsizei width, GLsizei height, GLsizei depth,
@@ -8492,6 +8497,7 @@ gluBuild3DMipmaps(GLenum target, GLint internalFormat,
 				     format, type, 0, 0, levels,
 				     data);
 } /* gluBuild3DMipmaps() */
+#endif
 
 static GLdouble extractUbyte(int isSwap, const void *ubyte)
 {
