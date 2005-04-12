@@ -103,28 +103,11 @@ AM_DISABLE_SHARED
 #  Turn off default maintainer make-rules -- use ./bootstrap instead.
 AM_MAINTAINER_MODE
 
+# Initialize libtool
 if $BUILD_WITH_MSVC; then
-  RANLIB=true
-  export RANLIB
+  RANLIB=:
 else
-
-#  Initialize libtool
-AC_PROG_LIBTOOL
-
-case "$host_os" in
-  irix*)
-    if test x"${AR+set}" != x"set"; then
-      if test x"$CXX" = xCC; then
-        echo "modifying libtool"
-        mv libtool libtool.orig
-        sed -e 's/\\\$AR cru/CC -ar -o/' <libtool.orig >libtool
-        chmod 755 libtool
-        rm -f libtool.org
-      fi
-    fi
-    ;;
-esac
-
+  AC_PROG_LIBTOOL
 fi
 
 SIM_AC_DEBUGSYMBOLS
@@ -147,9 +130,6 @@ if $GLU_STATIC; then
   SIM_AC_CONFIGURATION_SETTING([Install as], [static library])
 else
   SIM_AC_CONFIGURATION_SETTING([Install as], [shared library])
-  if $BUILD_WITH_MSVC; then
-    AC_MSG_ERROR([GLU as DLL is not supported just yet])
-  fi
 fi
 
 SIM_AC_COMPILE_DEBUG([
@@ -173,43 +153,38 @@ LIBFLAGS=
 AC_SUBST(LIBFLAGS)
 
 if $BUILD_WITH_MSVC; then
+  rm -f vc60.pdb
+  LIBFLAGS="$LIBFLAGS $sim_ac_msvcrt_LIBLDFLAGS"
+  LIBS="$LIBS $sim_ac_msvcrt_LIBLIBS"
   if $GLU_STATIC; then
     :
   else
     CPPFLAGS="-DGLU_MAKE_DLL $CPPFLAGS"
-    GLU_EXTRA_CPPFLAGS="$GLU_EXTRA_CPPFLAGS -DGLU_DLL"
   fi
   debugfile="`pwd`/${LIBPREFIX}GLU.pdb"
   debugfile=`cygpath -w "$debugfile" | sed 's,\\\\,\\\\\\\\,g'`
   if $GLU_STATIC; then
-    SIM_AC_CONFIGURATION_SETTING([GLU build type], [static .lib])
-    LIBFLAGS="-LIB"
+    LIBFLAGS="-LIB $LIBFLAGS"
     LIBFLAGS="$LIBFLAGS /OUT:${LIBPREFIX}GLU.lib"
-    GLU_EXTRA_CPPFLAGS="-I$includedir"
-    GLU_EXTRA_LDFLAGS="-L$libdir"
-    GLU_EXTRA_LIBS=
+    SIM_AC_CONFIGURATION_SETTING([GLU build type], [static .lib])
   else
-    LIBFLAGS="-DLL /INCREMENTAL:NO"
+    LIBFLAGS="-DLL /INCREMENTAL:NO $LIBFLAGS"
     case $enable_symbols in
     no | false)
-      SIM_AC_CONFIGURATION_SETTING([GLU build type],
-                                   [dynamic .dll, no symbols])
       LIBFLAGS="$LIBFLAGS /RELEASE"
+      SIM_AC_CONFIGURATION_SETTING([GLU build type], [dynamic .dll])
       ;;
     *)
-      SIM_AC_CONFIGURATION_SETTING([GLU build type],
-                                   [dynamic .dll + .pdb])
       CFLAGS="/Fd$debugfile $CFLAGS"
       CXXFLAGS="/Fd$debugfile $CXXFLAGS"
       LIBFLAGS="$LIBFLAGS /DEBUG /PDB:${LIBPREFIX}GLU.pdb"
+      SIM_AC_CONFIGURATION_SETTING([GLU build type], [dynamic .dll + .pdb])
       ;;
     esac
 
     LIBFLAGS="$LIBFLAGS /OUT:${LIBPREFIX}GLU.dll"
   fi
 fi
-
-GLU_EXTRA_LIBS="-l${LIBPREFIX}GLU $GLU_EXTRA_LIBS"
 
 
 SIM_AC_UNIQIFY_LIST(CPPFLAGS, $CPPFLAGS)
