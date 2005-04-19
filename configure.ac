@@ -130,6 +130,9 @@ if $GLU_STATIC; then
   SIM_AC_CONFIGURATION_SETTING([Install as], [static library])
 else
   SIM_AC_CONFIGURATION_SETTING([Install as], [shared library])
+  if $BUILD_WITH_MSVC; then
+    AC_MSG_ERROR([GLU as DLL is not supported just yet])
+  fi
 fi
 
 SIM_AC_COMPILE_DEBUG([
