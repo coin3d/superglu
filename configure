@@ -19742,12 +19742,10 @@ else
   enable_symbols=yes
 fi;
 
-# FIXME: don't mangle options like -fno-gnu-linker and -fvolatile-global
-# 20020104 larsa
+# weird seds to don't mangle options like -fno-gnu-linker and -fvolatile-global
 if test x"$enable_symbols" = x"no"; then
-  # CPPFLAGS="`echo $CPPFLAGS | sed 's/-g\>//'`"
-  CFLAGS="`echo $CFLAGS | sed 's/ -g //' | sed 's/^-g //' | sed 's/ -g$//'`"
-  CXXFLAGS="`echo $CXXFLAGS | sed 's/ -g //' | sed 's/^-g //' | sed 's/ -g$//'`"
+  CFLAGS="`echo $CFLAGS | sed 's/ -g //g' | sed 's/^-g //g' | sed 's/ -g$//g' | sed 's/^-g$//'`"
+  CXXFLAGS="`echo $CXXFLAGS | sed 's/ -g //g' | sed 's/^-g //g' | sed 's/ -g$//g' | sed 's/^-g$//'`"
 fi
 
 
@@ -20553,6 +20551,11 @@ else
   sim_ac_configuration_settings="Install as:shared library"
 fi
 
+  if $BUILD_WITH_MSVC; then
+    { { echo "$as_me:$LINENO: error: GLU as DLL is not supported just yet" >&5
+echo "$as_me: error: GLU as DLL is not supported just yet" >&2;}
+   { (exit 1); exit 1; }; }
+  fi
 fi
 
 
