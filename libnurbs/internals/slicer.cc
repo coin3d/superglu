@@ -575,11 +575,11 @@ static void triangulateRectCenter(int n_ulines, REAL* u_val,
   TrimVertex trimVert;
   trimVert.nuid = 0;//????
 
-  backend.surfgrid(u_val[0], u_val[n_ulines-1], n_ulines-1, 
-		   v_val[n_vlines-1], v_val[0], n_vlines-1);
-
-  if(n_ulines>1 && n_vlines>1)
+  if(n_ulines>1 && n_vlines>1) {
+    backend.surfgrid(u_val[0], u_val[n_ulines-1], n_ulines-1, 
+                     v_val[n_vlines-1], v_val[0], n_vlines-1);
     backend.surfmesh(0,0,n_ulines-1,n_vlines-1);
+  }
 
   return;
 
