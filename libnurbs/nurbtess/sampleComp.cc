@@ -39,6 +39,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <limits.h>
 #include "glimports.h"
 #include "sampleComp.h"
 #include "sampleCompTop.h"
@@ -159,7 +160,7 @@ void sampleCompLeft(Real* topVertex, Real* botVertex,
    */
   Int midIndex1;
   Int midIndex2;
-  Int gridMidIndex1, gridMidIndex2;
+  Int gridMidIndex1 = INT_MAX, gridMidIndex2 = INT_MAX;
   //midIndex1: array[i] <= v, array[i-1] > v
   //midIndex2: array[i] >= v, array[i+1] < v
   // v(gridMidIndex1) >= v(midindex1) > v(gridMidIndex1+1)
@@ -235,6 +236,8 @@ void sampleCompLeft(Real* topVertex, Real* botVertex,
   /*sample*/
   if(midIndex2 >= 0) /*there is a trim point inbewteen grid lines*/
     {
+      assert(gridMidIndex1 != INT_MAX);
+      assert(gridMidIndex2 != INT_MAX);
 
       sampleLeftSingleTrimEdgeRegionGen(cornerTop, leftChain->getVertex(midIndex1),
 					leftChain,

@@ -71,7 +71,7 @@ typedef struct curveEvalMachine{
 class OpenGLCurveEvaluator : public BasicCurveEvaluator  {  
 public:
 			OpenGLCurveEvaluator(void);
-			~OpenGLCurveEvaluator(void);
+			virtual ~OpenGLCurveEvaluator(void);
     void		range1f(long, REAL *, REAL *);
     void		domain1f(REAL, REAL);
     void		addMap(CurveMap *);

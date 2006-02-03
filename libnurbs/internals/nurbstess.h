@@ -60,7 +60,7 @@ class NurbsTessellator {
 public:
     			NurbsTessellator( BasicCurveEvaluator &c,
                                           BasicSurfaceEvaluator &e );
-    			~NurbsTessellator( void );
+    			virtual ~NurbsTessellator( void );
 
     void     		getnurbsproperty( long, INREAL * );
     void     		getnurbsproperty( long, long, INREAL * );

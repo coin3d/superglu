@@ -248,6 +248,8 @@ OpenGLCurveEvaluator::map1f(
 	which=3;
 	dimension = 4;
 	break;	
+
+      default: assert(0); break; // or which & dimension will be unset
       }
       inMap1f(which, dimension, ulo, uhi, stride, order, pts); 	      
     }       

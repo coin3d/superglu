@@ -39,6 +39,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <limits.h>
 #include "glimports.h"
 #include "zlassert.h"
 
@@ -1034,8 +1035,8 @@ void monoTriangulationRec(directedLine* inc_chain, Int inc_index,
 			  primStream* pStream)
 {
   Int i;
-  directedLine *temp, *oldtemp;
-  Int tempIndex, oldtempIndex;
+  directedLine *temp, *oldtemp = NULL;
+  Int tempIndex, oldtempIndex = INT_MAX;
   
   assert(inc_chain != NULL && dec_chain != NULL);
   
@@ -1085,6 +1086,7 @@ void monoTriangulationRec(directedLine* inc_chain, Int inc_index,
 	}
       }
       rChain.outputFan(inc_chain->getVertex(inc_index), pStream);
+      assert(oldtemp && (oldtempIndex != INT_MAX));
       monoTriangulationRec(inc_chain, inc_index, temp, tempIndex, oldtemp, oldtempIndex, botVertex, pStream);
     }
     else /* >0*/ {
@@ -1106,6 +1108,7 @@ void monoTriangulationRec(directedLine* inc_chain, Int inc_index,
 	}
       }
       rChain.outputFan(dec_chain->getVertex(dec_index), pStream);
+      assert(oldtemp && (oldtempIndex != INT_MAX));
       monoTriangulationRec(temp, tempIndex, dec_chain, dec_index, oldtemp, oldtempIndex, botVertex, pStream); 
     }
   } /*end case neither reached the bottom*/

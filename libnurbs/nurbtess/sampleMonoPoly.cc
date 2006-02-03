@@ -41,6 +41,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <limits.h>
+#include <float.h>
 
 #ifndef max
 #define max(a,b) ((a>b)? a:b)
@@ -976,13 +978,13 @@ void findNeck(vertexArray *leftChain, Int botLeftIndex,
 void findLeftGridIndices(directedLine* topEdge, Int firstGridIndex, Int lastGridIndex, gridWrap* grid,  Int* ret_indices, Int* ret_innerIndices)
 {
 
-  Int i,k,isHoriz;
+  Int i,k,isHoriz = INT_MAX;
   Int n_ulines = grid->get_n_ulines();
   Real uMin = grid->get_u_min();
   Real uMax = grid->get_u_max();
   Real vMin = grid->get_v_min();
   Real vMax = grid->get_v_max();
-  Real slop, uinterc;
+  Real slop = FLT_MAX, uinterc;
 
 #ifdef SHORTEN_GRID_LINE
   //uintercBuf stores all the interction u value for each grid line
@@ -1024,12 +1026,14 @@ void findLeftGridIndices(directedLine* topEdge, Int firstGridIndex, Int lastGrid
 	    }
 	}
 
+      assert(isHoriz != INT_MAX);
       if(isHoriz)
 	{
 	  uinterc = max(dLine->head()[0], dLine->tail()[0]);
 	}
       else
 	{
+          assert(slop != FLT_MAX);
 	  uinterc = slop * (grid_v_value - vtail) + dLine->tail()[0];
 	}
       

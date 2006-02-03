@@ -105,7 +105,7 @@ private:
 class OpenGLSurfaceEvaluator : public BasicSurfaceEvaluator {
 public:
 			OpenGLSurfaceEvaluator();
-    			~OpenGLSurfaceEvaluator( void );
+    			virtual ~OpenGLSurfaceEvaluator( void );
     void		polymode( long style );
     void		range2f( long, REAL *, REAL * );
     void		domain2f( REAL, REAL, REAL, REAL );
