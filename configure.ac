@@ -116,15 +116,22 @@ SIM_AC_EXCEPTION_HANDLING
 SIM_AC_PROFILING_SUPPORT
 SIM_AC_COMPILER_WARNINGS
 
-case $enable_static in
-yes | true)  GLU_STATIC=true;;
-*)           GLU_STATIC=false;;
-esac
+# don't try to use the static/shared configure options for windows
+# builds. Only static .lib is supported so if the user tries to
+# explicitly --enable-shared for Coin, superglu configure will fail.
+if $BUILD_WITH_MSVC; then
+  GLU_STATIC=true;
+else
+  case $enable_static in
+  yes | true)  GLU_STATIC=true;;
+  *)           GLU_STATIC=false;;
+  esac
 
-case $enable_shared in
-yes | true)  GLU_STATIC=false;;
-*)           GLU_STATIC=true;;
-esac
+  case $enable_shared in
+  yes | true)  GLU_STATIC=false;;
+  *)           GLU_STATIC=true;;
+  esac
+fi
 
 if $GLU_STATIC; then
   SIM_AC_CONFIGURATION_SETTING([Install as], [static library])
