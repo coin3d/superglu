@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 ############################################################################
 # quick hack to generate glu.h from spec files without having to set up
 # the immense libspec system...
