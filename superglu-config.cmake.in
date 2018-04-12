@@ -1,0 +1,23 @@
+set(superglu_VERSION @PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@)
+set(superglu_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(superglu_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(superglu_VERSION_PATCH @PROJECT_VERSION_PATCH@)
+
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+find_dependency(OpenGL)
+
+include("${CMAKE_CURRENT_LIST_DIR}/superglu-export.cmake")
+
+#this is for backwards compatibility only and might be removed.
+get_property(superglu_INCLUDE_DIRS        TARGET superglu::GLU PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+get_property(superglu_COMPILE_DEFINITIONS TARGET superglu::GLU PROPERTY INTERFACE_COMPILE_DEFINITIONS)
+get_property(superglu_LIBRARIES           TARGET superglu::GLU PROPERTY INTERFACE_LINK_LIBRARIES)
+foreach(def ${superglu_COMPILE_DEFINITIONS})
+	set(superglu_DEFINITIONS "${superglu_DEFINITIONS} -D${def}")
+endforeach()
+set(superglu_LIBRARIES "superglu::GLU ${superglu_LIBRARIES}")
+set(superglu_LIBRARY_DIRS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@")
+
