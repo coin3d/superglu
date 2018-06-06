@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(superglu VERSION "1.3.0")
+project(superglu VERSION 1.3.0)
+string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 
 # Disallow in-source build
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
@@ -91,8 +92,6 @@ target_include_directories(GLU
 target_link_libraries(GLU PUBLIC ${OPENGL_gl_LIBRARY})
 set_target_properties(GLU PROPERTIES VERSION ${PROJECT_VERSION})
 
-
-
 set(SUPERGLU_COMPILE_DEFINITIONS HAVE_CONFIG_H LIBRARYBUILD GLU_INTERNAL)
 if(MSVC)
 	set(SUPERGLU_COMPILE_DEFINITIONS ${SUPERGLU_COMPILE_DEFINITIONS} _CRT_SECURE_NO_WARNINGS _CRT_SECURE_NO_DEPRECATE _CRT_NONSTDC_NO_WARNINGS)
@@ -101,25 +100,25 @@ target_compile_definitions(GLU PRIVATE ${SUPERGLU_COMPILE_DEFINITIONS})
 
 install(FILES ${CMAKE_BINARY_DIR}/superglu.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT development)
 
-install(TARGETS GLU EXPORT superglu
+install(TARGETS GLU EXPORT ${PROJECT_NAME}
 	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT runtime
 	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT runtime NAMELINK_SKIP
 	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT development
 )
 
 if(SUPERGLU_BUILD_SHARED_LIBS)
-	install(TARGETS GLU EXPORT superglu LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT development NAMELINK_ONLY)
+	install(TARGETS GLU EXPORT ${PROJECT_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT development NAMELINK_ONLY)
 	if(MSVC)
 		install(FILES $<TARGET_PDB_FILE:GLU> DESTINATION ${CMAKE_INSTALL_BINDIR} CONFIGURATIONS Debug RelWithDebInfo COMPONENT debug)
 	endif()
 endif()
 
 # Support find_package(superglu NO_MODULE).
-configure_package_config_file(superglu-config.cmake.in superglu-config.cmake
-	INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/superglu-${PROJECT_VERSION}
+configure_package_config_file(${PROJECT_NAME}-config.cmake.in ${PROJECT_NAME_LOWER}-config.cmake
+	INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}-${PROJECT_VERSION}
 )
 
-write_basic_package_version_file(${CMAKE_BINARY_DIR}/superglu-config-version.cmake
+write_basic_package_version_file(${CMAKE_BINARY_DIR}/${PROJECT_NAME_LOWER}-config-version.cmake
 	VERSION ${PROJECT_VERSION}
 	COMPATIBILITY ExactVersion
 )
@@ -127,17 +126,17 @@ write_basic_package_version_file(${CMAKE_BINARY_DIR}/superglu-config-version.cma
 # To make the component usable not only from the install directory but also from the build directory
 export(
 	TARGETS GLU
-	FILE superglu-export.cmake
+	FILE ${PROJECT_NAME_LOWER}-export.cmake
 )
 
-install(FILES ${CMAKE_BINARY_DIR}/superglu-config.cmake ${CMAKE_BINARY_DIR}/superglu-config-version.cmake
-	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/superglu-${PROJECT_VERSION}
+install(FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME_LOWER}-config.cmake ${CMAKE_BINARY_DIR}/${PROJECT_NAME_LOWER}-config-version.cmake
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}-${PROJECT_VERSION}
 	COMPONENT development
 )
 
-install(EXPORT superglu
-	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/superglu-${PROJECT_VERSION}
-	NAMESPACE superglu::
-	FILE superglu-export.cmake
+install(EXPORT ${PROJECT_NAME}
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}-${PROJECT_VERSION}
+	NAMESPACE ${PROJECT_NAME}::
+	FILE ${PROJECT_NAME_LOWER}-export.cmake
 	COMPONENT development
 )
