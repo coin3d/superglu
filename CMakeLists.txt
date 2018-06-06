@@ -55,11 +55,16 @@ if(WIN32)
 	endif()
 endif()
 
+add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/superglu.h
+	DEPENDS ${CMAKE_SOURCE_DIR}/specs/enumglu.spec ${CMAKE_SOURCE_DIR}/specs/glu.spec ${CMAKE_SOURCE_DIR}/cfg/genheader.pl
+	COMMAND ${PERL_EXECUTABLE} ${CMAKE_SOURCE_DIR}/cfg/genheader.pl ${CMAKE_SOURCE_DIR}/specs/enumglu.spec ${CMAKE_SOURCE_DIR}/specs/glu.spec > ${CMAKE_BINARY_DIR}/superglu.h
+)
+
 include_directories(${CMAKE_BINARY_DIR})
 configure_file(include/config.h.cmake.in config.h)
 
 # source files
-set(SUPERGLU_SOURCE "" CACHE INTERNAL "SUPERGLU_SOURCE")
+set(SUPERGLU_SOURCE ${CMAKE_BINARY_DIR}/superglu.h CACHE INTERNAL "SUPERGLU_SOURCE")
 add_subdirectory(libnurbs)
 add_subdirectory(libtess)
 add_subdirectory(libutil)
@@ -85,10 +90,7 @@ target_include_directories(GLU
 target_link_libraries(GLU PUBLIC ${OPENGL_gl_LIBRARY})
 set_target_properties(GLU PROPERTIES VERSION ${PROJECT_VERSION})
 
-add_custom_command(TARGET GLU PRE_BUILD
-	DEPENDS ${CMAKE_SOURCE_DIR}/specs/enumglu.spec ${CMAKE_SOURCE_DIR}/specs/glu.spec ${CMAKE_SOURCE_DIR}/cfg/genheader.pl
-	COMMAND ${PERL_EXECUTABLE} ${CMAKE_SOURCE_DIR}/cfg/genheader.pl ${CMAKE_SOURCE_DIR}/specs/enumglu.spec ${CMAKE_SOURCE_DIR}/specs/glu.spec > ${CMAKE_BINARY_DIR}/superglu.h
-)
+
 
 set(SUPERGLU_COMPILE_DEFINITIONS HAVE_CONFIG_H LIBRARYBUILD GLU_INTERNAL)
 if(MSVC)
