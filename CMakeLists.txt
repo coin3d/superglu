@@ -55,6 +55,7 @@ if(WIN32)
 	endif()
 endif()
 
+include_directories(${CMAKE_BINARY_DIR})
 configure_file(include/config.h.cmake.in config.h)
 
 # source files
