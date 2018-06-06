@@ -169,19 +169,30 @@ print <<"END";
 
 
 #ifdef __cplusplus
+
 class GLUnurbs;
 class GLUquadric;
 class GLUtesselator;
+
+/* backwards compatibility: */
+typedef class GLUnurbs GLUnurbsObj;
+typedef class GLUquadric GLUquadricObj;
+typedef class GLUtesselator GLUtesselatorObj;
+typedef class GLUtesselator GLUtriangulatorObj;
+
 #else
+
 typedef struct GLUnurbs GLUnurbs;
 typedef struct GLUquadric GLUquadric;
 typedef struct GLUtesselator GLUtesselator;
-#endif
 
+/* backwards compatibility: */
 typedef struct GLUnurbs GLUnurbsObj;
 typedef struct GLUquadric GLUquadricObj;
 typedef struct GLUtesselator GLUtesselatorObj;
 typedef struct GLUtesselator GLUtriangulatorObj;
+
+#endif
 
 #define GLU_TESS_MAX_COORD 1.0e150
 
