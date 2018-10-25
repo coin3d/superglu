@@ -6,6 +6,11 @@ string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 string(TIMESTAMP SUPERGLU_BUILD_YEAR "%Y")
 math(EXPR SUPERGLU_SO_VERSION ${PROJECT_VERSION_MAJOR}*20)
 
+if(POLICY CMP0072)
+  # get rid of OpenGL GLVND warning from CMake 3.11
+  cmake_policy(SET CMP0072 NEW)
+endif()
+
 # ############################################################################
 # Prevent in-source builds, as they often cause severe build problems
 # ############################################################################
