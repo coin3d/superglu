@@ -35,8 +35,6 @@
 /*
 ** Author: Eric Veach, July 1994.
 **
-** $Date$ $Revision$
-** $Header$
 */
 
 #include "gluos.h"
@@ -53,8 +51,12 @@
 #include "memalloc.h"
 #include "sweep.h"
 
+#ifndef TRUE
 #define TRUE 1
+#endif
+#ifndef FALSE
 #define FALSE 0
+#endif
 
 #ifdef FOR_TRITE_TEST_PROGRAM
 extern void DebugEvent( GLUtesselator *tess );
@@ -253,6 +255,7 @@ static GLboolean IsWindingInside( GLUtesselator *tess, int n )
   /*LINTED*/
   assert( FALSE );
   /*NOTREACHED*/
+  return GL_FALSE;  /* avoid compiler complaints */
 }
 
 

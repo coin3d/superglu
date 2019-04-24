@@ -35,8 +35,6 @@
 /*
  * bezierarc.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glubezierarc_h

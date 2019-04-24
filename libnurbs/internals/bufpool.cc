@@ -35,8 +35,6 @@
 /*
  *  bufpool.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"
@@ -48,9 +46,12 @@
  * Pool - allocate a new pool of buffers
  *-----------------------------------------------------------------------------
  */
-Pool::Pool( int _buffersize, int initpoolsize, char *n )
+Pool::Pool( int _buffersize, int initpoolsize, const char *n )
 {
-    buffersize= (_buffersize < sizeof(Buffer)) ? sizeof(Buffer)	: _buffersize;
+    if((unsigned)_buffersize < sizeof(Buffer))
+        buffersize = sizeof(Buffer);
+    else
+        buffersize = _buffersize;
     initsize	= initpoolsize * buffersize;
     nextsize	= initsize;
     name	= n;
@@ -59,6 +60,9 @@ Pool::Pool( int _buffersize, int initpoolsize, char *n )
     curblock	= 0;
     freelist	= 0;
     nextfree	= 0;
+    for (int i = 0; i < NBLOCKS; i++) {
+        blocklist[i] = 0;
+    }
 }
 
 /*-----------------------------------------------------------------------------

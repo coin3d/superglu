@@ -35,8 +35,6 @@
 /*
  * cachingeval.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glucachingval_h_
@@ -44,6 +42,7 @@
 
 class CachingEvaluator {
 public:
+    virtual             ~CachingEvaluator() { /* silence warning*/ }
     enum ServiceMode 	{ play, record, playAndRecord };
     virtual int		canRecord( void );
     virtual int		canPlayAndRecord( void );

@@ -35,8 +35,6 @@
 /*
  * mapdesc.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glumapdesc_h_

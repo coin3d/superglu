@@ -35,8 +35,6 @@
 /*
  * basicsurfeval.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glubasicsurfeval_h_
@@ -48,6 +46,7 @@
 
 class BasicSurfaceEvaluator : public CachingEvaluator {
 public:
+    virtual             ~BasicSurfaceEvaluator() { /* silence warning*/ }
     virtual void	range2f( long, REAL *, REAL * );
     virtual void	domain2f( REAL, REAL, REAL, REAL );
 

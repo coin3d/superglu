@@ -35,8 +35,6 @@
 /*
  * mystdlib.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glumystdlib_h_

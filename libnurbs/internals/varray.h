@@ -35,8 +35,6 @@
 /*
  * varray.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluvarray_h_

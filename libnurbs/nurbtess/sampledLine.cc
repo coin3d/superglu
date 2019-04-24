@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include <stdlib.h>
@@ -96,7 +94,6 @@ sampledLine::sampledLine(Int n_points, Real2 pts[])
 
 sampledLine::sampledLine(Real pt1[2], Real pt2[2])
 {
-  int i;
   npoints = 2;
   points = (Real2*) malloc(sizeof(Real2) * 2);
   assert(points);
@@ -110,6 +107,9 @@ sampledLine::sampledLine(Real pt1[2], Real pt2[2])
 //needs tp call init to setup
 sampledLine::sampledLine()
 {
+  npoints = 0;
+  points = NULL;
+  next = NULL;
 }
 
 //warning: ONLY pointer is copies!!!

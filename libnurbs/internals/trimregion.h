@@ -35,8 +35,6 @@
 /*
  * trimregion.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glutrimregion_h_

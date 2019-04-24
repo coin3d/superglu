@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include <stdlib.h>
@@ -619,8 +617,10 @@ void monoTriangulationFun(directedLine* monoPolygon, Int (*compFun)(Real*, Real*
     dec_chain.appendVertex(tempV->getVertex(i));
   }
   
-  monoTriangulationRecFun(topV->head(), botV->head(), &inc_chain, 0, &dec_chain, 0, compFun, pStream);
-
+  if (!(0 == inc_chain.getNumElements() && 0 == dec_chain.getNumElements())) {
+     monoTriangulationRecFun(topV->head(), botV->head(), &inc_chain, 0,
+                             &dec_chain, 0, compFun, pStream);
+  }
 }  
 
 void monoTriangulation(directedLine* monoPolygon, primStream* pStream)
@@ -740,8 +740,10 @@ void monoTriangulationRecFunGen(Real* topVertex, Real* botVertex,
   assert( inc_chain != NULL && dec_chain != NULL);
   assert( ! (inc_current> inc_end &&
 	     dec_current> dec_end));
+  /*
   Int inc_nVertices;
   Int dec_nVertices;
+  */
   Real** inc_array ;
   Real** dec_array ;
   Int i;
@@ -1036,7 +1038,7 @@ void monoTriangulationRec(directedLine* inc_chain, Int inc_index,
 {
   Int i;
   directedLine *temp, *oldtemp = NULL;
-  Int tempIndex, oldtempIndex = INT_MAX;
+  Int tempIndex, oldtempIndex = 0;
   
   assert(inc_chain != NULL && dec_chain != NULL);
   
@@ -1086,7 +1088,6 @@ void monoTriangulationRec(directedLine* inc_chain, Int inc_index,
 	}
       }
       rChain.outputFan(inc_chain->getVertex(inc_index), pStream);
-      assert(oldtemp && (oldtempIndex != INT_MAX));
       monoTriangulationRec(inc_chain, inc_index, temp, tempIndex, oldtemp, oldtempIndex, botVertex, pStream);
     }
     else /* >0*/ {
@@ -1108,7 +1109,6 @@ void monoTriangulationRec(directedLine* inc_chain, Int inc_index,
 	}
       }
       rChain.outputFan(dec_chain->getVertex(dec_index), pStream);
-      assert(oldtemp && (oldtempIndex != INT_MAX));
       monoTriangulationRec(temp, tempIndex, dec_chain, dec_index, oldtemp, oldtempIndex, botVertex, pStream); 
     }
   } /*end case neither reached the bottom*/

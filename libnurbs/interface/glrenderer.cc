@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include "gluos.h"
@@ -165,7 +163,7 @@ GLUnurbs::grabGLMatrix(GLfloat vmat[4][4])
     ::glGetFloatv((GLenum) GL_MODELVIEW_MATRIX, (GLfloat *) &(m1[0][0]));
     ::glGetFloatv((GLenum) GL_PROJECTION_MATRIX, (GLfloat *) &(m2[0][0]));
     multmatrix4d((GLfloat (*)[4]) vmat, 
-	    (GLfloat (*)[4]) m1, (GLfloat (*)[4]) m2);
+	    (const GLfloat (*)[4]) m1, (const GLfloat (*)[4]) m2);
 }
 
 //for object space tesselation: view independent

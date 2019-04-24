@@ -35,8 +35,6 @@
 /*
  * maplist.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"

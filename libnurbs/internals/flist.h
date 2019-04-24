@@ -35,8 +35,6 @@
 /*
  * flist.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluflist_h_

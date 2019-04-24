@@ -31,8 +31,6 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
-** $Header$
 */
 
 
@@ -458,6 +456,7 @@ static void halveImage_ubyte(GLint components, GLuint width, GLuint height,
 {
     int i, j, k;
     int newwidth, newheight;
+    int padBytes;
     GLubyte *s;
     const char *t;
 
@@ -471,6 +470,7 @@ static void halveImage_ubyte(GLint components, GLuint width, GLuint height,
 
     newwidth = width / 2;
     newheight = height / 2;
+    padBytes = ysize - (width*group_size);
     s = dataout;
     t = (const char *)datain;
 
@@ -486,6 +486,7 @@ static void halveImage_ubyte(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
 	}
+	t += padBytes;
 	t += ysize;
     }
 }
@@ -557,6 +558,7 @@ static void halveImage_byte(GLint components, GLuint width, GLuint height,
 {
     int i, j, k;
     int newwidth, newheight;
+    int padBytes;
     GLbyte *s;
     const char *t;
 
@@ -570,6 +572,7 @@ static void halveImage_byte(GLint components, GLuint width, GLuint height,
 
     newwidth = width / 2;
     newheight = height / 2;
+    padBytes = ysize - (width*group_size);
     s = dataout;
     t = (const char *)datain;
 
@@ -585,6 +588,7 @@ static void halveImage_byte(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
 	}
+	t += padBytes;
 	t += ysize;
     }
 }
@@ -652,8 +656,9 @@ static void halveImage_ushort(GLint components, GLuint width, GLuint height,
 			GLint element_size, GLint ysize, GLint group_size,
 			GLint myswap_bytes)
 {
-    int i, j, k, l;
+    int i, j, k;
     int newwidth, newheight;
+    int padBytes;
     GLushort *s;
     const char *t;
 
@@ -667,6 +672,7 @@ static void halveImage_ushort(GLint components, GLuint width, GLuint height,
 
     newwidth = width / 2;
     newheight = height / 2;
+    padBytes = ysize - (width*group_size);
     s = dataout;
     t = (const char *)datain;
 
@@ -683,6 +689,7 @@ static void halveImage_ushort(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
 	}
+	t += padBytes;
 	t += ysize;
     }
     else
@@ -697,6 +704,7 @@ static void halveImage_ushort(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
         }
+	t += padBytes;
         t += ysize;
     }
 }
@@ -787,8 +795,9 @@ static void halveImage_short(GLint components, GLuint width, GLuint height,
 			GLint element_size, GLint ysize, GLint group_size,
 			GLint myswap_bytes)
 {
-    int i, j, k, l;
+    int i, j, k;
     int newwidth, newheight;
+    int padBytes;
     GLshort *s;
     const char *t;
 
@@ -802,6 +811,7 @@ static void halveImage_short(GLint components, GLuint width, GLuint height,
 
     newwidth = width / 2;
     newheight = height / 2;
+    padBytes = ysize - (width*group_size);
     s = dataout;
     t = (const char *)datain;
 
@@ -818,6 +828,7 @@ static void halveImage_short(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
 	}
+	t += padBytes;
 	t += ysize;
     }
     else
@@ -839,6 +850,7 @@ static void halveImage_short(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
         }
+	t += padBytes;
         t += ysize;
     }
 }
@@ -929,8 +941,9 @@ static void halveImage_uint(GLint components, GLuint width, GLuint height,
 			GLint element_size, GLint ysize, GLint group_size,
 			GLint myswap_bytes)
 {
-    int i, j, k, l;
+    int i, j, k;
     int newwidth, newheight;
+    int padBytes;
     GLuint *s;
     const char *t;
 
@@ -944,6 +957,7 @@ static void halveImage_uint(GLint components, GLuint width, GLuint height,
 
     newwidth = width / 2;
     newheight = height / 2;
+    padBytes = ysize - (width*group_size);
     s = dataout;
     t = (const char *)datain;
 
@@ -962,6 +976,7 @@ static void halveImage_uint(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
 	}
+	t += padBytes;
 	t += ysize;
     }
     else
@@ -980,6 +995,7 @@ static void halveImage_uint(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
         }
+	t += padBytes;
         t += ysize;
     }
 }
@@ -1069,8 +1085,9 @@ static void halveImage_int(GLint components, GLuint width, GLuint height,
 		        const GLint *datain, GLint *dataout, GLint element_size,
 			GLint ysize, GLint group_size, GLint myswap_bytes)
 {
-    int i, j, k, l;
+    int i, j, k;
     int newwidth, newheight;
+    int padBytes;
     GLint *s;
     const char *t;
 
@@ -1084,6 +1101,7 @@ static void halveImage_int(GLint components, GLuint width, GLuint height,
 
     newwidth = width / 2;
     newheight = height / 2;
+    padBytes = ysize - (width*group_size);
     s = dataout;
     t = (const char *)datain;
 
@@ -1100,6 +1118,7 @@ static void halveImage_int(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
 	}
+	t += padBytes;
 	t += ysize;
     }
     else 
@@ -1122,6 +1141,7 @@ static void halveImage_int(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
         }
+	t += padBytes;
         t += ysize;
     }
 }
@@ -1213,8 +1233,9 @@ static void halveImage_float(GLint components, GLuint width, GLuint height,
 			GLint element_size, GLint ysize, GLint group_size,
 			GLint myswap_bytes)
 {
-    int i, j, k, l;
+    int i, j, k;
     int newwidth, newheight;
+    int padBytes;
     GLfloat *s;
     const char *t;
 
@@ -1228,6 +1249,7 @@ static void halveImage_float(GLint components, GLuint width, GLuint height,
 
     newwidth = width / 2;
     newheight = height / 2;
+    padBytes = ysize - (width*group_size);
     s = dataout;
     t = (const char *)datain;
 
@@ -1244,26 +1266,28 @@ static void halveImage_float(GLint components, GLuint width, GLuint height,
 	    }
 	    t += group_size;
 	}
+	t += padBytes;
 	t += ysize;
     }
     else 
     for (i = 0; i < newheight; i++) {
         for (j = 0; j < newwidth; j++) {
             for (k = 0; k < components; k++) {
-		GLuint b;
-                b = __GLU_SWAP_4_BYTES(t);
-                s[0] = *(GLfloat*)&b;
-                b = __GLU_SWAP_4_BYTES(t+group_size);
-                s[0] += *(GLfloat*)&b;
-                b = __GLU_SWAP_4_BYTES(t+ysize);
-                s[0] += *(GLfloat*)&b;
-                b = __GLU_SWAP_4_BYTES(t+ysize+group_size);
-                s[0] += *(GLfloat*)&b;
+		union { GLuint b; GLfloat f; } swapbuf;
+		swapbuf.b = __GLU_SWAP_4_BYTES(t);
+		s[0] = swapbuf.f;
+		swapbuf.b = __GLU_SWAP_4_BYTES(t+group_size);
+		s[0] += swapbuf.f;
+		swapbuf.b = __GLU_SWAP_4_BYTES(t+ysize);
+		s[0] += swapbuf.f;
+		swapbuf.b = __GLU_SWAP_4_BYTES(t+ysize+group_size);
+		s[0] += swapbuf.f;
 		s[0] /= 4;
                 s++; t += element_size;
 	    }
 	    t += group_size;
         }
+	t += padBytes;
         t += ysize;
     }
 }
@@ -1449,8 +1473,8 @@ static void scale_internal_ubyte(GLint components, GLint widthin,
 			   GLubyte *dataout, GLint element_size,
 			   GLint ysize, GLint group_size)
 {
-    float x, convx;
-    float y, convy;
+    float convx;
+    float convy;
     float percent;
     /* Max components in a format is 4, so... */
     float totals[4];
@@ -1490,6 +1514,9 @@ static void scale_internal_ubyte(GLint components, GLint widthin,
     highy_float = convy_float;
 
     for (i = 0; i < heightout; i++) {
+        /* Clamp here to be sure we don't read beyond input buffer. */
+        if (highy_int >= heightin)
+            highy_int = heightin - 1;
 	lowx_int = 0;
 	lowx_float = 0;
 	highx_int = convx_int;
@@ -1663,8 +1690,8 @@ static void scale_internal_byte(GLint components, GLint widthin,
 			   GLbyte *dataout, GLint element_size,
 			   GLint ysize, GLint group_size)
 {
-    float x, convx;
-    float y, convy;
+    float convx;
+    float convy;
     float percent;
     /* Max components in a format is 4, so... */
     float totals[4];
@@ -1704,6 +1731,9 @@ static void scale_internal_byte(GLint components, GLint widthin,
     highy_float = convy_float;
 
     for (i = 0; i < heightout; i++) {
+        /* Clamp here to be sure we don't read beyond input buffer. */
+        if (highy_int >= heightin)
+            highy_int = heightin - 1;
 	lowx_int = 0;
 	lowx_float = 0;
 	highx_int = convx_int;
@@ -1878,8 +1908,8 @@ static void scale_internal_ushort(GLint components, GLint widthin,
 			   GLint ysize, GLint group_size,
 			   GLint myswap_bytes)
 {
-    float x, convx;
-    float y, convy;
+    float convx;
+    float convy;
     float percent;
     /* Max components in a format is 4, so... */
     float totals[4];
@@ -1919,6 +1949,9 @@ static void scale_internal_ushort(GLint components, GLint widthin,
     highy_float = convy_float;
 
     for (i = 0; i < heightout; i++) {
+        /* Clamp here to be sure we don't read beyond input buffer. */
+        if (highy_int >= heightin)
+            highy_int = heightin - 1;
 	lowx_int = 0;
 	lowx_float = 0;
 	highx_int = convx_int;
@@ -2155,8 +2188,8 @@ static void scale_internal_short(GLint components, GLint widthin,
                            GLint ysize, GLint group_size,
                            GLint myswap_bytes)
 {
-    float x, convx;
-    float y, convy;
+    float convx;
+    float convy;
     float percent;
     /* Max components in a format is 4, so... */
     float totals[4];
@@ -2198,6 +2231,9 @@ static void scale_internal_short(GLint components, GLint widthin,
     highy_float = convy_float;
 
     for (i = 0; i < heightout; i++) {
+        /* Clamp here to be sure we don't read beyond input buffer. */
+        if (highy_int >= heightin)
+            highy_int = heightin - 1;
         lowx_int = 0;
         lowx_float = 0;
         highx_int = convx_int;
@@ -2446,8 +2482,8 @@ static void scale_internal_uint(GLint components, GLint widthin,
                            GLint ysize, GLint group_size,
                            GLint myswap_bytes)
 {
-    float x, convx;
-    float y, convy;
+    float convx;
+    float convy;
     float percent;
     /* Max components in a format is 4, so... */
     float totals[4];
@@ -2487,6 +2523,9 @@ static void scale_internal_uint(GLint components, GLint widthin,
     highy_float = convy_float;
 
     for (i = 0; i < heightout; i++) {
+        /* Clamp here to be sure we don't read beyond input buffer. */
+        if (highy_int >= heightin)
+            highy_int = heightin - 1;
         lowx_int = 0;
         lowx_float = 0;
         highx_int = convx_int;
@@ -2730,8 +2769,8 @@ static void scale_internal_int(GLint components, GLint widthin,
                            GLint ysize, GLint group_size,
                            GLint myswap_bytes)
 {
-    float x, convx;
-    float y, convy;
+    float convx;
+    float convy;
     float percent;
     /* Max components in a format is 4, so... */
     float totals[4];
@@ -2773,6 +2812,9 @@ static void scale_internal_int(GLint components, GLint widthin,
     highy_float = convy_float;
 
     for (i = 0; i < heightout; i++) {
+        /* Clamp here to be sure we don't read beyond input buffer. */
+        if (highy_int >= heightin)
+            highy_int = heightin - 1;
         lowx_int = 0;
         lowx_float = 0;
         highx_int = convx_int;
@@ -3023,8 +3065,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                            GLint ysize, GLint group_size,
                            GLint myswap_bytes)
 {
-    float x, convx;
-    float y, convy;
+    float convx;
+    float convy;
     float percent;
     /* Max components in a format is 4, so... */
     float totals[4];
@@ -3043,7 +3085,7 @@ static void scale_internal_float(GLint components, GLint widthin,
     int l, m;
     const char *left, *right;
 
-    GLuint swapbuf;	/* unsigned buffer */
+    union { GLuint b; GLfloat f; } swapbuf;
 
     if (widthin == widthout*2 && heightin == heightout*2) {
         halveImage_float(components, widthin, heightin,
@@ -3066,6 +3108,9 @@ static void scale_internal_float(GLint components, GLint widthin,
     highy_float = convy_float;
 
     for (i = 0; i < heightout; i++) {
+        /* Clamp here to be sure we don't read beyond input buffer. */
+        if (highy_int >= heightin)
+            highy_int = heightin - 1;
         lowx_int = 0;
         lowx_float = 0;
         highx_int = convx_int;
@@ -3089,8 +3134,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                 for (k = 0, temp_index = temp; k < components;
                      k++, temp_index += element_size) {
                     if (myswap_bytes) {
-			swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                        totals[k] += *(const GLfloat*)&swapbuf * percent;
+			swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			totals[k] += swapbuf.f * percent;
                     } else {
                         totals[k] += *(const GLfloat*)temp_index * percent;
                     }
@@ -3101,8 +3146,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                     for (k = 0, temp_index = temp; k < components;
                          k++, temp_index += element_size) {
                         if (myswap_bytes) {
-			    swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                            totals[k] += *(const GLfloat*)&swapbuf * y_percent;
+			    swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			    totals[k] += swapbuf.f * y_percent;
                         } else {
                             totals[k] += *(const GLfloat*)temp_index * y_percent;
                         }
@@ -3114,8 +3159,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                 for (k = 0, temp_index = temp; k < components;
                      k++, temp_index += element_size) {
                     if (myswap_bytes) {
-			swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                        totals[k] += *(const GLfloat*)&swapbuf * percent;
+			swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			totals[k] += swapbuf.f * percent;
                     } else {
                         totals[k] += *(const GLfloat*)temp_index * percent;
                     }
@@ -3128,8 +3173,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                 for (k = 0, temp_index = temp; k < components;
                      k++, temp_index += element_size) {
                     if (myswap_bytes) {
-			swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                        totals[k] += *(const GLfloat*)&swapbuf * percent;
+			swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			totals[k] += swapbuf.f * percent;
                     } else {
                         totals[k] += *(const GLfloat*)temp_index * percent;
                     }
@@ -3139,8 +3184,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                     for (k = 0, temp_index = temp; k < components;
                          k++, temp_index += element_size) {
                         if (myswap_bytes) {
-			    swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                            totals[k] += *(const GLfloat*)&swapbuf * y_percent;
+			    swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			    totals[k] += swapbuf.f * y_percent;
                         } else {
                             totals[k] += *(const GLfloat*)temp_index * y_percent;
                         }
@@ -3151,8 +3196,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                 for (k = 0, temp_index = temp; k < components;
                      k++, temp_index += element_size) {
                     if (myswap_bytes) {
-			swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                        totals[k] += *(const GLfloat*)&swapbuf * percent;
+			swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			totals[k] += swapbuf.f * percent;
                     } else {
                         totals[k] += *(const GLfloat*)temp_index * percent;
                     }
@@ -3165,10 +3210,10 @@ static void scale_internal_float(GLint components, GLint widthin,
                     for (k = 0; k < components;
                          k++, left += element_size, right += element_size) {
                         if (myswap_bytes) {
-			    swapbuf = __GLU_SWAP_4_BYTES(left);
-                            totals[k] += *(const GLfloat*)&swapbuf * (1-lowx_float);
-                            swapbuf = __GLU_SWAP_4_BYTES(right);
-                            totals[k] += *(const GLfloat*)&swapbuf * highx_float;
+			    swapbuf.b = __GLU_SWAP_4_BYTES(left);
+			    totals[k] += swapbuf.f * (1-lowx_float);
+			    swapbuf.b = __GLU_SWAP_4_BYTES(right);
+			    totals[k] += swapbuf.f * highx_float;
                         } else {
                             totals[k] += *(const GLfloat*)left * (1-lowx_float)
                                        + *(const GLfloat*)right * highx_float;
@@ -3182,8 +3227,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                 for (k = 0, temp_index = temp; k < components;
                      k++, temp_index += element_size) {
                     if (myswap_bytes) {
-			swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                        totals[k] += *(const GLfloat*)&swapbuf * percent;
+			swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			totals[k] += swapbuf.f * percent;
                     } else {
                         totals[k] += *(const GLfloat*)temp_index * percent;
                     }
@@ -3193,8 +3238,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                     for (k = 0, temp_index = temp; k < components;
                          k++, temp_index += element_size) {
                         if (myswap_bytes) {
-			    swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                            totals[k] += *(const GLfloat*)&swapbuf * x_percent;
+			    swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			    totals[k] += swapbuf.f * x_percent;
                         } else {
                             totals[k] += *(const GLfloat*)temp_index * x_percent;
                         }
@@ -3205,8 +3250,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                 for (k = 0, temp_index = temp; k < components;
                      k++, temp_index += element_size) {
                     if (myswap_bytes) {
-			swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                        totals[k] += *(const GLfloat*)&swapbuf * percent;
+			swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			totals[k] += swapbuf.f * percent;
                     } else {
                         totals[k] += *(const GLfloat*)temp_index * percent;
                     }
@@ -3219,8 +3264,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                 for (k = 0, temp_index = temp; k < components;
                      k++, temp_index += element_size) {
                     if (myswap_bytes) {
-			swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                        totals[k] += *(const GLfloat*)&swapbuf * percent;
+			swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			totals[k] += swapbuf.f * percent;
                     } else {
                         totals[k] += *(const GLfloat*)temp_index * percent;
                     }
@@ -3230,8 +3275,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                     for (k = 0, temp_index = temp; k < components;
                          k++, temp_index += element_size) {
                         if (myswap_bytes) {
-			    swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                            totals[k] += *(const GLfloat*)&swapbuf * y_percent;
+			    swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			    totals[k] += swapbuf.f * y_percent;
                         } else {
                             totals[k] += *(const GLfloat*)temp_index * y_percent;
                         }
@@ -3242,8 +3287,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                 for (k = 0, temp_index = temp; k < components;
                      k++, temp_index += element_size) {
                     if (myswap_bytes) {
-			swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                        totals[k] += *(const GLfloat*)&swapbuf * percent;
+			swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			totals[k] += swapbuf.f * percent;
                     } else {
                         totals[k] += *(const GLfloat*)temp_index * percent;
                     }
@@ -3254,8 +3299,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                 for (k = 0, temp_index = temp; k < components;
                      k++, temp_index += element_size) {
                     if (myswap_bytes) {
-			swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                        totals[k] += *(const GLfloat*)&swapbuf * percent;
+			swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			totals[k] += swapbuf.f * percent;
                     } else {
                         totals[k] += *(const GLfloat*)temp_index * percent;
                     }
@@ -3271,8 +3316,8 @@ static void scale_internal_float(GLint components, GLint widthin,
                     for (k = 0, temp_index = temp; k < components;
                          k++, temp_index += element_size) {
                         if (myswap_bytes) {
-			    swapbuf = __GLU_SWAP_4_BYTES(temp_index);
-                            totals[k] += *(const GLfloat*)&swapbuf;
+			    swapbuf.b = __GLU_SWAP_4_BYTES(temp_index);
+			    totals[k] += swapbuf.f;
                         } else {
                             totals[k] += *(const GLfloat*)temp_index;
                         }
@@ -3565,6 +3610,8 @@ gluScaleImage(GLenum format, GLsizei widthin, GLsizei heightin,
     afterImage =
 	malloc(image_size(widthout, heightout, format, GL_UNSIGNED_SHORT));
     if (beforeImage == NULL || afterImage == NULL) {
+	free(beforeImage);
+	free(afterImage);
 	return GLU_OUT_OF_MEMORY;
     }
 
@@ -3596,7 +3643,6 @@ int gluBuild1DMipmapLevelsCore(GLenum target, GLint internalFormat,
     GLushort *otherImage;
     GLushort *imageTemp;
     GLint memreq;
-    GLint maxsize;
     GLint cmpts;
     PixelStorageModes psm;
 
@@ -3646,6 +3692,7 @@ int gluBuild1DMipmapLevelsCore(GLenum target, GLint internalFormat,
 		    glPixelStorei(GL_UNPACK_SKIP_PIXELS,psm.unpack_skip_pixels);
 		    glPixelStorei(GL_UNPACK_ROW_LENGTH, psm.unpack_row_length);
 		    glPixelStorei(GL_UNPACK_SWAP_BYTES, psm.unpack_swap_bytes);
+		    free(newImage);
 		    return GLU_OUT_OF_MEMORY;
 		}
 	    }
@@ -3743,7 +3790,6 @@ static int bitmapBuild2DMipmaps(GLenum target, GLint internalFormat,
     GLushort *otherImage;
     GLushort *imageTemp;
     GLint memreq;
-    GLint maxsize;
     GLint cmpts;
     PixelStorageModes psm;
 
@@ -3801,6 +3847,7 @@ static int bitmapBuild2DMipmaps(GLenum target, GLint internalFormat,
                     glPixelStorei(GL_UNPACK_SKIP_PIXELS,psm.unpack_skip_pixels);
                     glPixelStorei(GL_UNPACK_ROW_LENGTH, psm.unpack_row_length);
                     glPixelStorei(GL_UNPACK_SWAP_BYTES, psm.unpack_swap_bytes);
+		    free(newImage);
                     return GLU_OUT_OF_MEMORY;
                 }
             }
@@ -3850,11 +3897,8 @@ static int gluBuild2DMipmapLevelsCore(GLenum target, GLint internalFormat,
     GLint level, levels;
     const void *usersImage; /* passed from user. Don't touch! */
     void *srcImage, *dstImage; /* scratch area to build mipmapped images */
-    GLint newImage_width;
-    GLint newImage_height;
     __GLU_INIT_SWAP_IMAGE;
     GLint memreq;
-    GLint maxsize;
     GLint cmpts;
 
     GLint myswap_bytes, groups_per_line, element_size, group_size;
@@ -3910,10 +3954,12 @@ static int gluBuild2DMipmapLevelsCore(GLenum target, GLint internalFormat,
     if (width == newwidth && height == newheight) {
 	/* Use usersImage for level userLevel */
         if (baseLevel <= level && level <= maxLevel) { 
+        glPixelStorei(GL_UNPACK_ROW_LENGTH, psm.unpack_row_length);
 	glTexImage2D(target, level, internalFormat, width, 
 		height, 0, format, type,
 		usersImage);
 	}
+        glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 	if(levels == 0) { /* we're done. clean up and return */
 	  glPixelStorei(GL_UNPACK_ALIGNMENT, psm.unpack_alignment);
 	  glPixelStorei(GL_UNPACK_SKIP_ROWS, psm.unpack_skip_rows);
@@ -4146,6 +4192,7 @@ static int gluBuild2DMipmapLevelsCore(GLenum target, GLint internalFormat,
 	  glPixelStorei(GL_UNPACK_SKIP_PIXELS, psm.unpack_skip_pixels);
 	  glPixelStorei(GL_UNPACK_ROW_LENGTH, psm.unpack_row_length);
 	  glPixelStorei(GL_UNPACK_SWAP_BYTES, psm.unpack_swap_bytes);
+	  free(srcImage);
 	  return GLU_OUT_OF_MEMORY;
 	}
 	/* level userLevel+1 is in srcImage; level userLevel already saved */
@@ -4388,6 +4435,7 @@ static int gluBuild2DMipmapLevelsCore(GLenum target, GLint internalFormat,
 	    glPixelStorei(GL_UNPACK_SKIP_PIXELS, psm.unpack_skip_pixels);
 	    glPixelStorei(GL_UNPACK_ROW_LENGTH, psm.unpack_row_length);
 	    glPixelStorei(GL_UNPACK_SWAP_BYTES, psm.unpack_swap_bytes);
+	    free(srcImage);
 	    return GLU_OUT_OF_MEMORY;
 	  }
 	}
@@ -4667,7 +4715,6 @@ static int fastBuild2DMipmaps(const PixelStorageModes *psm,
     GLubyte *otherImage;
     GLubyte *imageTemp;
     GLint memreq;
-    GLint maxsize;
     GLint cmpts;
 
 
@@ -5588,7 +5635,7 @@ static void shove233rev(const GLfloat shoveComponents[],
 static void extract565(int isSwap,
 		       const void *packedPixel, GLfloat extractComponents[])
 {
-   GLushort ushort= *(const GLushort *)packedPixel; 
+   GLushort ushort;
 
    if (isSwap) {
      ushort= __GLU_SWAP_2_BYTES(packedPixel);
@@ -5629,7 +5676,7 @@ static void shove565(const GLfloat shoveComponents[],
 static void extract565rev(int isSwap,
 			  const void *packedPixel, GLfloat extractComponents[])
 {
-   GLushort ushort= *(const GLushort *)packedPixel; 
+   GLushort ushort;
 
    if (isSwap) {
      ushort= __GLU_SWAP_2_BYTES(packedPixel);
@@ -6058,8 +6105,8 @@ static void scaleInternalPackedPixel(int components,
 				     GLint pixelSizeInBytes,
 				     GLint rowSizeInBytes,GLint isSwap)
 {
-    float x, convx;
-    float y, convy;
+    float convx;
+    float convy;
     float percent;
 
     /* Max components in a format is 4, so... */
@@ -6070,7 +6117,6 @@ static void scaleInternalPackedPixel(int components,
     int i,j,k,xindex;
 
     const char *temp, *temp0;
-    const char *temp_index;
     int outindex;
 
     int lowx_int, highx_int, lowy_int, highy_int;
@@ -7364,6 +7410,8 @@ int gluScaleImage3D(GLenum format,
    afterImage = malloc(imageSize3D(widthOut, heightOut, depthOut, format, 
 				   GL_UNSIGNED_SHORT));
    if (beforeImage == NULL || afterImage == NULL) {
+       free(beforeImage);
+       free(afterImage);
        return GLU_OUT_OF_MEMORY;
    } 
    retrieveStoreModes3D(&psm);
@@ -7456,7 +7504,6 @@ static void halveImagePackedPixelSlice(int components,
    int halfHeight= height / 2;
    int halfDepth= depth / 2;
    const char *src= (const char *)dataIn;
-   int padBytes= rowSizeInBytes - (width * pixelSizeInBytes);
    int outIndex= 0;
 
    assert((width == 1 || height == 1) && depth >= 2);
@@ -7713,10 +7760,8 @@ static int gluBuild3DMipmapLevelsCore(GLenum target, GLint internalFormat,
    GLint level, levels;
    const void *usersImage;
    void *srcImage, *dstImage;
-   GLint newImageWidth, newImageHeight, newImageDepth;
    __GLU_INIT_SWAP_IMAGE;
    GLint memReq;
-   GLint maxSize;
    GLint cmpts;
 
    GLint myswapBytes, groupsPerLine, elementSize, groupSize;
@@ -8082,6 +8127,7 @@ static int gluBuild3DMipmapLevelsCore(GLenum target, GLint internalFormat,
 	 glPixelStorei(GL_UNPACK_SWAP_BYTES, psm.unpack_swap_bytes);
 	 glPixelStorei(GL_UNPACK_SKIP_IMAGES, psm.unpack_skip_images);
 	 glPixelStorei(GL_UNPACK_IMAGE_HEIGHT, psm.unpack_image_height);
+	 free(srcImage);
 	 return GLU_OUT_OF_MEMORY;
        }
        /* level userLevel+1 is in srcImage; level userLevel already saved */
@@ -8216,6 +8262,7 @@ static int gluBuild3DMipmapLevelsCore(GLenum target, GLint internalFormat,
 	   glPixelStorei(GL_UNPACK_SWAP_BYTES, psm.unpack_swap_bytes);
 	   glPixelStorei(GL_UNPACK_SKIP_IMAGES, psm.unpack_skip_images);
 	   glPixelStorei(GL_UNPACK_IMAGE_HEIGHT, psm.unpack_image_height);
+	   free(srcImage);
 	   return GLU_OUT_OF_MEMORY;
 	 }
        }
@@ -8660,7 +8707,8 @@ static void halveImageSlice(int components,
    int halfHeight= height / 2;
    int halfDepth= depth / 2;
    const char *src= (const char *)dataIn;
-   int padBytes= rowSizeInBytes - (width * groupSizeInBytes);
+   int rowPadBytes= rowSizeInBytes - (width * groupSizeInBytes);
+   int imagePadBytes= imageSizeInBytes - (width*height*groupSizeInBytes);
    int outIndex= 0;
 
    assert((width == 1 || height == 1) && depth >= 2);
@@ -8744,7 +8792,7 @@ static void halveImageSlice(int components,
 	    /* skip over to next horizontal square of 4 */
 	    src+= groupSizeInBytes;
 	 } /* for jj */
-	 src+= padBytes;
+	 src+= rowPadBytes;
 
 	 src+= rowSizeInBytes;
       } /* for ii */
@@ -8789,11 +8837,12 @@ static void halveImageSlice(int components,
 
 	       src+= elementSizeInBytes;
 	    } /* for cc */
-	    src+= padBytes;
+	    src+= rowPadBytes;
 
 	    /* skip over to next vertical square of 4 */
 	    src+= rowSizeInBytes;
 	 } /* for jj */
+         src+= imagePadBytes;
 
 	 src+= imageSizeInBytes;
       } /* for ii */ 
@@ -8833,7 +8882,8 @@ static void halveImage3D(int components,
       int halfHeight= height / 2;
       int halfDepth= depth / 2;  
       const char *src= (const char *) dataIn;
-      int padBytes= rowSizeInBytes - (width*groupSizeInBytes);
+      int rowPadBytes= rowSizeInBytes - (width*groupSizeInBytes);
+      int imagePadBytes= imageSizeInBytes - (width*height*groupSizeInBytes);
       int outIndex= 0;
 
       for (dd= 0; dd < halfDepth; dd++) {
@@ -8889,7 +8939,7 @@ static void halveImage3D(int components,
 	       src+= groupSizeInBytes;
 	    } /* for jj */
 	    /* skip past pad bytes, if any, to get to next row */
-	    src+= padBytes;
+	    src+= rowPadBytes;
 
 	    /* src is at beginning of a row here, but it's the second row of
 	     * the square block of 4 pixels that we just worked on so we
@@ -8903,6 +8953,9 @@ static void halveImage3D(int components,
 	     */
 	    src+= rowSizeInBytes;
 	 } /* for ii */
+
+	 /* skip past pad bytes, if any, to get to next image */
+	 src+= imagePadBytes;
 
 	 src+= imageSizeInBytes; 
       } /* for dd */

@@ -35,15 +35,12 @@
 /*
  * arcsorter.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluarcsorter_h_
 #define __gluarcsorter_h_
 
 #include "sorter.h"
-#include "arcsorter.h"
 
 class Arc;
 class Subdivider;

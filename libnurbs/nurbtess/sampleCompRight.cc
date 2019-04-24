@@ -31,15 +31,12 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <limits.h>
 #include "glimports.h"
 #include "zlassert.h"
 #include "sampleCompRight.h"
@@ -72,7 +69,7 @@ void sampleCompRight(Real* topVertex, Real* botVertex,
    */
   Int midIndex1;
   Int midIndex2;
-  Int gridMidIndex1 = INT_MAX, gridMidIndex2 = INT_MAX;
+  Int gridMidIndex1 = 0, gridMidIndex2 = 0;
   //midIndex1: array[i] <= v, array[i+1] > v
   //midIndex2: array[i] >= v,  array[i+1] < v
   midIndex1 = rightChain->findIndexBelowGen(rightGridChain->get_v_value(gridIndex1),
@@ -163,8 +160,6 @@ void sampleCompRight(Real* topVertex, Real* botVertex,
   //sample
   if(midIndex2 >= 0) //there is a trm point between grid lines
     {
-      assert(gridMidIndex1 != INT_MAX);
-      assert(gridMidIndex2 != INT_MAX);
 
       sampleRightSingleTrimEdgeRegionGen(cornerTop, rightChain->getVertex(midIndex1),
 					 rightChain,

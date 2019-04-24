@@ -35,8 +35,6 @@
 /*
 ** Author: Eric Veach, July 1994.
 **
-** $Date$ $Revision$
-** $Header$
 */
 
 #include "gluos.h"
@@ -46,8 +44,12 @@
 #include <math.h>
 #include <assert.h>
 
+#ifndef TRUE
 #define TRUE 1
+#endif
+#ifndef FALSE
 #define FALSE 0
+#endif
 
 #define Dot(u,v)	(u[0]*v[0] + u[1]*v[1] + u[2]*v[2])
 
@@ -146,7 +148,7 @@ static void CheckOrientation( GLUtesselator *tess )
   GLUhalfEdge *e;
 
   /* When we compute the normal automatically, we choose the orientation
-   * so that the the sum of the signed areas of all contours is non-negative.
+   * so that the sum of the signed areas of all contours is non-negative.
    */
   area = 0;
   for( f = fHead->next; f != fHead; f = f->next ) {
@@ -198,7 +200,7 @@ extern int RandomSweep;
 void __gl_projectPolygon( GLUtesselator *tess )
 {
   GLUvertex *v, *vHead = &tess->mesh->vHead;
-  GLdouble w, norm[3];
+  GLdouble norm[3];
   GLdouble *sUnit, *tUnit;
   int i, computedNormal = FALSE;
 

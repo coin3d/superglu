@@ -35,8 +35,6 @@
 /*
  * myassert.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glumyassert_h_

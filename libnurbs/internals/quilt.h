@@ -35,8 +35,6 @@
 /*
  * quilt.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluquilt_h_
@@ -49,7 +47,7 @@
 class Backend;
 class Mapdesc;
 class Flist;
-class Knotvector;
+struct Knotvector;
 
 /* constants for memory allocation of NURBS to Bezier conversion */ 
 #define	MAXDIM 		2

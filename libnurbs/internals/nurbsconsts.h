@@ -35,8 +35,6 @@
 /*
  * nurbsconsts.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glunurbsconsts_h_

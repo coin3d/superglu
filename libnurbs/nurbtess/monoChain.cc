@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include "gluos.h"
@@ -63,7 +61,7 @@ extern Int deleteRepeatDiagonals(Int num_diagonals, directedLine** diagonal_vert
 //for debug purpose only
 static void drawDiagonals(Int num_diagonals, directedLine** diagonal_vertices)
 {
-  Int i,k;
+  Int i;
   for(i=0; i<num_diagonals; i++)
     {
       glBegin(GL_LINE);
@@ -127,6 +125,7 @@ monoChain::monoChain(directedLine* cHead, directedLine* cTail)
     current = chainTail;
 
   isKey = 0;
+  keyY = 0;
 }
 
 //insert a new line between prev and this

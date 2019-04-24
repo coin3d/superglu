@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include "gluos.h"
@@ -485,7 +483,7 @@ rightChain->print();
 
 
       Real tempMin = rightChain->getVertex(index2)[0];
-      Real tempI = index2;
+      Int tempI = index2;
       for(i=index2+1; i<= rightChainEndIndex; i++)
 	if(rightChain->getVertex(i)[0] < tempMin)
 	  {
@@ -507,7 +505,7 @@ rightChain->print();
      else
        {
 	 ret_leftCornerWhere = 2; //right
-	 ret_leftCornerIndex = (int)tempI;
+	 ret_leftCornerIndex = tempI;
        }
     }
   else if(index2> rightChainEndIndex) /*index1<=leftChainEndIndex*/
@@ -519,7 +517,7 @@ rightChain->print();
        *either this vertex or the botvertex can be used as the right corner
        */
 
-      Real tempI;
+      Int tempI;
       //skip those points which are equal to v. (avoid degeneratcy)
       for(tempI = index1; tempI <= leftChainEndIndex; tempI++)
 	if(leftChain->getVertex(tempI)[1] < v) 
@@ -529,7 +527,7 @@ rightChain->print();
       else
 	{
 	  Real tempMax = leftChain->getVertex(tempI)[0];
-	  for(i=(int)tempI; i<= leftChainEndIndex; i++)
+	  for(i=tempI; i<= leftChainEndIndex; i++)
 	    if(leftChain->getVertex(i)[0] > tempMax)
 	      {
 		tempI = i;
@@ -554,7 +552,7 @@ rightChain->print();
 	  else
 	    {
 	      ret_rightCornerWhere = 0;
-	      ret_rightCornerIndex = (int)tempI;
+	      ret_rightCornerIndex = tempI;
 	    }
 	}
       
@@ -978,13 +976,15 @@ void findNeck(vertexArray *leftChain, Int botLeftIndex,
 void findLeftGridIndices(directedLine* topEdge, Int firstGridIndex, Int lastGridIndex, gridWrap* grid,  Int* ret_indices, Int* ret_innerIndices)
 {
 
-  Int i,k,isHoriz = INT_MAX;
+  Int i,k,isHoriz = 0;
   Int n_ulines = grid->get_n_ulines();
   Real uMin = grid->get_u_min();
   Real uMax = grid->get_u_max();
+  /*
   Real vMin = grid->get_v_min();
   Real vMax = grid->get_v_max();
-  Real slop = FLT_MAX, uinterc;
+  */
+  Real slop = 0.0, uinterc;
 
 #ifdef SHORTEN_GRID_LINE
   //uintercBuf stores all the interction u value for each grid line
@@ -1026,14 +1026,12 @@ void findLeftGridIndices(directedLine* topEdge, Int firstGridIndex, Int lastGrid
 	    }
 	}
 
-      assert(isHoriz != INT_MAX);
       if(isHoriz)
 	{
 	  uinterc = max(dLine->head()[0], dLine->tail()[0]);
 	}
       else
 	{
-          assert(slop != FLT_MAX);
 	  uinterc = slop * (grid_v_value - vtail) + dLine->tail()[0];
 	}
       
@@ -1100,9 +1098,11 @@ void findRightGridIndices(directedLine* topEdge, Int firstGridIndex, Int lastGri
   Int n_ulines = grid->get_n_ulines();
   Real uMin = grid->get_u_min();
   Real uMax = grid->get_u_max();
+  /*
   Real vMin = grid->get_v_min();
   Real vMax = grid->get_v_max();
-  Real slop, uinterc;
+  */
+  Real slop = 0.0, uinterc;
 
 #ifdef SHORTEN_GRID_LINE
   //uintercBuf stores all the interction u value for each grid line

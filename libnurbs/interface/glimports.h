@@ -35,8 +35,6 @@
 /*
  * glimports.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluimports_h_

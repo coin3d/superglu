@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include <stdlib.h>
@@ -395,7 +393,7 @@ poly->printList();
 */
   /*for debug purpose*/
   assert( (DBG_rayIntersectPoly(v,1,0,poly) % 2 )
-	 == (DBG_rayIntersectPoly(v,1,0.1234, poly) % 2 )
+	 == (DBG_rayIntersectPoly(v,1,Real(0.1234), poly) % 2 )
 	 );
   if(DBG_rayIntersectPoly(v, 1, 0, poly) % 2 == 1)
     return 1; 
@@ -716,7 +714,6 @@ sampledLine*  DBG_collectSampledLinesAllPoly(directedLine *polygonList)
 void  DBG_collectSampledLinesPoly(directedLine *polygon, sampledLine*& retHead, sampledLine*& retTail)
 {
   directedLine *temp;
-  sampledLine *ret = NULL;
   retHead = NULL;
   retTail = NULL;
   if(polygon == NULL)

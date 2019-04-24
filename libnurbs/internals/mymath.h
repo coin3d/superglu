@@ -35,8 +35,6 @@
 /*
  * mymath.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glumymath_h_
@@ -46,7 +44,7 @@
 #define sqrtf		gl_fsqrt
 #endif
 
-#if GLBUILD | STANDALONE
+#if defined(GLBUILD) || defined(STANDALONE)
 #define M_SQRT2		1.41421356237309504880
 #define ceilf		myceilf
 #define floorf		myfloorf	

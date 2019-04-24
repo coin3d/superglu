@@ -35,18 +35,16 @@
 /*
  * coveandtiler.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glucoveandtiler_h
 #define __glucoveandtiler_h
 
 #include "trimregion.h"
+#include "trimvertex.h"
+#include "gridvertex.h"
 
 class Backend;
-class TrimVertex;
-struct GridVertex;
 class GridTrimVertex;
 
 class CoveAndTiler : virtual public TrimRegion {

@@ -35,8 +35,6 @@
 /*
  * patchlist.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include <stdio.h>

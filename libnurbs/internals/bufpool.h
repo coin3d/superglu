@@ -35,8 +35,6 @@
 /*
  * bufpool.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glubufpool_h_
@@ -54,7 +52,7 @@ class Buffer {
 
 class Pool {
 public:
-			Pool( int, int, char * );
+			Pool( int, int, const char * );
 			~Pool( void );
     inline void*	new_buffer( void );
     inline void		free_buffer( void * );
@@ -73,7 +71,7 @@ protected:
     int			nextfree;		/* byte offset past next free buffer */
     int			initsize;
     enum Magic { is_allocated = 0xf3a1, is_free = 0xf1a2 };
-    char		*name;			/* name of the pool */
+    const char		*name;			/* name of the pool */
     Magic		magic;			/* marker for valid pool */
 };
 
@@ -127,6 +125,7 @@ public:
     inline void * 	operator new( size_t s)
 				{ return ::new char[s]; }
     inline void 	operator delete( void * ) { assert( 0 ); }
+    inline void         operator delete( void *, Pool & ) { assert( 0 ); }
     inline void		deleteMe( Pool & );
 };
 

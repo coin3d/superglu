@@ -35,8 +35,6 @@
 /*
  * knotvector.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"
@@ -60,6 +58,9 @@ void Knotvector::init( long _knotcount, long _stride, long _order, INREAL *_knot
 
 Knotvector::Knotvector( void )
 {
+    knotcount = 0;
+    stride = 0;
+    order = 0;
     knotlist = 0;
 }
 
@@ -125,7 +126,7 @@ int Knotvector::validate( void )
     return 0;
 }
 
-void Knotvector::show( char *msg )
+void Knotvector::show( const char *msg )
 {
 #ifndef NDEBUG
     dprintf( "%s\n", msg ); 

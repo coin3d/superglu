@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include <stdlib.h>
@@ -307,6 +305,8 @@ directedLine::directedLine()
   nextPolygon = NULL;
   rootBit = 0;/*important to initilzae to 0 meaning not root yet*/  
   rootLink = NULL;
+  direction = INCREASING;
+  sline = NULL;
 }
 
 directedLine::~directedLine()
@@ -596,7 +596,7 @@ Real directedLine::polyArea()
       y2 = temp->next->head()[1];
       ret += -( x2*y1-x1*y2);
     }
-  return 0.5*ret;
+  return Real(0.5)*ret;
 }
 
 /*******************split or combine polygons begin********************/

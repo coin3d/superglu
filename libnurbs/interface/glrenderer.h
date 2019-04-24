@@ -35,8 +35,6 @@
 /*
  * glrenderer.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluglrenderer_h_

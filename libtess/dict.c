@@ -35,8 +35,6 @@
 /*
 ** Author: Eric Veach, July 1994.
 **
-** $Date$ $Revision$
-** $Header$
 */
 
 #include <stddef.h>
@@ -67,9 +65,10 @@ Dict *dictNewDict( void *frame,
 /* really __gl_dictListDeleteDict */
 void dictDeleteDict( Dict *dict )
 {
-  DictNode *node;
+  DictNode *node, *next;
 
-  for( node = dict->head.next; node != &dict->head; node = node->next ) {
+  for( node = dict->head.next; node != &dict->head; node = next ) {
+    next = node->next;
     memFree( node );
   }
   memFree( dict );

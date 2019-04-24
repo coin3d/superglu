@@ -35,8 +35,6 @@
 /*
  * arc.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include <stdio.h>

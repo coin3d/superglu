@@ -35,8 +35,6 @@
 /*
  * flistsorter.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluflistsorter_h_
@@ -48,6 +46,7 @@
 class FlistSorter : public Sorter {
 public:
 			FlistSorter(void);
+    virtual             ~FlistSorter() { /* silence warning*/ }
     void		qsort( REAL *a, int n );
 
 protected:	

@@ -35,8 +35,6 @@
 /*
  * slicer.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include <stdlib.h>
@@ -309,7 +307,6 @@ static void triangulateRectAux(PwlArc* top, PwlArc* bot, PwlArc* left, PwlArc* r
 
 static void triangulateRect(Arc_ptr loop, Backend& backend, int TB_or_LR, int ulinear, int vlinear)
 {
-  int i;
   //we know the loop is a rectangle, but not sure which is top
   Arc_ptr top, bot, left, right;
   if(loop->tail()[1] == loop->head()[1])
@@ -1085,6 +1082,9 @@ void Slicer::slice_new(Arc_ptr loop)
       vMax = jarc->tail()[1];
   }
 
+  if (uMax == uMin)
+    return; // prevent divide-by-zero.  Jon Perry.  17 June 2002
+
   if(mydu > uMax - uMin)
     num_ulines = 2;
   else
@@ -1168,6 +1168,10 @@ void Slicer::slice(Arc_ptr loop)
 Slicer::Slicer( Backend &b ) 
 	: CoveAndTiler( b ), Mesher( b ), backend( b )
 {
+    oneOverDu = 0;
+    du = 0;
+    dv = 0;
+    isolines = 0;
     ulinear = 0;
     vlinear = 0;
 }

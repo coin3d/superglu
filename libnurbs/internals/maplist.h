@@ -35,8 +35,6 @@
 /*
  * maplist.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glumaplist_h_
