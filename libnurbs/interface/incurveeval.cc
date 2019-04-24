@@ -186,6 +186,12 @@ printf("color_flag = %i\n", color_flag);
   if(vertex_flag)
     {
       inDoDomain1(&em_vertex, u, temp_vertex);
+      if(em_vertex.k == 4)
+        {
+          temp_vertex[0] /= temp_vertex[3];
+          temp_vertex[1] /= temp_vertex[3];
+          temp_vertex[2] /= temp_vertex[3];
+        }
       vertexCallBack(temp_vertex, userData);
     }
 }
