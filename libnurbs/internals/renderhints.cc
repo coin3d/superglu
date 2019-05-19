@@ -35,8 +35,6 @@
 /*
  * renderhints.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"
@@ -56,6 +54,10 @@ Renderhints::Renderhints()
     errorchecking 	= N_MSG;
     subdivisions 	= 6.0;
     tmp1 		= 0.0;
+    displaydomain 	= 0;
+    maxsubdivisions 	= (int) subdivisions;
+    wiretris	 	= 0;
+    wirequads	 	= 0;
 }
 
 void

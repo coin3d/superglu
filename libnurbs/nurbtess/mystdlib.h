@@ -35,7 +35,6 @@
 /*
  * mystdlib.h
  *
- * $Header$
  */
 
 #ifndef __glumystdlib_h_

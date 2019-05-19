@@ -35,8 +35,6 @@
 /*
  * arc.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluarc_h_
@@ -51,7 +49,7 @@
 
 class Bin;
 class Arc;
-class BezierArc;	
+struct BezierArc;
 
 typedef class Arc *Arc_ptr; 
 
@@ -114,6 +112,9 @@ public:
 inline
 Arc::Arc( Arc *j, PwlArc *p )
 {
+    prev = NULL;
+    next = NULL;
+    link = NULL;
     bezierArc = NULL;
     pwlArc = p;
     type = j->type;
@@ -129,6 +130,9 @@ Arc::Arc( Arc *j, PwlArc *p )
 inline
 Arc::Arc( arc_side side, long _nuid )
 {
+    prev = NULL;
+    next = NULL;
+    link = NULL;
     bezierArc = NULL;
     pwlArc = NULL;
     type = 0;

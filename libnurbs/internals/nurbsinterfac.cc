@@ -35,8 +35,6 @@
 /*
  * nurbsinterfac.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"
@@ -66,9 +64,9 @@
 	}
 
 NurbsTessellator::NurbsTessellator( BasicCurveEvaluator &c, BasicSurfaceEvaluator& e) 
-	: subdivider( renderhints, backend ),
+	: maplist( backend ),
 	  backend( c, e ),
-	  maplist( backend ),
+          subdivider( renderhints, backend ),
 	  o_pwlcurvePool( sizeof( O_pwlcurve ), 32, "o_pwlcurvePool" ),
 	  o_nurbscurvePool( sizeof( O_nurbscurve ), 32, "o_nurbscurvePool"),
 	  o_curvePool( sizeof( O_curve ), 32,  "o_curvePool" ),

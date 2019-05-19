@@ -35,8 +35,6 @@
 /*
  *  reader.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include <stdio.h>
@@ -66,6 +64,7 @@ O_pwlcurve::O_pwlcurve( long _type, long count, INREAL *array, long byte_stride,
     owner = 0;
     pts = trimpts;
     npts = (int) count;
+    save = 0;
     int i;
 
     /* copy user data into internal trimming data structures */
@@ -117,6 +116,7 @@ O_pwlcurve::O_pwlcurve( long _type, long count, INREAL *array, long byte_stride,
     owner = 0;
     pts = trimpts;
     npts = (int) count;
+    save = 0;
 
     /* copy user data into internal trimming data structures */
     switch( _type ) {

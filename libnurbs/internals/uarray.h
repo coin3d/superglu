@@ -35,8 +35,6 @@
 /*
  * uarray.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluuarray_h_

@@ -35,8 +35,6 @@
 /*
  * simplemath.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glusimplemath_h_

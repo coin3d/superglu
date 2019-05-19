@@ -35,8 +35,6 @@
 /*
 ** Author: Eric Veach, July 1994.
 **
-** $Date$ $Revision$
-** $Header$
 */
 
 #include "gluos.h"
@@ -45,8 +43,12 @@
 #include "mesh.h"
 #include "memalloc.h"
 
+#ifndef TRUE
 #define TRUE 1
+#endif
+#ifndef FALSE
 #define FALSE 0
+#endif
 
 static GLUvertex *allocVertex()
 {
@@ -291,7 +293,12 @@ GLUhalfEdge *__gl_meshMakeEdge( GLUmesh *mesh )
   } 
 
   e = MakeEdge( &mesh->eHead );
-  if (e == NULL) return NULL;
+  if (e == NULL) {
+     memFree(newVertex1);
+     memFree(newVertex2);
+     memFree(newFace);
+     return NULL;
+  }
 
   MakeVertex( newVertex1, e, &mesh->vHead );
   MakeVertex( newVertex2, e->Sym, &mesh->vHead );

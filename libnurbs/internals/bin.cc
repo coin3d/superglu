@@ -35,8 +35,6 @@
 /*
  * bin.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"
@@ -51,6 +49,7 @@
 Bin::Bin()
 {
     head = NULL;
+    current = NULL;
 }
 
 Bin::~Bin()
@@ -120,7 +119,7 @@ Bin::adopt()
  */
 
 void
-Bin::show( char *name )
+Bin::show( const char *name )
 {
 #ifndef NDEBUG
     dprintf( "%s\n", name );

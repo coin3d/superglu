@@ -31,8 +31,6 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
-** $Header$
 */
 
 #include "gluos.h"
@@ -116,7 +114,6 @@ gluLookAt(GLdouble eyex, GLdouble eyey, GLdouble eyez, GLdouble centerx,
 	  GLdouble centery, GLdouble centerz, GLdouble upx, GLdouble upy,
 	  GLdouble upz)
 {
-    int i;
     float forward[3], side[3], up[3];
     GLfloat m[4][4];
 
@@ -169,70 +166,56 @@ static void __gluMultMatrixVecd(const GLdouble matrix[16], const GLdouble in[4],
 }
 
 /*
-** inverse = invert(src)
+** Invert 4x4 matrix.
+** Contributed by David Moore (See Mesa bug #6748)
 */
-static int __gluInvertMatrixd(const GLdouble src[16], GLdouble inverse[16])
+static int __gluInvertMatrixd(const GLdouble m[16], GLdouble invOut[16])
 {
-    int i, j, k, swap;
-    double t;
-    GLdouble temp[4][4];
+    double inv[16], det;
+    int i;
 
-    for (i=0; i<4; i++) {
-	for (j=0; j<4; j++) {
-	    temp[i][j] = src[i*4+j];
-	}
-    }
-    __gluMakeIdentityd(inverse);
+    inv[0] =   m[5]*m[10]*m[15] - m[5]*m[11]*m[14] - m[9]*m[6]*m[15]
+             + m[9]*m[7]*m[14] + m[13]*m[6]*m[11] - m[13]*m[7]*m[10];
+    inv[4] =  -m[4]*m[10]*m[15] + m[4]*m[11]*m[14] + m[8]*m[6]*m[15]
+             - m[8]*m[7]*m[14] - m[12]*m[6]*m[11] + m[12]*m[7]*m[10];
+    inv[8] =   m[4]*m[9]*m[15] - m[4]*m[11]*m[13] - m[8]*m[5]*m[15]
+             + m[8]*m[7]*m[13] + m[12]*m[5]*m[11] - m[12]*m[7]*m[9];
+    inv[12] = -m[4]*m[9]*m[14] + m[4]*m[10]*m[13] + m[8]*m[5]*m[14]
+             - m[8]*m[6]*m[13] - m[12]*m[5]*m[10] + m[12]*m[6]*m[9];
+    inv[1] =  -m[1]*m[10]*m[15] + m[1]*m[11]*m[14] + m[9]*m[2]*m[15]
+             - m[9]*m[3]*m[14] - m[13]*m[2]*m[11] + m[13]*m[3]*m[10];
+    inv[5] =   m[0]*m[10]*m[15] - m[0]*m[11]*m[14] - m[8]*m[2]*m[15]
+             + m[8]*m[3]*m[14] + m[12]*m[2]*m[11] - m[12]*m[3]*m[10];
+    inv[9] =  -m[0]*m[9]*m[15] + m[0]*m[11]*m[13] + m[8]*m[1]*m[15]
+             - m[8]*m[3]*m[13] - m[12]*m[1]*m[11] + m[12]*m[3]*m[9];
+    inv[13] =  m[0]*m[9]*m[14] - m[0]*m[10]*m[13] - m[8]*m[1]*m[14]
+             + m[8]*m[2]*m[13] + m[12]*m[1]*m[10] - m[12]*m[2]*m[9];
+    inv[2] =   m[1]*m[6]*m[15] - m[1]*m[7]*m[14] - m[5]*m[2]*m[15]
+             + m[5]*m[3]*m[14] + m[13]*m[2]*m[7] - m[13]*m[3]*m[6];
+    inv[6] =  -m[0]*m[6]*m[15] + m[0]*m[7]*m[14] + m[4]*m[2]*m[15]
+             - m[4]*m[3]*m[14] - m[12]*m[2]*m[7] + m[12]*m[3]*m[6];
+    inv[10] =  m[0]*m[5]*m[15] - m[0]*m[7]*m[13] - m[4]*m[1]*m[15]
+             + m[4]*m[3]*m[13] + m[12]*m[1]*m[7] - m[12]*m[3]*m[5];
+    inv[14] = -m[0]*m[5]*m[14] + m[0]*m[6]*m[13] + m[4]*m[1]*m[14]
+             - m[4]*m[2]*m[13] - m[12]*m[1]*m[6] + m[12]*m[2]*m[5];
+    inv[3] =  -m[1]*m[6]*m[11] + m[1]*m[7]*m[10] + m[5]*m[2]*m[11]
+             - m[5]*m[3]*m[10] - m[9]*m[2]*m[7] + m[9]*m[3]*m[6];
+    inv[7] =   m[0]*m[6]*m[11] - m[0]*m[7]*m[10] - m[4]*m[2]*m[11]
+             + m[4]*m[3]*m[10] + m[8]*m[2]*m[7] - m[8]*m[3]*m[6];
+    inv[11] = -m[0]*m[5]*m[11] + m[0]*m[7]*m[9] + m[4]*m[1]*m[11]
+             - m[4]*m[3]*m[9] - m[8]*m[1]*m[7] + m[8]*m[3]*m[5];
+    inv[15] =  m[0]*m[5]*m[10] - m[0]*m[6]*m[9] - m[4]*m[1]*m[10]
+             + m[4]*m[2]*m[9] + m[8]*m[1]*m[6] - m[8]*m[2]*m[5];
 
-    for (i = 0; i < 4; i++) {
-	/*
-	** Look for largest element in column
-	*/
-	swap = i;
-	for (j = i + 1; j < 4; j++) {
-	    if (fabs(temp[j][i]) > fabs(temp[i][i])) {
-		swap = j;
-	    }
-	}
+    det = m[0]*inv[0] + m[1]*inv[4] + m[2]*inv[8] + m[3]*inv[12];
+    if (det == 0)
+        return GL_FALSE;
 
-	if (swap != i) {
-	    /*
-	    ** Swap rows.
-	    */
-	    for (k = 0; k < 4; k++) {
-		t = temp[i][k];
-		temp[i][k] = temp[swap][k];
-		temp[swap][k] = t;
+    det = 1.0 / det;
 
-		t = inverse[i*4+k];
-		inverse[i*4+k] = inverse[swap*4+k];
-		inverse[swap*4+k] = t;
-	    }
-	}
+    for (i = 0; i < 16; i++)
+        invOut[i] = inv[i] * det;
 
-	if (temp[i][i] == 0) {
-	    /*
-	    ** No non-zero pivot.  The matrix is singular, which shouldn't
-	    ** happen.  This means the user gave us a bad matrix.
-	    */
-	    return GL_FALSE;
-	}
-
-	t = temp[i][i];
-	for (k = 0; k < 4; k++) {
-	    temp[i][k] /= t;
-	    inverse[i*4+k] /= t;
-	}
-	for (j = 0; j < 4; j++) {
-	    if (j != i) {
-		t = temp[j][i];
-		for (k = 0; k < 4; k++) {
-		    temp[j][k] -= temp[i][k]*t;
-		    inverse[j*4+k] -= inverse[i*4+k]*t;
-		}
-	    }
-	}
-    }
     return GL_TRUE;
 }
 
@@ -331,7 +314,7 @@ gluUnProject4(GLdouble winx, GLdouble winy, GLdouble winz, GLdouble clipw,
 	      const GLdouble modelMatrix[16], 
 	      const GLdouble projMatrix[16],
 	      const GLint viewport[4],
-	      GLclampd zNear, GLclampd zFar,		    
+	      GLclampd nearVal, GLclampd farVal,		    
 	      GLdouble *objx, GLdouble *objy, GLdouble *objz,
 	      GLdouble *objw)
 {
@@ -350,7 +333,7 @@ gluUnProject4(GLdouble winx, GLdouble winy, GLdouble winz, GLdouble clipw,
     /* Map x and y from window coordinates */
     in[0] = (in[0] - viewport[0]) / viewport[2];
     in[1] = (in[1] - viewport[1]) / viewport[3];
-    in[2] = (in[2] - zNear) / (zFar - zNear);
+    in[2] = (in[2] - nearVal) / (farVal - nearVal);
 
     /* Map to range -1 to 1 */
     in[0] = in[0] * 2 - 1;

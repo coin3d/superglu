@@ -35,8 +35,6 @@
 /*
  * jarcloc.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glujarcloc_h_

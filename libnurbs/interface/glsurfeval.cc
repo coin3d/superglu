@@ -35,8 +35,6 @@
 /*
  * glsurfeval.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 /* Polynomial Evaluator Interface */
@@ -781,8 +779,8 @@ OpenGLSurfaceEvaluator::bgnmap2f(long)
       else
 	auto_normal_flag = 0;
 	*/
+	  glPushAttrib((GLbitfield) GL_EVAL_BIT);
 
-      //NEWCALLBACK: no need to worry about gl states when gling clalback
     }
   else 
     {
@@ -844,7 +842,7 @@ OpenGLSurfaceEvaluator::endmap2f(void)
     bezierPatchMeshListDelete(global_bpm);
     global_bpm = NULL;
 #endif
-
+	glPopAttrib();
   }
 else
   {
@@ -972,7 +970,6 @@ if(output_triangles)
 
   REAL du, dv;
   long i,j;
-  long row;
   if(global_grid_nu == 0 || global_grid_nv == 0)
     return; /*no points need to be output*/
   du = (global_grid_u1 - global_grid_u0) / (REAL)global_grid_nu;

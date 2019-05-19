@@ -35,8 +35,6 @@
 /*
  * glcurveval.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 /* Polynomial Evaluator Interface */
@@ -74,6 +72,7 @@ OpenGLCurveEvaluator::OpenGLCurveEvaluator(void)
   em_normal.uprime = -1.0;
   em_color.uprime = -1.0;
   em_texcoord.uprime = -1.0;
+  output_triangles = 0; // don't output triangles by default
 }
 
 OpenGLCurveEvaluator::~OpenGLCurveEvaluator(void) 
@@ -151,7 +150,7 @@ OpenGLCurveEvaluator::mapgrid1f(long nu, REAL u0, REAL u1)
     {
       global_grid_u0 = u0;
       global_grid_u1 = u1;
-      global_grid_nu = nu;
+      global_grid_nu = (int) nu;
     }
   else
     glMapGrid1f((GLint) nu, (GLfloat) u0, (GLfloat) u1);
@@ -208,8 +207,8 @@ OpenGLCurveEvaluator::map1f(
 {
   if(output_triangles)
     {
-      int dimension;
-      int which;
+      int dimension = 0;
+      int which = 0;
       switch(type){
       case GL_MAP1_VERTEX_3:
 	which = 0;
@@ -248,8 +247,6 @@ OpenGLCurveEvaluator::map1f(
 	which=3;
 	dimension = 4;
 	break;	
-
-      default: assert(0); break; // or which & dimension will be unset
       }
       inMap1f(which, dimension, ulo, uhi, stride, order, pts); 	      
     }       

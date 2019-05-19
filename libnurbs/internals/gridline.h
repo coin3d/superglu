@@ -35,8 +35,6 @@
 /*
  * gridline.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glugridline_h_

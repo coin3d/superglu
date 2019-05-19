@@ -35,8 +35,6 @@
 /*
  * arctess.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluarctess_h_
@@ -46,7 +44,7 @@
 #include "types.h"
 #include "arc.h"
 
-class BezierArc;
+struct BezierArc;
 class Pool;
 class TrimVertexPool;
 

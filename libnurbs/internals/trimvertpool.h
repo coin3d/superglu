@@ -35,8 +35,6 @@
 /*
  * trimvertexpool.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glutrimvertpool_h_

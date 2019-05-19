@@ -35,8 +35,6 @@
 /*
 ** Author: Eric Veach, July 1994.
 **
-** $Date$ $Revision$
-** $Header$
 */
 
 #ifndef __tessmono_h_

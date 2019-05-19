@@ -35,8 +35,6 @@
 /*
  * types.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glutypes_h_

@@ -35,8 +35,6 @@
 /*
  * mapdescv.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"
@@ -93,7 +91,7 @@ Mapdesc::calcPartialVelocity (
     REAL max = 0.0;
     for( j=0; j != ncols-partial; j++ )
 	if( mag[j] > max ) max = mag[j];
-    max = fac * ::sqrtf( (float) max );
+    max = fac * sqrtf( (float) max );
 
     return max;
 }
@@ -127,12 +125,16 @@ Mapdesc::calcPartialVelocity (
     REAL *mp = &mag[0][0];
     const int istride = sizeof( tmp[0]) / sizeof( tmp[0][0][0] );
     const int jstride = sizeof( tmp[0][0]) / sizeof( tmp[0][0][0] );
+    /*
     const int kstride = sizeof( tmp[0][0][0]) / sizeof( tmp[0][0][0] );
+    */
     const int mistride = sizeof( mag[0]) / sizeof( mag[0][0] );
     const int mjstride = sizeof( mag[0][0]) / sizeof( mag[0][0] );
     const int idist = nrows * istride;
     const int jdist = ncols * jstride;
+    /*
     const int kdist = inhcoords * kstride;
+    */
     const int id = idist - spartial * istride;
     const int jd = jdist - tpartial * jstride;
 
@@ -217,8 +219,8 @@ Mapdesc::calcPartialVelocity (
 	    j = ncols-tpartial-1;
 	    if( mag[i][j] > dist[1] ) dist[1] = mag[i][j];
 	}
-	dist[0] = fac * ::sqrtf( dist[0] );
-	dist[1] = fac * ::sqrtf( dist[1] );
+	dist[0] = fac * sqrtf( dist[0] );
+	dist[1] = fac * sqrtf( dist[1] );
     } else if( side == 1 ) {
 	// compute max magnitude of first and last row
 	dist[0] = 0.0;
@@ -230,11 +232,11 @@ Mapdesc::calcPartialVelocity (
 	    i = nrows-spartial-1;
 	    if( mag[i][j] > dist[1] ) dist[1] = mag[i][j];
 	}
-	dist[0] = fac * ::sqrtf( dist[0] );
-	dist[1] = fac * ::sqrtf( dist[1] );
+	dist[0] = fac * sqrtf( dist[0] );
+	dist[1] = fac * sqrtf( dist[1] );
     }
 
-    max = fac * ::sqrtf( (float) max );
+    max = fac * sqrtf( (float) max );
 
     return max;
 }

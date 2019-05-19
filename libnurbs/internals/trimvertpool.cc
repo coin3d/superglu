@@ -35,8 +35,6 @@
 /*
  * trimvertexpool.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"

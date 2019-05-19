@@ -35,8 +35,6 @@
 /*
  * defines.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gludefines_h_

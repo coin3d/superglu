@@ -35,8 +35,6 @@
 /*
  * sorter.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"
@@ -84,7 +82,7 @@ Sorter::qs1( char *a,  char *l )
     unsigned int n;
 
 start:
-    if((n=l-a) <= es)
+    if((n=l-a) <= (unsigned int)es)
 	    return;
     n = es * (n / (2*es));
     hp = lp = a+n;

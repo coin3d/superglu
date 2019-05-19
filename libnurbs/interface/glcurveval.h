@@ -35,8 +35,6 @@
 /*
  * glcurveval.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluglcurveval_h_
@@ -109,8 +107,8 @@ int normal_flag; //whether there is a normal map or not
 int color_flag; //whether there is a color map or not
 int texcoord_flag; //whether there is a texture map or not
 
-int global_grid_u0;
-int global_grid_u1;
+REAL global_grid_u0;
+REAL global_grid_u1;
 int global_grid_nu;
 
 void inMap1f(int which, //0: vert, 1: norm, 2: color, 3: tex

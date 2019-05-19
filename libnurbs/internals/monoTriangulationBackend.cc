@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include "monoTriangulation.h"
@@ -45,7 +43,9 @@
 void reflexChain::outputFan(Real v[2], Backend* backend)
 {
   Int i;
+  /*
   TrimVertex trimVert;
+  */
   backend->bgntfan();
 
   /*
@@ -84,7 +84,7 @@ void reflexChain::processNewVertex(Real v[2], Backend* backend)
 {
   Int i,j,k;
   Int isReflex;
-  TrimVertex trimVert;
+  /*TrimVertex trimVert;*/
   /*if there are at most one vertex in the queue, then simply insert
    */
   if(index_queue <=1){

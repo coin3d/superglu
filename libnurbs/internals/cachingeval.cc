@@ -35,8 +35,6 @@
 /*
  * cachingeval.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "cachingeval.h"

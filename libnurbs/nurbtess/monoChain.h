@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #ifndef _MONO_CHAIN_H

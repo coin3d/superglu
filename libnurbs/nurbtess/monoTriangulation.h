@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #ifndef _MONO_TRIANGULATION_H
@@ -43,10 +41,9 @@
 #include "definitions.h"
 #include "primitiveStream.h"
 #include "directedLine.h"
+#include "arc.h"
 
 class Backend;
-class Arc;
-typedef Arc *Arc_ptr;
 
 class reflexChain{
   Real2 *queue; 

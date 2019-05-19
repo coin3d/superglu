@@ -35,8 +35,6 @@
 /*
  * hull.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluhull_h_
@@ -44,9 +42,10 @@
 
 #include "trimline.h"
 #include "trimregion.h"
+#include "trimvertex.h"
+#include "gridtrimvertex.h"
 
-class GridTrimVertex;
-class Gridline;
+struct Gridline;
 class Uarray;
 
 class Hull : virtual public TrimRegion {

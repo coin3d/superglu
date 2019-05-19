@@ -35,8 +35,6 @@
 /*
  * mystring.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glumystring_h_

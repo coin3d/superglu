@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include "gluos.h"
@@ -158,6 +156,8 @@ primStream::primStream(Int sizeLengths, Int sizeVertices)
   index_vertices = 0;
   size_lengths = sizeLengths;
   size_vertices = sizeVertices; 
+
+  counter = 0; 
 }
 
 primStream::~primStream()

@@ -13,7 +13,6 @@
 /*
  * monotonizer.h
  *
- * $Header$
  */
 
 #ifndef __glumonotonizer_h_

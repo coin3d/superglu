@@ -35,8 +35,6 @@
 /*
  * curve.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glucurve_h_

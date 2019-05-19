@@ -35,14 +35,11 @@
 /*
  * mesher.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"
 #include "myassert.h"
 #include "mystdio.h"
-#include "mesher.h"
 #include "gridvertex.h"
 #include "gridtrimvertex.h"
 #include "jarcloc.h"
@@ -50,6 +47,7 @@
 #include "trimline.h"
 #include "uarray.h"
 #include "backend.h"
+#include "mesher.h"
 
 
 const float Mesher::ZERO = 0.0;
@@ -60,6 +58,9 @@ Mesher::Mesher( Backend& b )
 {
     stacksize = 0;
     vdata = 0;
+    last[0] = 0;
+    last[1] = 0;
+    itop = 0;
     lastedge = 0; //needed to prevent purify UMR 
 }
 
@@ -82,7 +83,7 @@ Mesher::init( unsigned int npts )
 inline void
 Mesher::push( GridTrimVertex *gt )
 {
-    assert( itop+1 != stacksize );
+    assert( itop+1 != (int)stacksize );
     vdata[++itop] = gt;
 }
 

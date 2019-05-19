@@ -35,8 +35,6 @@
 /*
  * gridtrimvertex.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glugridtrimvertex_h_

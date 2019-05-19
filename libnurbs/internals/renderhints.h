@@ -35,8 +35,6 @@
 /*
  * renderhints.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glurenderhints_h_

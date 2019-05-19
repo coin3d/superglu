@@ -35,8 +35,6 @@
 /*
  * nurbstess.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glunurbstess_h_
@@ -50,7 +48,7 @@
 #include "reader.h"
 #include "nurbsconsts.h"
 
-class Knotvector;
+struct Knotvector;
 class Quilt;
 class DisplayList;
 class BasicCurveEvaluator;
@@ -114,7 +112,7 @@ protected:
 private:
 
     void		resetObjects( void );
-    int			do_check_knots( Knotvector *, char * );
+    int			do_check_knots( Knotvector *, const char * );
     void		do_nurbserror( int );
     void		do_bgncurve( O_curve * );
     void		do_endcurve( void );

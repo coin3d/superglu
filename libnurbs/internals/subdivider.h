@@ -35,8 +35,6 @@
 /*
  * subdivider.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glusubdivider_h_
@@ -56,7 +54,7 @@ class Renderhints;
 class Quilt;
 class Patchlist;
 class Curvelist;
-class JumpBuffer;
+struct JumpBuffer;
 
 class Subdivider {
 public:

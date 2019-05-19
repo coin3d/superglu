@@ -35,8 +35,6 @@
 /*
  * patch.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glupatch_h_

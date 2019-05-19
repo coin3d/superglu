@@ -35,8 +35,6 @@
 /*
  * mesher.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glumesher_h_

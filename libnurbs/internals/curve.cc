@@ -35,8 +35,6 @@
 /*
  * curve.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"
@@ -62,12 +60,17 @@ Curve::Curve( Quilt_ptr geo, REAL pta, REAL ptb, Curve *c )
     cullval = mapdesc->isCulling() ? CULL_ACCEPT : CULL_TRIVIAL_ACCEPT;
     order = geo->qspec[0].order;
     stride = MAXCOORDS;
+    for( int i = 0; i < MAXORDER * MAXCOORDS; i++ ) {
+        cpts[i] = 0;
+        spts[i] = 0;
+    }
+    stepsize = 0;
+    minstepsize = 0;
 
     REAL *ps  = geo->cpts; 
     Quiltspec_ptr qs = geo->qspec;
     ps += qs->offset;
     ps += qs->index * qs->order * qs->stride;
-    REAL *pend = ps + qs->order * qs->stride;
 
     if( needsSampling )
 	mapdesc->xformSampling( ps, qs->order, qs->stride, spts, stride );
@@ -170,7 +173,7 @@ Curve::getstepsize( void )
             REAL t = mapdesc->getProperty( N_PIXEL_TOLERANCE );
 	    if( mapdesc->isParametricDistanceSampling() ) {
 		REAL d = mapdesc->calcPartialVelocity( &tmp[0][0], tstride, order, 2, range[2] );
-		stepsize = (d > 0.0) ? ::sqrtf( 8.0 * t / d ) : range[2];
+		stepsize = (d > 0.0) ? sqrtf( 8.0 * t / d ) : range[2];
 		minstepsize = ( mapdesc->maxrate > 0.0 ) ? (range[2] / mapdesc->maxrate) : 0.0;
 	    } else if( mapdesc->isPathLengthSampling() ) {
 		// t is upper bound on path (arc) length

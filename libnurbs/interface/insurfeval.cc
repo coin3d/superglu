@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include "gluos.h"
@@ -403,7 +401,6 @@ void OpenGLSurfaceEvaluator::inEvalMesh2(int lowU, int lowV, int highU, int high
 {
   REAL du, dv;
   int i,j;
-  int row;
   REAL point[4];
   REAL normal[3];
   if(global_grid_nu == 0 || global_grid_nv == 0)
@@ -528,11 +525,11 @@ void OpenGLSurfaceEvaluator::inComputeNormal2(REAL *pu, REAL *pv, REAL *n)
 
   mag = sqrt(n[0]*n[0] + n[1]*n[1] + n[2]*n[2]);
 
-  assert(mag > 0.0); /*better be some threshold*/
-  n[0] /= mag; 
-  n[1] /= mag;
-  n[2] /= mag;
-
+  if (mag > 0.0) {
+     n[0] /= mag; 
+     n[1] /= mag;
+     n[2] /= mag;
+  }
 }
  
 
@@ -874,7 +871,7 @@ void OpenGLSurfaceEvaluator::inDoDomain2WithDerivsBU(int k, REAL u, REAL v,
 						      REAL *baseData,
 						      REAL *retPoint, REAL* retdu, REAL *retdv)
 {
-  int j, row, col;
+  int j, col;
 
   REAL vprime;
 
@@ -909,7 +906,7 @@ void OpenGLSurfaceEvaluator::inDoDomain2WithDerivsBV(int k, REAL u, REAL v,
 						      REAL *baseData,
 						      REAL *retPoint, REAL* retdu, REAL *retdv)
 {
-  int j, row, col;
+  int j, row;
   REAL uprime;
 
 
@@ -1534,8 +1531,8 @@ void OpenGLSurfaceEvaluator::inEvalVStrip(int n_left, REAL u_left, REAL* left_va
     }
   //clean up 
   free(leftXYZ);
-  free(leftXYZ);
-  free(rightNormal);
+  free(rightXYZ);
+  free(leftNormal);
   free(rightNormal);
 }
 
@@ -1828,7 +1825,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2EM(REAL u, REAL v)
 
 void OpenGLSurfaceEvaluator::inBPMEvalEM(bezierPatchMesh* bpm)
 {
-  int i,j,k,l;
+  int i,j,k;
   float u,v;
 
   int ustride;

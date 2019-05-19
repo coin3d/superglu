@@ -35,8 +35,6 @@
 /*
  * pwlarc.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glupwlarc_h_

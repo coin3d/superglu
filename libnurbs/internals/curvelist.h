@@ -35,8 +35,6 @@
 /*
  * curvelist.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glucurvelist_h_

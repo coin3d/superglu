@@ -35,8 +35,6 @@
 /*
  * mystdio.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glumystdio_h_

@@ -35,8 +35,6 @@
 /*
 ** Author: Eric Veach, July 1994.
 **
-** $Date$ $Revision$
-** $Header$
 */
 
 #include "gluos.h"
@@ -54,8 +52,12 @@
 #define GLU_TESS_DEFAULT_TOLERANCE 0.0
 #define GLU_TESS_MESH		100112	/* void (*)(GLUmesh *mesh)	    */
 
+#ifndef TRUE
 #define TRUE 1
+#endif
+#ifndef FALSE
 #define FALSE 0
+#endif
 
 /*ARGSUSED*/ static void GLAPIENTRY noBegin( GLenum type ) {}
 /*ARGSUSED*/ static void GLAPIENTRY noEdgeFlag( GLboolean boundaryEdge ) {}
@@ -169,6 +171,8 @@ static void GotoState( GLUtesselator *tess, enum TessState newState )
 	CALL_ERROR_OR_ERROR_DATA( GLU_TESS_MISSING_BEGIN_CONTOUR );
 	gluTessBeginContour( tess );
 	break;
+      default:
+	 ;
       }
     } else {
       switch( tess->state ) {
@@ -181,6 +185,8 @@ static void GotoState( GLUtesselator *tess, enum TessState newState )
 	/* gluTessEndPolygon( tess ) is too much work! */
 	MakeDormant( tess );
 	break;
+      default:
+	 ;
       }
     }
   }

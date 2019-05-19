@@ -35,8 +35,6 @@
 /*
  * intersect.c++
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #include "glimports.h"
@@ -175,7 +173,7 @@ int
 Subdivider::arc_split( Arc_ptr jarc, int param, REAL value, int dir )
 {
     int		maxvertex = jarc->pwlArc->npts;
-    Arc_ptr	jarc1, jarc2, jarc3;
+    Arc_ptr	jarc1;
     TrimVertex* v = jarc->pwlArc->pts;
 
     int		loc[3];
@@ -258,6 +256,7 @@ Subdivider::arc_split( Arc_ptr jarc, int param, REAL value, int dir )
 #endif //not NOTDEF
 		// JEB: This is the original version:
 #ifdef NOTDEF
+            Arc_ptr    jarc2, jarc3;
 
 	    TrimVertex *newjunk = trimvertexpool.get(3);
 	    v[i].nuid = jarc->nuid;

@@ -1,7 +1,6 @@
 /*
 ** gluos.h - operating system dependencies for GLU
 **
-** $Header$
 */
 
 #ifdef _WIN32

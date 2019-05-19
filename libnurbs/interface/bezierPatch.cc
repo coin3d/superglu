@@ -31,17 +31,15 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include "gluos.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
-#include <superglu.h> /*for drawing bzier patch*/
+#include <superglu.h> /*for drawing bezier patch*/
 #include "bezierPatch.h"
 #include "bezierEval.h"
 
@@ -111,8 +109,11 @@ void bezierPatchDelete(bezierPatch *b)
 void bezierPatchDeleteList(bezierPatch *b)
 {
   bezierPatch *temp;
-  for(temp = b; temp != NULL; temp = temp->next)
+  while (b != NULL) {
+    temp = b;
+    b = b->next;
     bezierPatchDelete(temp);
+  }
 }
 
 bezierPatch* bezierPatchInsert(bezierPatch *list, bezierPatch *b)

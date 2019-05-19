@@ -31,10 +31,8 @@
 ** published by SGI, but has not been independently verified as being
 ** compliant with the OpenGL(R) version 1.2.1 Specification.
 **
-** $Date$ $Revision$
 */
 /*
-** $Header$
 */
 
 #include <stdlib.h>
@@ -209,7 +207,7 @@ void sampleBotRightWithGridLine(Real* botVertex,
     return;
   }
 
-  Int segIndexMono, segIndexPass;
+  Int segIndexMono = 0, segIndexPass;
   findBotRightSegment(rightChain,
 		      rightEnd,
 		      rightCorner,
@@ -295,7 +293,7 @@ void sampleBotLeftWithGridLine(Real* botVertex,
     return;
   }
 
-  Int segIndexPass, segIndexMono;
+  Int segIndexPass, segIndexMono = 0;
   findBotLeftSegment(leftChain, leftEnd, leftCorner, grid->get_u_value(leftU), segIndexMono, segIndexPass);
 
   sampleBotLeftWithGridLinePost(botVertex,
@@ -327,7 +325,7 @@ Int findBotSeparator(vertexArray* leftChain,
     {
       oldLeftI = leftCorner-1;
       oldRightI = rightCorner;
-      leftMax = leftChain->getVertex(leftCorner)[0] - 1.0 ; //initilize to be left of leftCorner
+      leftMax = leftChain->getVertex(leftCorner)[0] - Real(1.0) ; //initilize to be left of leftCorner
       rightMin = rightChain->getVertex(rightCorner)[0]; 
     }
   else //rightlower
@@ -335,7 +333,7 @@ Int findBotSeparator(vertexArray* leftChain,
       oldLeftI = leftCorner;
       oldRightI = rightCorner-1;
       leftMax = leftChain->getVertex(leftCorner)[0];
-      rightMin = rightChain->getVertex(rightCorner)[0] + 1.0;
+      rightMin = rightChain->getVertex(rightCorner)[0] + Real(1.0);
     }
 
   //i: the current working leftChain Index

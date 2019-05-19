@@ -35,8 +35,6 @@
 /*
  * trimvertex.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glutrimvertex_h_

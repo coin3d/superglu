@@ -35,8 +35,6 @@
 /*
  * trimline.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glutrimline_h_

@@ -35,8 +35,6 @@
 /*
  * slicer.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __gluslicer_h_

@@ -35,8 +35,6 @@
 /*
  * mysetjmp.h
  *
- * $Date$ $Revision$
- * $Header$
  */
 
 #ifndef __glumysetjmp_h_
@@ -55,7 +53,7 @@ extern "C" int mysetjmp( JumpBuffer * );
 #define longjmp 	gl_longjmp
 #endif
 
-#if LIBRARYBUILD | GLBUILD
+#if defined(LIBRARYBUILD) || defined(GLBUILD)
 #include <setjmp.h>
 #include <stdlib.h>
 
@@ -84,7 +82,7 @@ mylongjmp( JumpBuffer *j, int code )
 inline int
 mysetjmp( JumpBuffer *j )
 {
-    return ::setjmp( j->buf );
+    return setjmp( j->buf );
 }
 #endif
 
