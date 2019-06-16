@@ -71,7 +71,7 @@ environment:
       CMAKE_ARCHITECTURE: Win32
       CMAKE_CONFIGURATION: Release
       CMAKE_PLATFORM: x86
-      COMPILER_ID: msvc17
+      COMPILER_ID: msvc15
       configuration: Release
       platform: x86
 
@@ -80,7 +80,7 @@ environment:
       CMAKE_ARCHITECTURE: x64
       CMAKE_CONFIGURATION: Release
       CMAKE_PLATFORM: x64
-      COMPILER_ID: msvc17
+      COMPILER_ID: msvc15
       configuration: Release
       platform: x64
 
@@ -89,7 +89,7 @@ environment:
       CMAKE_ARCHITECTURE: Win32
       CMAKE_CONFIGURATION: Release
       CMAKE_PLATFORM: x86
-      COMPILER_ID: msvc19
+      COMPILER_ID: msvc16
       configuration: Release
       platform: x86
 
@@ -98,7 +98,7 @@ environment:
       CMAKE_ARCHITECTURE: x64
       CMAKE_CONFIGURATION: Release
       CMAKE_PLATFORM: x64
-      COMPILER_ID: msvc19
+      COMPILER_ID: msvc16
       configuration: Release
       platform: x64
 
