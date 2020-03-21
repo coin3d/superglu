@@ -1,1 +1,9 @@
-stub
+Some platforms have GLU libraries that don't behave properly in certain
+respects, and some Coin users have particular needs wrt. Coin's use of
+GLU. For these users, we (at Kongsberg Oil & Gas Technologies) have
+created a fork of SGI GLU 1.3 named SuperGLU that we have tweaked in
+certain ways.
+
+This library can be checked out into the Coin source code directory,
+which will be detected at configure-time and linked statically into
+Coin and used instead of the GLU libraries on the host system.
