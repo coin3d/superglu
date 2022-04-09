@@ -1,1 +1,24 @@
-stub
+New in v1.3.1 (2022-04-09):
+* new:
+  - Add LGTM static analysis configuration file
+  - Add Github Actions workflow
+  - Version control system has been changed from Mercurial to Git
+  - Home of Coin3d organization has been changed from https://bitbucket.org/Coin3D
+    to https://github.com/coin3d due to Bitbucket ending Mercurial support
+
+* bugfixes:
+  - Add current images (Ubuntu, MinGW, Visual Studio) to appveyor CI
+  - Add checksum generation to CI script
+  - Fix for CMake 3.19.1 regression
+
+New in v1.3.0 (2019-12-17):
+* new:
+  - Kongsberg Oil & Gas Technologies AS ended Coin3d as a commercial product
+    and re-licensed it under the BSD 3-clause license as a service to the
+    user community.
+  - The build system has been migrated from GNU Autotools to CMake
+  - Support for AppVeyor as continuous integration service provider
+
+* bugfixes:
+  - OpenGLCurveEvaluator was not returning affine coordinates but homogeneous
+    coordinates when setting GLU_NURBS_VERTEX or GLU_NURBS_VERTEX_DATA callbacks
