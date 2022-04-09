@@ -82,16 +82,16 @@ check_include_files("stdlib.h;stdarg.h;string.h;float.h" STDC_HEADERS)
 # Setup targets in subdirectories
 # ############################################################################
 
-add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/superglu.h
-  DEPENDS ${CMAKE_SOURCE_DIR}/specs/enumglu.spec ${CMAKE_SOURCE_DIR}/specs/glu.spec ${CMAKE_SOURCE_DIR}/cfg/genheader.pl
-  COMMAND ${PERL_EXECUTABLE} ${CMAKE_SOURCE_DIR}/cfg/genheader.pl ${CMAKE_SOURCE_DIR}/specs/enumglu.spec ${CMAKE_SOURCE_DIR}/specs/glu.spec > ${CMAKE_BINARY_DIR}/superglu.h
+add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/superglu.h
+  DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/specs/enumglu.spec ${CMAKE_CURRENT_SOURCE_DIR}/specs/glu.spec ${CMAKE_CURRENT_SOURCE_DIR}/cfg/genheader.pl
+  COMMAND ${PERL_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/cfg/genheader.pl ${CMAKE_CURRENT_SOURCE_DIR}/specs/enumglu.spec ${CMAKE_CURRENT_SOURCE_DIR}/specs/glu.spec > ${CMAKE_CURRENT_BINARY_DIR}/superglu.h
 )
 
-include_directories(${CMAKE_BINARY_DIR})
+#include_directories(${CMAKE_CURRENT_BINARY_DIR})
 configure_file(include/config.h.cmake.in config.h)
 
 # Get all compilation units.
-set(SUPERGLU_SOURCE ${CMAKE_BINARY_DIR}/superglu.h CACHE INTERNAL "SUPERGLU_SOURCE")
+set(SUPERGLU_SOURCE ${CMAKE_CURRENT_BINARY_DIR}/superglu.h CACHE INTERNAL "SUPERGLU_SOURCE")
 
 add_subdirectory(libnurbs)
 add_subdirectory(libtess)
@@ -145,11 +145,11 @@ endif()
 
 target_include_directories(GLU
   PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/libnurbs/interface>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/libnurbs/internals>
-    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/libnurbs/nurbtess>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libnurbs/interface>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libnurbs/internals>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libnurbs/nurbtess>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
     ${OPENGL_INCLUDE_DIRS}
 )
@@ -160,7 +160,7 @@ target_link_libraries(GLU PUBLIC ${OPENGL_gl_LIBRARY})
 # Install headers and binaries
 # ############################################################################
 
-install(FILES ${CMAKE_BINARY_DIR}/superglu.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT development)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/superglu.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT development)
 
 if(NOT CMAKE_VERSION VERSION_LESS 3.12)
   install(TARGETS GLU EXPORT ${PROJECT_NAME}
@@ -191,7 +191,7 @@ endif()
 # Install CMake config package files
 # ############################################################################
 
-configure_package_config_file(${PROJECT_NAME}-config.cmake.in ${PROJECT_NAME_LOWER}-config.cmake
+configure_package_config_file(${PROJECT_NAME_LOWER}-config.cmake.in ${PROJECT_NAME_LOWER}-config.cmake
   INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}-${PROJECT_VERSION}
   PATH_VARS CMAKE_INSTALL_LIBDIR
 )
