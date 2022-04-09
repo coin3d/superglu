@@ -1,0 +1,1079 @@
+2019-12-17 22:35:35 +0100  Volker Enderlein  <volkerenderlein@hotmail.com> (2d02722)
+
+	Added tag superglu-1.3.0 for changeset a8b67e789a6a
+
+2019-07-01 19:05:28 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (0912620)
+
+	Setup full build matrix for Debug and Release versions.
+
+M	appveyor.yml
+
+2019-06-20 21:22:47 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (c491295)
+
+	Removed superfluous parameters from AppVeyor build matrix.
+
+M	appveyor.yml
+
+2019-06-17 18:02:13 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (09ed5e4)
+
+	Reenabled all AppVeyor worker images.
+
+M	appveyor.yml
+
+2019-06-17 17:49:29 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (9a4cd51)
+
+	Use different appveyor image.
+
+M	appveyor.yml
+
+2019-06-17 17:15:48 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (aeda04b)
+
+	Use correct cmake path for downloaded version.
+
+M	appveyor.yml
+
+2019-06-16 20:18:56 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (5314654)
+
+	Use correct compiler id.
+
+M	appveyor.yml
+
+2019-06-16 20:10:38 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (9bd0409)
+
+	Download prerequisites after zipping sources.
+
+M	appveyor.yml
+
+2019-06-16 20:03:45 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (5dae440)
+
+	Use suitable CMake for Visual Studio 2019.
+
+M	appveyor.yml
+
+2019-06-16 19:13:35 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (34939bf)
+
+	Removed Visual Studio 9 as of missing MSBuild support from AppVeyor script.
+
+M	appveyor.yml
+
+2019-06-16 19:11:06 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (4f8054b)
+
+	Added Visual Studio 9 and Visual Studio 16.
+
+M	appveyor.yml
+
+2019-05-19 17:34:45 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (f8e973c)
+
+	Close branch curvevalbug
+
+2019-04-24 22:31:21 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (0185196)
+
+	OpenGLCurveEvaluator was not returning affine coordinates but homogeneous coordinates when setting GLU_NURBS_VERTEX or GLU_NURBS_VERTEX_DATA callbacks.
+
+M	libnurbs/interface/incurveeval.cc
+
+2019-04-24 22:26:43 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (066d405)
+
+	Applying bug fixes from Mesa GLU 9.0.0 to superglu. Left Copyright section unchanged.
+
+M	include/gluos.h
+M	libnurbs/interface/bezierEval.cc
+M	libnurbs/interface/bezierEval.h
+M	libnurbs/interface/bezierPatch.cc
+M	libnurbs/interface/bezierPatch.h
+M	libnurbs/interface/bezierPatchMesh.cc
+M	libnurbs/interface/bezierPatchMesh.h
+M	libnurbs/interface/glcurveval.cc
+M	libnurbs/interface/glcurveval.h
+M	libnurbs/interface/glimports.h
+M	libnurbs/interface/glinterface.cc
+M	libnurbs/interface/glrenderer.cc
+M	libnurbs/interface/glrenderer.h
+M	libnurbs/interface/glsurfeval.cc
+M	libnurbs/interface/glsurfeval.h
+M	libnurbs/interface/incurveeval.cc
+M	libnurbs/interface/insurfeval.cc
+M	libnurbs/interface/mystdio.h
+M	libnurbs/interface/mystdlib.h
+M	libnurbs/internals/arc.cc
+M	libnurbs/internals/arc.h
+M	libnurbs/internals/arcsorter.cc
+M	libnurbs/internals/arcsorter.h
+M	libnurbs/internals/arctess.cc
+M	libnurbs/internals/arctess.h
+M	libnurbs/internals/backend.cc
+M	libnurbs/internals/backend.h
+M	libnurbs/internals/basiccrveval.cc
+M	libnurbs/internals/basiccrveval.h
+M	libnurbs/internals/basicsurfeval.cc
+M	libnurbs/internals/basicsurfeval.h
+M	libnurbs/internals/bezierarc.h
+M	libnurbs/internals/bin.cc
+M	libnurbs/internals/bin.h
+M	libnurbs/internals/bufpool.cc
+M	libnurbs/internals/bufpool.h
+M	libnurbs/internals/cachingeval.cc
+M	libnurbs/internals/cachingeval.h
+M	libnurbs/internals/ccw.cc
+M	libnurbs/internals/coveandtiler.cc
+M	libnurbs/internals/coveandtiler.h
+M	libnurbs/internals/curve.cc
+M	libnurbs/internals/curve.h
+M	libnurbs/internals/curvelist.cc
+M	libnurbs/internals/curvelist.h
+M	libnurbs/internals/curvesub.cc
+M	libnurbs/internals/dataTransform.cc
+M	libnurbs/internals/dataTransform.h
+M	libnurbs/internals/defines.h
+M	libnurbs/internals/displaylist.cc
+M	libnurbs/internals/displaylist.h
+M	libnurbs/internals/displaymode.h
+M	libnurbs/internals/flist.cc
+M	libnurbs/internals/flist.h
+M	libnurbs/internals/flistsorter.cc
+M	libnurbs/internals/flistsorter.h
+M	libnurbs/internals/gridline.h
+M	libnurbs/internals/gridtrimvertex.h
+M	libnurbs/internals/gridvertex.h
+M	libnurbs/internals/hull.cc
+M	libnurbs/internals/hull.h
+M	libnurbs/internals/intersect.cc
+M	libnurbs/internals/jarcloc.h
+M	libnurbs/internals/knotvector.cc
+M	libnurbs/internals/knotvector.h
+M	libnurbs/internals/mapdesc.cc
+M	libnurbs/internals/mapdesc.h
+M	libnurbs/internals/mapdescv.cc
+M	libnurbs/internals/maplist.cc
+M	libnurbs/internals/maplist.h
+M	libnurbs/internals/mesher.cc
+M	libnurbs/internals/mesher.h
+M	libnurbs/internals/monoTriangulationBackend.cc
+M	libnurbs/internals/monotonizer.cc
+M	libnurbs/internals/monotonizer.h
+M	libnurbs/internals/myassert.h
+M	libnurbs/internals/mycode.cc
+M	libnurbs/internals/mymath.h
+M	libnurbs/internals/mysetjmp.h
+M	libnurbs/internals/mystring.h
+M	libnurbs/internals/nurbsconsts.h
+M	libnurbs/internals/nurbsinterfac.cc
+M	libnurbs/internals/nurbstess.cc
+M	libnurbs/internals/nurbstess.h
+M	libnurbs/internals/patch.cc
+M	libnurbs/internals/patch.h
+M	libnurbs/internals/patchlist.cc
+M	libnurbs/internals/patchlist.h
+M	libnurbs/internals/pwlarc.h
+M	libnurbs/internals/quilt.cc
+M	libnurbs/internals/quilt.h
+M	libnurbs/internals/reader.cc
+M	libnurbs/internals/reader.h
+M	libnurbs/internals/renderhints.cc
+M	libnurbs/internals/renderhints.h
+M	libnurbs/internals/simplemath.h
+M	libnurbs/internals/slicer.cc
+M	libnurbs/internals/slicer.h
+M	libnurbs/internals/sorter.cc
+M	libnurbs/internals/sorter.h
+M	libnurbs/internals/splitarcs.cc
+M	libnurbs/internals/subdivider.cc
+M	libnurbs/internals/subdivider.h
+M	libnurbs/internals/tobezier.cc
+M	libnurbs/internals/trimline.cc
+M	libnurbs/internals/trimline.h
+M	libnurbs/internals/trimregion.cc
+M	libnurbs/internals/trimregion.h
+M	libnurbs/internals/trimvertex.h
+M	libnurbs/internals/trimvertpool.cc
+M	libnurbs/internals/trimvertpool.h
+M	libnurbs/internals/types.h
+M	libnurbs/internals/uarray.cc
+M	libnurbs/internals/uarray.h
+M	libnurbs/internals/varray.cc
+M	libnurbs/internals/varray.h
+M	libnurbs/nurbtess/definitions.h
+M	libnurbs/nurbtess/directedLine.cc
+M	libnurbs/nurbtess/directedLine.h
+M	libnurbs/nurbtess/glimports.h
+M	libnurbs/nurbtess/gridWrap.cc
+M	libnurbs/nurbtess/gridWrap.h
+M	libnurbs/nurbtess/monoChain.cc
+M	libnurbs/nurbtess/monoChain.h
+M	libnurbs/nurbtess/monoPolyPart.cc
+M	libnurbs/nurbtess/monoPolyPart.h
+M	libnurbs/nurbtess/monoTriangulation.cc
+M	libnurbs/nurbtess/monoTriangulation.h
+M	libnurbs/nurbtess/mystdio.h
+M	libnurbs/nurbtess/mystdlib.h
+M	libnurbs/nurbtess/partitionX.cc
+M	libnurbs/nurbtess/partitionX.h
+M	libnurbs/nurbtess/partitionY.cc
+M	libnurbs/nurbtess/partitionY.h
+M	libnurbs/nurbtess/polyDBG.cc
+M	libnurbs/nurbtess/polyDBG.h
+M	libnurbs/nurbtess/polyUtil.cc
+M	libnurbs/nurbtess/polyUtil.h
+M	libnurbs/nurbtess/primitiveStream.cc
+M	libnurbs/nurbtess/primitiveStream.h
+M	libnurbs/nurbtess/quicksort.cc
+M	libnurbs/nurbtess/quicksort.h
+M	libnurbs/nurbtess/rectBlock.cc
+M	libnurbs/nurbtess/rectBlock.h
+M	libnurbs/nurbtess/sampleComp.cc
+M	libnurbs/nurbtess/sampleComp.h
+M	libnurbs/nurbtess/sampleCompBot.cc
+M	libnurbs/nurbtess/sampleCompBot.h
+M	libnurbs/nurbtess/sampleCompRight.cc
+M	libnurbs/nurbtess/sampleCompRight.h
+M	libnurbs/nurbtess/sampleCompTop.cc
+M	libnurbs/nurbtess/sampleCompTop.h
+M	libnurbs/nurbtess/sampleMonoPoly.cc
+M	libnurbs/nurbtess/sampleMonoPoly.h
+M	libnurbs/nurbtess/sampledLine.cc
+M	libnurbs/nurbtess/sampledLine.h
+M	libnurbs/nurbtess/searchTree.cc
+M	libnurbs/nurbtess/searchTree.h
+M	libnurbs/nurbtess/zlassert.h
+M	libtess/dict-list.h
+M	libtess/dict.c
+M	libtess/dict.h
+M	libtess/geom.c
+M	libtess/geom.h
+M	libtess/memalloc.c
+M	libtess/memalloc.h
+M	libtess/mesh.c
+M	libtess/mesh.h
+M	libtess/normal.c
+M	libtess/normal.h
+M	libtess/priorityq-heap.c
+M	libtess/priorityq-heap.h
+M	libtess/priorityq-sort.h
+M	libtess/priorityq.c
+M	libtess/priorityq.h
+M	libtess/render.c
+M	libtess/render.h
+M	libtess/sweep.c
+M	libtess/sweep.h
+M	libtess/tess.c
+M	libtess/tess.h
+M	libtess/tessmono.c
+M	libtess/tessmono.h
+M	libutil/error.c
+M	libutil/glue.c
+M	libutil/gluint.h
+M	libutil/mipmap.c
+M	libutil/project.c
+M	libutil/quad.c
+M	libutil/registry.c
+
+2019-03-08 22:08:30 +0100  Volker Enderlein  <volkerenderlein@hotmail.com> (c02f8a1)
+
+	Removed superfluous $<INSTALL_PREFIX>. Used PATH_VARS for transferring information to package config file.
+
+M	CMakeLists.txt
+M	superglu-config.cmake.in
+
+2018-12-23 15:50:47 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (da2ae84)
+
+	Close branch addsource-ci
+
+2018-12-23 16:39:04 +0100  Volker Enderlein  <volkerenderlein@hotmail.com> (a40e501)
+
+	Added source package creation to appveyor.
+
+M	appveyor.yml
+
+2018-10-25 22:01:05 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (1ec488d)
+
+	Close branch configpackage
+
+2018-10-25 22:50:23 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (4daf5be)
+
+	Fixed CMake warning about OpenGL.
+
+M	CMakeLists.txt
+
+2018-10-25 22:01:07 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (054f05e)
+
+	Synchronized layout of CMake script with other pckages of Coin3D.
+
+M	CMakeLists.txt
+
+2018-10-25 22:00:33 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (efa1346)
+
+	Updated config package.
+
+M	superglu-config.cmake.in
+
+2018-10-05 23:27:05 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (b7bab3f)
+
+	Close branch appveyor-ci
+
+2018-06-06 22:55:07 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (3da187e)
+
+	Added AppVeyor script
+
+A	appveyor.yml
+
+2018-06-06 22:52:28 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (8ef5033)
+
+	Consequent use of CMake variables througout CMakeLists.txt
+
+M	CMakeLists.txt
+
+2018-06-06 22:50:09 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (a9108ea)
+
+	Added default build type for non multi configuration environments (Visual Studio, Xcode).
+
+M	CMakeLists.txt
+
+2018-06-06 22:46:47 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (70cc93a)
+
+	Reduced warnings
+
+M	cfg/genheader.pl
+
+2018-06-06 22:42:10 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (f900806)
+
+	Corrected superglu.h creation!
+
+M	CMakeLists.txt
+
+2018-06-06 22:38:19 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (3eea4a9)
+
+	Adapting include dirs!
+
+M	CMakeLists.txt
+
+2018-06-06 22:35:46 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (957ee6b)
+
+	Defining _WIN32 is a no go!
+
+M	CMakeLists.txt
+
+2018-06-06 22:33:44 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (b2be153)
+
+	Perl needs to be uppercase in find_package call.
+
+M	CMakeLists.txt
+
+2018-04-30 09:51:20 +0200  Volker Enderlein  <Volker Enderlein@localhost> (80aac8d)
+
+	fixed config file.
+
+M	superglu-config.cmake.in
+
+2018-04-13 00:51:33 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (acc4c93)
+
+	Added CMake files.
+
+A	CMakeLists.txt
+A	include/config.h.cmake.in
+A	libnurbs/CMakeLists.txt
+A	libnurbs/interface/CMakeLists.txt
+A	libnurbs/internals/CMakeLists.txt
+A	libnurbs/nurbtess/CMakeLists.txt
+A	libtess/CMakeLists.txt
+A	libutil/CMakeLists.txt
+A	superglu-config.cmake.in
+
+2008-02-27 16:08:00 +0000  Lars J. Aas  <larsa@sim.no> (7cc7e8f)
+
+	use /usr/bin/env to kickstart interpreter from a path search
+
+M	cfg/doxy4win.pl
+M	cfg/genheader.pl
+
+2008-02-15 10:41:31 +0000  Frode ?ijord  <frodo@sim.no> (b50bfc5)
+
+	bootstrap
+
+M	aclocal.m4
+M	cfg/config.guess
+M	cfg/config.sub
+M	cfg/errors.txt
+M	cfg/wrapmsvc.exe
+M	configure
+
+2008-02-15 10:40:05 +0000  Frode ?ijord  <frodo@sim.no> (d337cf3)
+
+	ignore static/shared configure options on windows
+
+M	configure.ac
+
+2006-10-03 20:12:51 +0000  autosvn  <autosvn@sim.no> (9b416d9)
+
+	Automatic Property adjustment.
+
+M	cfg/ltmain.sh
+
+2006-10-03 20:12:46 +0000  autosvn  <autosvn@sim.no> (836838e)
+
+	Remove now obsolete .cvsignore files.
+
+D	.cvsignore
+D	include/.cvsignore
+D	include/GL/.cvsignore
+D	libnurbs/.cvsignore
+D	libnurbs/interface/.cvsignore
+D	libnurbs/internals/.cvsignore
+D	libnurbs/nurbtess/.cvsignore
+D	libtess/.cvsignore
+D	libutil/.cvsignore
+
+2006-09-26 09:41:07 +0000  Frode ?ijord  <frodo@sim.no> (d940724)
+
+	bootstrap
+
+M	aclocal.m4
+M	cfg/config.guess
+M	cfg/config.sub
+M	cfg/errors.txt
+M	cfg/gendsp.sh.in
+M	cfg/ltmain.sh
+M	cfg/wrapmsvc.exe
+M	configure
+
+2006-02-03 11:08:02 +0000  Morten Eriksen  <mortene@sim.no> (1e63d48)
+
+	Robustness: fixes various problems detected by Valgrind, among other things. Robustness stuff, like e.g. initializing variables, picking up problems with asserts, etc.
+
+M	libnurbs/interface/glcurveval.cc
+M	libnurbs/interface/glcurveval.h
+M	libnurbs/interface/glsurfeval.h
+M	libnurbs/internals/nurbstess.h
+M	libnurbs/nurbtess/monoTriangulation.cc
+M	libnurbs/nurbtess/sampleComp.cc
+M	libnurbs/nurbtess/sampleCompRight.cc
+M	libnurbs/nurbtess/sampleMonoPoly.cc
+
+2005-04-28 14:09:46 +0000  Morten Eriksen  <mortene@sim.no> (6c48ea4)
+
+	Bugfix from SGI Bugzilla (http://oss.sgi.com/bugzilla/show_bug.cgi?id=71), seems to take care of a nasty GL error.
+
+M	libnurbs/internals/slicer.cc
+
+2005-04-28 09:46:41 +0000  Morten Eriksen  <mortene@sim.no> (4739891)
+
+	Less default debug output.
+
+M	libnurbs/internals/ccw.cc
+
+2005-04-19 09:53:52 +0000  Morten Eriksen  <mortene@sim.no> (1073cc4)
+
+	Bootstrap.
+
+M	aclocal.m4
+M	configure
+
+2005-04-19 09:47:05 +0000  Morten Eriksen  <mortene@sim.no> (9c8875c)
+
+	MSVC DLL building not ready for general consumption yet.
+
+M	configure.ac
+
+2005-04-12 12:52:15 +0000  Morten Eriksen  <mortene@sim.no> (3934239)
+
+	Bootstrap.
+
+M	aclocal.m4
+M	cfg/config.guess
+M	cfg/config.sub
+M	cfg/errors.txt
+A	cfg/gendsp.sh.in
+M	cfg/ltmain.sh
+M	cfg/wrapmsvc.exe
+M	configure
+
+2005-04-12 12:52:05 +0000  Morten Eriksen  <mortene@sim.no> (fdfe32f)
+
+	Allow building as DLL under MS Windows.
+
+M	configure.ac
+
+2003-11-19 11:03:24 +0000  Morten Eriksen  <mortene@sim.no> (9f068b3)
+
+	Bugfix: mismatched new[] / delete found by Valgrind.
+
+A	fixed-bugs/20031119--mismatched-delete.diff
+M	libnurbs/internals/trimvertpool.cc
+
+2003-11-19 11:00:38 +0000  Morten Eriksen  <mortene@sim.no> (b232296)
+
+	Start keeping track of our local modifications in an easily accessible manner.
+
+A	fixed-bugs/README.txt
+
+2003-11-19 10:51:11 +0000  Morten Eriksen  <mortene@sim.no> (f929574)
+
+	Report installation type.
+
+M	configure.ac
+
+2003-06-10 12:42:35 +0000  Lars J. Aas  <larsa@sim.no> (dee027f)
+
+	bootstrap so 'make dist' works
+
+M	Makefile.in
+M	aclocal.m4
+M	cfg/config.guess
+M	cfg/config.sub
+M	cfg/depcomp
+M	cfg/errors.txt
+M	cfg/gendsp.sh
+M	cfg/install-sh
+M	cfg/ltmain.sh
+M	cfg/missing
+M	cfg/mkinstalldirs
+M	configure
+M	include/Makefile.in
+M	include/config.h.in
+M	libnurbs/Makefile.in
+M	libnurbs/interface/Makefile.in
+M	libnurbs/internals/Makefile.in
+M	libnurbs/nurbtess/Makefile.in
+M	libtess/Makefile.in
+M	libutil/Makefile.in
+
+2003-04-29 12:59:28 +0000  Morten Eriksen  <mortene@sim.no> (47945db)
+
+	Renamed configure.in to configure.ac.
+
+R100	configure.in	configure.ac
+
+2003-04-29 12:59:08 +0000  Morten Eriksen  <mortene@sim.no> (eaa0705)
+
+	Convert from conf-macros to simacros. Bootstrap.
+
+M	Makefile.am
+M	Makefile.in
+M	aclocal.m4
+M	bootstrap
+M	cfg/config.guess
+M	cfg/config.sub
+M	cfg/depcomp
+A	cfg/doxy4win.pl
+A	cfg/errors.txt
+A	cfg/gendsp.sh
+M	cfg/install-sh
+M	cfg/missing
+M	cfg/mkinstalldirs
+A	cfg/wrapmsvc.exe
+M	configure
+M	libnurbs/interface/Makefile.in
+M	libnurbs/internals/Makefile.in
+M	libnurbs/nurbtess/Makefile.in
+M	libtess/Makefile.in
+M	libutil/Makefile.in
+
+2003-03-09 12:56:07 +0000  Morten Eriksen  <mortene@sim.no> (5a823df)
+
+	Simplifies MSVC++ selection and setup. Also kills a bug where BUILD_WITH_MSVC could end up not being AC_SUBSTed.
+
+M	configure.in
+
+2002-11-07 13:52:29 +0000  Morten Eriksen  <mortene@sim.no> (69903e0)
+
+	Match with correct API interface wrt calling conventions under Win32.
+
+M	libnurbs/interface/glinterface.cc
+
+2002-11-07 13:51:45 +0000  Morten Eriksen  <mortene@sim.no> (fa7f7fa)
+
+	Don't bother with two different calling convention defines, can use APIENTRY instead of CALLBACK.
+
+M	cfg/genheader.pl
+
+2002-11-07 12:45:52 +0000  Morten Eriksen  <mortene@sim.no> (9445157)
+
+	Compilation fixes.
+
+M	libnurbs/interface/glinterface.cc
+
+2002-11-07 11:50:24 +0000  Morten Eriksen  <mortene@sim.no> (b1d76e8)
+
+	Set up library interface with default calling convention for exported API-methods.
+
+M	cfg/genheader.pl
+
+2002-11-07 11:49:50 +0000  Morten Eriksen  <mortene@sim.no> (89fda2b)
+
+	Build library with default calling convention for exported API-methods.
+
+M	include/gluos.h
+
+2002-09-26 09:51:09 +0000  Morten Eriksen  <mortene@sim.no> (e7f0217)
+
+	Bootstrap.
+
+M	aclocal.m4
+M	configure
+
+2002-09-26 09:50:22 +0000  Morten Eriksen  <mortene@sim.no> (9585df9)
+
+	Report CRT configuration at end of configure run.
+
+M	configure.in
+
+2002-09-26 09:41:52 +0000  Morten Eriksen  <mortene@sim.no> (a910129)
+
+	Bootstrap.
+
+M	aclocal.m4
+M	configure
+M	include/config.h.in
+
+2002-09-26 09:41:20 +0000  Morten Eriksen  <mortene@sim.no> (a6c456d)
+
+	Add option to choose MSVC C run-time library.
+
+M	configure.in
+
+2002-05-22 07:41:30 +0000  Morten Eriksen  <mortene@sim.no> (0c75742)
+
+	Update a few macro names.
+
+M	configure.in
+
+2001-12-18 11:41:35 +0000  Morten Eriksen  <mortene@sim.no> (65c57ce)
+
+	Small cleanup of internal namespace; min(), max() and abs() renamed to glu_min(), glu_max() and glu_abs() to avoid namespace clashes. Thanks to Colin Dunlop for notifying us about the problem.
+
+M	libnurbs/internals/arc.cc
+M	libnurbs/internals/arctess.cc
+M	libnurbs/internals/ccw.cc
+M	libnurbs/internals/patch.cc
+M	libnurbs/internals/quilt.cc
+M	libnurbs/internals/reader.cc
+M	libnurbs/internals/simplemath.h
+M	libnurbs/internals/subdivider.cc
+
+2001-11-12 14:27:11 +0000  Lars J. Aas  <larsa@sim.no> (ca608be)
+
+	define NDEBUG always
+
+M	configure
+M	configure.in
+
+2001-10-29 09:35:26 +0000  Lars J. Aas  <larsa@sim.no> (db3b574)
+
+	dist fixes
+
+M	include/Makefile.am
+M	include/Makefile.in
+
+2001-10-26 18:08:53 +0000  Lars J. Aas  <larsa@sim.no> (59c804e)
+
+	distclean superglu.h
+
+M	include/Makefile.am
+M	include/Makefile.in
+
+2001-10-26 17:37:04 +0000  Lars J. Aas  <larsa@sim.no> (f0e4502)
+
+	make distcheck
+
+M	Makefile.am
+M	Makefile.in
+M	aclocal.m4
+M	configure
+M	configure.in
+
+2001-10-26 16:38:13 +0000  Lars J. Aas  <larsa@sim.no> (8472ec2)
+
+	accept any wrapmsvc.exe as an MSVC++ compiler
+
+M	aclocal.m4
+M	configure
+M	configure.in
+
+2001-10-19 10:52:41 +0000  Morten Eriksen  <mortene@sim.no> (8086c90)
+
+	Make sure there will be no clash with the glu.h that might already reside on the system when building the library.
+
+M	Makefile.am
+M	Makefile.in
+M	aclocal.m4
+M	configure
+M	configure.in
+D	include/GL/Makefile.am
+D	include/GL/Makefile.in
+M	include/Makefile.am
+M	include/Makefile.in
+M	libnurbs/Makefile.in
+M	libnurbs/interface/Makefile.in
+M	libnurbs/interface/bezierPatch.cc
+M	libnurbs/interface/glinterface.cc
+M	libnurbs/interface/glrenderer.h
+M	libnurbs/internals/Makefile.in
+M	libnurbs/nurbtess/Makefile.in
+M	libtess/Makefile.in
+M	libtess/mesh.h
+M	libtess/tess.h
+M	libutil/Makefile.in
+M	libutil/error.c
+M	libutil/mipmap.c
+M	libutil/project.c
+M	libutil/quad.c
+M	libutil/registry.c
+
+2001-10-14 20:18:16 +0000  Morten Eriksen  <mortene@sim.no> (14da643)
+
+	Adds rule for constructing a GLU.lst file.
+
+M	Makefile.am
+M	Makefile.in
+
+2001-10-14 18:36:08 +0000  Morten Eriksen  <mortene@sim.no> (6a56ed8)
+
+	Bootstrap with upgraded libtool to version 1.4.2.
+
+M	Makefile.in
+M	aclocal.m4
+M	bootstrap
+M	cfg/config.guess
+M	cfg/config.sub
+D	cfg/ltconfig.diff
+M	cfg/ltmain.sh
+D	cfg/ltmain.sh.diff
+M	cfg/missing
+M	configure
+M	include/GL/Makefile.in
+M	include/Makefile.in
+M	include/config.h.in
+M	libnurbs/Makefile.in
+M	libnurbs/interface/Makefile.in
+M	libnurbs/internals/Makefile.in
+M	libnurbs/nurbtess/Makefile.in
+M	libtess/Makefile.in
+M	libutil/Makefile.in
+
+2001-10-14 18:33:33 +0000  Morten Eriksen  <mortene@sim.no> (3183de5)
+
+	New option "--with-libname-prefix" to specify a prefix string for the name of the installed library file(s).
+
+M	Makefile.am
+M	configure.in
+
+2001-09-19 14:45:57 +0000  Lars J. Aas  <larsa@sim.no> (3a3dc70)
+
+	add ifdef GL_VERSION_1_2 wrappers
+
+M	libutil/mipmap.c
+
+2001-09-19 14:38:29 +0000  Lars J. Aas  <larsa@sim.no> (7e01e0e)
+
+	predeclare GridVertex as struct to resolve for name-mangling problems
+
+M	libnurbs/internals/coveandtiler.h
+
+2001-09-19 14:07:32 +0000  Lars J. Aas  <larsa@sim.no> (aea7102)
+
+	bootstrap
+
+M	configure
+M	include/config.h.in
+
+2001-09-19 14:06:43 +0000  Lars J. Aas  <larsa@sim.no> (4592808)
+
+	reverse wrong fix and try new one
+
+M	configure.in
+M	libutil/mipmap.c
+
+2001-09-19 13:50:53 +0000  Lars J. Aas  <larsa@sim.no> (9991d23)
+
+	bootstrap
+
+M	configure
+M	include/config.h.in
+
+2001-09-19 13:50:05 +0000  Lars J. Aas  <larsa@sim.no> (e7cb182)
+
+	get missing prototype setup
+
+M	cfg/genheader.pl
+M	configure.in
+M	include/gluos.h
+M	libutil/mipmap.c
+
+2001-09-19 12:44:41 +0000  Lars J. Aas  <larsa@sim.no> (e261c11)
+
+	automaked file
+
+M	libtess/Makefile.in
+
+2001-09-19 12:41:54 +0000  Lars J. Aas  <larsa@sim.no> (be5ad00)
+
+	don't compile priorityq-heap.c directly
+
+M	libtess/Makefile.am
+
+2001-09-18 16:19:05 +0000  Lars J. Aas  <larsa@sim.no> (09727bc)
+
+	some windows-dll-related tweaks
+
+M	cfg/genheader.pl
+M	configure
+M	configure.in
+
+2001-09-18 15:57:27 +0000  Lars J. Aas  <larsa@sim.no> (ed95ae9)
+
+	misc fixes
+
+M	configure
+M	configure.in
+M	include/GL/.cvsignore
+M	libnurbs/interface/Makefile.am
+M	libnurbs/interface/Makefile.in
+M	libnurbs/nurbtess/Makefile.am
+M	libnurbs/nurbtess/Makefile.in
+M	libtess/Makefile.am
+M	libtess/Makefile.in
+M	libutil/Makefile.am
+M	libutil/Makefile.in
+
+2001-09-18 15:38:03 +0000  Lars J. Aas  <larsa@sim.no> (95eed96)
+
+	glu.h generation setup
+
+M	Makefile.am
+M	Makefile.in
+M	configure
+M	configure.in
+D	gnumakefiles.tar
+M	include/GL/Makefile.am
+M	include/GL/Makefile.in
+D	include/GL/glu.h
+D	libspec/.cvsignore
+D	libspec/Makefile.am
+D	libspec/Makefile.in
+D	libspec/cutils.ls
+D	libspec/libspec.awk
+D	libspec/libspec.pm
+D	libspec/libspec.sh.in
+D	libspec/libspeccutils.pm
+D	libspec/libspecdefs
+D	libspec/spectypes.pl
+
+2001-09-18 15:32:08 +0000  Lars J. Aas  <larsa@sim.no> (106e88c)
+
+	perl hack to generate GL/glu.h
+
+A	cfg/genheader.pl
+
+2001-09-18 11:34:32 +0000  Lars J. Aas  <larsa@sim.no> (0da2a41)
+
+	Will be dealt with by Automake
+
+D	Distfile
+D	libspec/Distfile
+
+2001-09-18 11:32:34 +0000  Lars J. Aas  <larsa@sim.no> (5ac7df2)
+
+	setup updates
+
+M	.cvsignore
+D	GNUmakefile
+M	Makefile.am
+M	Makefile.in
+M	bootstrap
+M	configure
+M	configure.in
+A	gnumakefiles.tar
+A	include/.cvsignore
+A	include/GL/.cvsignore
+A	libnurbs/.cvsignore
+D	libnurbs/GNUmakefile
+A	libnurbs/interface/.cvsignore
+D	libnurbs/interface/GNUmakefile
+A	libnurbs/internals/.cvsignore
+D	libnurbs/internals/GNUmakefile
+A	libnurbs/nurbtess/.cvsignore
+D	libnurbs/nurbtess/GNUmakefile
+A	libspec/.cvsignore
+D	libspec/GNUmakefile
+A	libspec/Makefile.am
+A	libspec/Makefile.in
+R099	libspec/libspec.sh	libspec/libspec.sh.in
+A	libtess/.cvsignore
+D	libtess/GNUmakefile
+A	libutil/.cvsignore
+D	libutil/GNUmakefile
+
+2001-09-18 10:53:59 +0000  Lars J. Aas  <larsa@sim.no> (0c028a3)
+
+	the SGI libspec utility
+
+A	libspec/Distfile
+A	libspec/GNUmakefile
+A	libspec/cutils.ls
+A	libspec/libspec.awk
+A	libspec/libspec.pm
+A	libspec/libspec.sh
+A	libspec/libspeccutils.pm
+A	libspec/libspecdefs
+A	libspec/spectypes.pl
+
+2001-09-17 17:50:14 +0000  Lars J. Aas  <larsa@sim.no> (efbf477)
+
+	ignore autom4te.cache
+
+A	.cvsignore
+
+2001-09-17 17:48:52 +0000  Lars J. Aas  <larsa@sim.no> (8e9791b)
+
+	misc setup adjustments
+
+A	AUTHORS
+A	COPYING
+A	INSTALL
+M	Makefile.am
+M	Makefile.in
+A	NEWS
+A	README
+A	aclocal.m4
+M	bootstrap
+D	config.h.in
+M	configure
+M	configure.in
+A	include/Makefile.am
+A	include/Makefile.in
+A	include/config.h.in
+A	include/stamp-h.in
+M	libnurbs/Makefile.in
+M	libnurbs/interface/Makefile.am
+M	libnurbs/interface/Makefile.in
+M	libnurbs/internals/Makefile.am
+M	libnurbs/internals/Makefile.in
+M	libnurbs/nurbtess/Makefile.am
+M	libnurbs/nurbtess/Makefile.in
+M	libtess/Makefile.am
+M	libtess/Makefile.in
+M	libutil/Makefile.am
+M	libutil/Makefile.in
+
+2001-09-17 17:48:13 +0000  Lars J. Aas  <larsa@sim.no> (9c591fa)
+
+	temporary pregenerated header
+
+A	include/GL/Makefile.am
+A	include/GL/Makefile.in
+A	include/GL/glu.h
+
+2001-09-05 10:34:25 +0000  Peder Blekken  <pederb@sim.no> (f1cd0d9)
+
+	Spec files
+
+A	specs/enumglu.spec
+A	specs/glu.spec
+
+2001-09-04 20:39:29 +0000  Morten Eriksen  <mortene@sim.no> (ae89b6a)
+
+	Initial "auto-confiscation" (ie converts configure / build process to be based on the Autoconf, Automake and Libtool utilities).
+
+A	Makefile.am
+A	Makefile.in
+A	bootstrap
+A	cfg/config.guess
+A	cfg/config.sub
+A	cfg/depcomp
+A	cfg/install-header
+A	cfg/install-sh
+A	cfg/ltconfig
+A	cfg/ltconfig.diff
+A	cfg/ltmain.sh
+A	cfg/ltmain.sh.diff
+A	cfg/missing
+A	cfg/mkinstalldirs
+A	config.h.in
+A	configure
+A	configure.in
+A	libnurbs/Makefile.am
+A	libnurbs/Makefile.in
+A	libnurbs/interface/Makefile.am
+A	libnurbs/interface/Makefile.in
+A	libnurbs/internals/Makefile.am
+A	libnurbs/internals/Makefile.in
+A	libnurbs/nurbtess/Makefile.am
+A	libnurbs/nurbtess/Makefile.in
+A	libtess/Makefile.am
+A	libtess/Makefile.in
+A	libutil/Makefile.am
+A	libutil/Makefile.in
+
+2001-09-04 20:13:26 +0000  Morten Eriksen  <mortene@sim.no> (2cd08e7)
+
+	Compile fix for MSVC++6: don't use reserved words "near" and "far" as argument / variable names.
+
+M	libutil/project.c
+
+2001-09-04 20:11:50 +0000  Morten Eriksen  <mortene@sim.no> (63be756)
+
+	Include <limits.h> to make sure LONG_MAX is available.
+
+M	libtess/priorityq-heap.c
+
+2001-09-04 20:06:33 +0000  Morten Eriksen  <mortene@sim.no> (dd4ccb7)
+
+	Make it possible to compile with OpenGL API versions <= version 1.1, while still making use of all features of the API if the run-time binding happens vs a newer library version.
+
+M	libutil/error.c
+M	libutil/mipmap.c
+
+2001-09-04 19:31:47 +0000  Morten Eriksen  <mortene@sim.no> (8e1af4b)
+
+	Initial revision
+
+A	Distfile
+A	GNUmakefile
+A	Imakefile
+A	exports.ls
+
+2001-02-01 06:40:51 +0000  Morten Eriksen  <mortene@sim.no> (ee2dcb1)
+
+	Initial revision
+
+A	libutil/mipmap.c
+
+2000-09-27 23:54:19 +0000  Morten Eriksen  <mortene@sim.no> (3b9d76d)
+
+	Initial revision
+
+A	libtess/Imakefile
+A	libutil/Imakefile
+
+2000-09-23 01:38:51 +0000  Morten Eriksen  <mortene@sim.no> (7b5e884)
+
+	Initial revision
+
+A	include/gluos.h
+A	libnurbs/interface/glcurveval.cc
+A	libnurbs/interface/glcurveval.h
+A	libnurbs/interface/glinterface.cc
+A	libnurbs/interface/glrenderer.h
+A	libnurbs/interface/glsurfeval.cc
+A	libnurbs/interface/glsurfeval.h
+A	libtess/tess.c
+A	libtess/tess.h
+A	libutil/error.c
+A	libutil/project.c
+A	libutil/quad.c
+A	libutil/registry.c
+
+2000-07-13 22:54:36 +0000  Morten Eriksen  <mortene@sim.no> (de5d1de)
+
+	Initial revision
+
+A	libutil/glue.c
+A	libutil/gluint.h
+
+2000-04-26 05:53:58 +0000  Morten Eriksen  <mortene@sim.no> (08f0bc7)
+
+	Initial revision
+
+A	libnurbs/internals/GNUmakefile
+A	libnurbs/internals/monotonizer.h
+A	libtess/README
+A	libtess/alg-outline
