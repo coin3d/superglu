@@ -35,7 +35,7 @@
 /*
 */
 
-/*we do not use the constans GL_... so that this file is independent of 
+/*we do not use the constants GL_... so that this file is independent of 
  *<GL/gl.h>
  */
 
@@ -48,7 +48,7 @@ enum {PRIMITIVE_STREAM_FAN, PRIMITIVE_STREAM_STRIP};
 
 class primStream {
   Int *lengths; /*length[i]=number of vertices of ith primitive*/
-  Int *types; /*each primive has a type: FAN or STREAM*/
+  Int *types; /*each primitive has a type: FAN or STREAM*/
   Real *vertices; /*the size >= 2 * num_vertices, each vertex (u,v)*/
 
   /*the following size information are used for dynamic arrays*/
@@ -81,7 +81,7 @@ public:
     }
   Real* get_vertices() {return vertices;}
 
-  /*the begining of inserting a new primitive. 
+  /*the beginning of inserting a new primitive. 
    *reset counter to be 0.
    */
   void begin();

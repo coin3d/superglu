@@ -263,7 +263,7 @@ void OpenGLSurfaceEvaluator::inBPMEval(bezierPatchMesh* bpm)
 	  bpm->bpatch->vorder,
 	  bpm->bpatch->ctlpoints);
   
-  bpm->vertex_array = (float*) malloc(sizeof(float)* (bpm->index_UVarray/2) * 3+1); /*in case the origional dimenion is 4, then we need 4 space to pass to evaluator.*/
+  bpm->vertex_array = (float*) malloc(sizeof(float)* (bpm->index_UVarray/2) * 3+1); /*in case the original dimension is 4, then we need 4 space to pass to evaluator.*/
   assert(bpm->vertex_array);
   bpm->normal_array = (float*) malloc(sizeof(float)* (bpm->index_UVarray/2) * 3);
   assert(bpm->normal_array);
@@ -382,7 +382,7 @@ void OpenGLSurfaceEvaluator::inEvalCoord2f(REAL u, REAL v)
 
 
 
-/*define a grid. store the values into the global variabls:
+/*define a grid. store the values into the global variables:
  * global_grid_*
  *These values will be used later by evaluating functions
  */
@@ -474,7 +474,7 @@ void OpenGLSurfaceEvaluator::inMap2f(int k,
   global_ev_vstride = vstride;
   global_ev_vorder = vorder;
 
-  /*copy the contrl points from ctlPoints to global_ev_ctlPoints*/
+  /*copy the control points from ctlPoints to global_ev_ctlPoints*/
   for (i=0; i<uorder; i++) {
     for (j=0; j<vorder; j++) {
       for (x=0; x<k; x++) {
@@ -490,12 +490,12 @@ void OpenGLSurfaceEvaluator::inMap2f(int k,
 
 
 /*
- *given a point p with homegeneous coordiante (x,y,z,w), 
+ *given a point p with homogeneous coordinate (x,y,z,w), 
  *let pu(x,y,z,w) be its partial derivative vector with
  *respect to u
- *and pv(x,y,z,w) be its partial derivative vector with repect to v.
+ *and pv(x,y,z,w) be its partial derivative vector with respect to v.
  *This function returns the partial derivative vectors of the
- *inhomegensous coordinates, i.e., 
+ *inhomogeneous coordinates, i.e., 
  * (x/w, y/w, z/w) with respect to u and v.
  */
 void OpenGLSurfaceEvaluator::inComputeFirstPartials(REAL *p, REAL *pu, REAL *pv)
@@ -547,7 +547,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2(REAL u, REAL v,
 
  
   assert(global_ev_k>=3 && global_ev_k <= 4);
-  /*compute homegeneous point and partial derivatives*/
+  /*compute homogeneous point and partial derivatives*/
   inDoDomain2WithDerivs(global_ev_k, u, v, global_ev_u1, global_ev_u2, global_ev_uorder, global_ev_v1, global_ev_v2, global_ev_vorder, global_ev_ctlPoints, retPoint, du, dv);
 
 #ifdef AVOID_ZERO_NORMAL
@@ -589,7 +589,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2(REAL u, REAL v,
   case 4:
     inComputeFirstPartials(retPoint, du, dv);
     inComputeNormal2(du, dv, retNormal);
-    /*transform the homegeneous coordinate of retPoint into inhomogenous one*/
+    /*transform the homogeneous coordinate of retPoint into inhomogeneous one*/
     retPoint[0] /= retPoint[3];
     retPoint[1] /= retPoint[3];
     retPoint[2] /= retPoint[3];
@@ -627,7 +627,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2NOGE_BU(REAL u, REAL v,
 
  
   assert(global_ev_k>=3 && global_ev_k <= 4);
-  /*compute homegeneous point and partial derivatives*/
+  /*compute homogeneous point and partial derivatives*/
 //   inPreEvaluateBU(global_ev_k, global_ev_uorder, global_ev_vorder, (u-global_ev_u1)/(global_ev_u2-global_ev_u1), global_ev_ctlPoints);
   inDoDomain2WithDerivsBU(global_ev_k, u, v, global_ev_u1, global_ev_u2, global_ev_uorder, global_ev_v1, global_ev_v2, global_ev_vorder, global_ev_ctlPoints, retPoint, du, dv);
 
@@ -669,7 +669,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2NOGE_BU(REAL u, REAL v,
   case 4:
     inComputeFirstPartials(retPoint, du, dv);
     inComputeNormal2(du, dv, retNormal);
-    /*transform the homegeneous coordinate of retPoint into inhomogenous one*/
+    /*transform the homogeneous coordinate of retPoint into inhomogeneous one*/
     retPoint[0] /= retPoint[3];
     retPoint[1] /= retPoint[3];
     retPoint[2] /= retPoint[3];
@@ -690,7 +690,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2NOGE_BV(REAL u, REAL v,
 
  
   assert(global_ev_k>=3 && global_ev_k <= 4);
-  /*compute homegeneous point and partial derivatives*/
+  /*compute homogeneous point and partial derivatives*/
 //   inPreEvaluateBV(global_ev_k, global_ev_uorder, global_ev_vorder, (v-global_ev_v1)/(global_ev_v2-global_ev_v1), global_ev_ctlPoints);
 
   inDoDomain2WithDerivsBV(global_ev_k, u, v, global_ev_u1, global_ev_u2, global_ev_uorder, global_ev_v1, global_ev_v2, global_ev_vorder, global_ev_ctlPoints, retPoint, du, dv);
@@ -733,7 +733,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2NOGE_BV(REAL u, REAL v,
   case 4:
     inComputeFirstPartials(retPoint, du, dv);
     inComputeNormal2(du, dv, retNormal);
-    /*transform the homegeneous coordinate of retPoint into inhomogenous one*/
+    /*transform the homogeneous coordinate of retPoint into inhomogeneous one*/
     retPoint[0] /= retPoint[3];
     retPoint[1] /= retPoint[3];
     retPoint[2] /= retPoint[3];
@@ -755,7 +755,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2NOGE(REAL u, REAL v,
 
  
   assert(global_ev_k>=3 && global_ev_k <= 4);
-  /*compute homegeneous point and partial derivatives*/
+  /*compute homogeneous point and partial derivatives*/
   inDoDomain2WithDerivs(global_ev_k, u, v, global_ev_u1, global_ev_u2, global_ev_uorder, global_ev_v1, global_ev_v2, global_ev_vorder, global_ev_ctlPoints, retPoint, du, dv);
 
 
@@ -796,7 +796,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2NOGE(REAL u, REAL v,
   case 4:
     inComputeFirstPartials(retPoint, du, dv);
     inComputeNormal2(du, dv, retNormal);
-    /*transform the homegeneous coordinate of retPoint into inhomogenous one*/
+    /*transform the homogeneous coordinate of retPoint into inhomogeneous one*/
     retPoint[0] /= retPoint[3];
     retPoint[1] /= retPoint[3];
     retPoint[2] /= retPoint[3];
@@ -938,10 +938,10 @@ void OpenGLSurfaceEvaluator::inDoDomain2WithDerivsBV(int k, REAL u, REAL v,
  *given a Bezier surface, and parameter (u,v), compute the point in the object space,
  *and the normal
  *k: the dimension of the object space: usually 2,3,or 4.
- *u,v: the paramter pair.
+ *u,v: the parameter pair.
  *u1,u2,uorder: the Bezier polynomial of u coord is defined on [u1,u2] with order uorder.
  *v1,v2,vorder: the Bezier polynomial of v coord is defined on [v1,v2] with order vorder.
- *baseData: contrl points. arranged as: (u,v,k).
+ *baseData: control points. arranged as: (u,v,k).
  *retPoint:  the computed point (one point) with dimension k.
  *retdu: the computed partial derivative with respect to u.
  *retdv: the computed partial derivative with respect to v.
@@ -1571,7 +1571,7 @@ void OpenGLSurfaceEvaluator::inMap2fEM(int which, int k,
 
   REAL *data = temp_em->ctlPoints;
   
-  temp_em->uprime = -1;//initilized
+  temp_em->uprime = -1;//initialized
   temp_em->vprime = -1;
 
   temp_em->k = k;
@@ -1584,7 +1584,7 @@ void OpenGLSurfaceEvaluator::inMap2fEM(int which, int k,
   temp_em->vstride = vstride;
   temp_em->vorder = vorder;
 
-  /*copy the contrl points from ctlPoints to global_ev_ctlPoints*/
+  /*copy the control points from ctlPoints to global_ev_ctlPoints*/
   for (i=0; i<uorder; i++) {
     for (j=0; j<vorder; j++) {
       for (x=0; x<k; x++) {
@@ -1741,7 +1741,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2EM(REAL u, REAL v)
       REAL du[4];
       REAL dv[4];
       
-      /*compute homegeneous point and partial derivatives*/
+      /*compute homogeneous point and partial derivatives*/
       inDoDomain2WithDerivsEM(&em_vertex, u,v,temp_vertex,du,dv);
 
       if(em_vertex.k ==4)
@@ -1792,7 +1792,7 @@ void OpenGLSurfaceEvaluator::inDoEvalCoord2EM(REAL u, REAL v)
 //	inComputeFirstPartials(temp_vertex, du, dv);
 	inComputeNormal2(du, dv, temp_normal);
 
-	/*transform the homegeneous coordinate of retPoint into inhomogenous one*/
+	/*transform the homogeneous coordinate of retPoint into inhomogeneous one*/
 	temp_vertex[0] /= temp_vertex[3];
 	temp_vertex[1] /= temp_vertex[3];
 	temp_vertex[2] /= temp_vertex[3];

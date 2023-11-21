@@ -44,7 +44,7 @@
 class rectBlock{
   Int upGridLineIndex;
   Int lowGridLineIndex;
-  Int* leftIndices; //up to bottome
+  Int* leftIndices; //up to bottom
   Int* rightIndices; //up to bottom
 public:
   //the arrays are copies.
@@ -69,11 +69,11 @@ class rectBlockArray{
   Int size;
 public:
   rectBlockArray(Int s);
-  ~rectBlockArray();//delete avarything including the blocks
+  ~rectBlockArray();//delete everything including the blocks
   
   Int get_n_elements() {return n_elements;}
   rectBlock* get_element(Int i) {return array[i];}
-  void insert(rectBlock* newBlock); //only take the pointer, not ther cotent
+  void insert(rectBlock* newBlock); //only take the pointer, not their content
 
   Int num_quads();
 

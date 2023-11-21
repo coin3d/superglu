@@ -8327,7 +8327,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
       solaris2.[0-5] | solaris2.[0-5].*) ;;
       *)
  	# The compiler driver will combine linker options so we
- 	# cannot just pass the convience library names through
+ 	# cannot just pass the convenience library names through
  	# without $wl, iff we do not link with $LD.
  	# Luckily, gcc supports the same syntax we need for Sun Studio.
  	# Supported since Solaris 2.6 (maybe 2.5.1?)
@@ -9117,7 +9117,7 @@ if test -n "$hardcode_libdir_flag_spec" || \
    test -n "$runpath_var" || \
    test "X$hardcode_automatic" = "Xyes" ; then
 
-  # We can hardcode non-existant directories.
+  # We can hardcode non-existent directories.
   if test "$hardcode_direct" != no &&
      # If the only mechanism to avoid hardcoding is shlibpath_var, we
      # have to relink, otherwise we might link with an installed library
@@ -11648,10 +11648,10 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
 	  *)
 	    # The C++ compiler is used as linker so we must use $wl
 	    # flag to pass the commands to the underlying system
-	    # linker. We must also pass each convience library through
+	    # linker. We must also pass each convenience library through
 	    # to the system linker between allextract/defaultextract.
 	    # The C++ compiler will combine linker options so we
-	    # cannot just pass the convience library names through
+	    # cannot just pass the convenience library names through
 	    # without $wl.
 	    # Supported since Solaris 2.6 (maybe 2.5.1?)
 	    whole_archive_flag_spec_CXX='${wl}-z ${wl}allextract`for conv in $convenience\"\"; do test -n \"$conv\" && new_convenience=\"$new_convenience,$conv\"; done; $echo \"$new_convenience\"` ${wl}-z ${wl}defaultextract'
@@ -13073,7 +13073,7 @@ if test -n "$hardcode_libdir_flag_spec_CXX" || \
    test -n "$runpath_var_CXX" || \
    test "X$hardcode_automatic_CXX" = "Xyes" ; then
 
-  # We can hardcode non-existant directories.
+  # We can hardcode non-existent directories.
   if test "$hardcode_direct_CXX" != no &&
      # If the only mechanism to avoid hardcoding is shlibpath_var, we
      # have to relink, otherwise we might link with an installed library
@@ -14870,7 +14870,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
       solaris2.[0-5] | solaris2.[0-5].*) ;;
       *)
  	# The compiler driver will combine linker options so we
- 	# cannot just pass the convience library names through
+ 	# cannot just pass the convenience library names through
  	# without $wl, iff we do not link with $LD.
  	# Luckily, gcc supports the same syntax we need for Sun Studio.
  	# Supported since Solaris 2.6 (maybe 2.5.1?)
@@ -15660,7 +15660,7 @@ if test -n "$hardcode_libdir_flag_spec_F77" || \
    test -n "$runpath_var_F77" || \
    test "X$hardcode_automatic_F77" = "Xyes" ; then
 
-  # We can hardcode non-existant directories.
+  # We can hardcode non-existent directories.
   if test "$hardcode_direct_F77" != no &&
      # If the only mechanism to avoid hardcoding is shlibpath_var, we
      # have to relink, otherwise we might link with an installed library
@@ -17465,7 +17465,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
       solaris2.[0-5] | solaris2.[0-5].*) ;;
       *)
  	# The compiler driver will combine linker options so we
- 	# cannot just pass the convience library names through
+ 	# cannot just pass the convenience library names through
  	# without $wl, iff we do not link with $LD.
  	# Luckily, gcc supports the same syntax we need for Sun Studio.
  	# Supported since Solaris 2.6 (maybe 2.5.1?)
@@ -18255,7 +18255,7 @@ if test -n "$hardcode_libdir_flag_spec_GCJ" || \
    test -n "$runpath_var_GCJ" || \
    test "X$hardcode_automatic_GCJ" = "Xyes" ; then
 
-  # We can hardcode non-existant directories.
+  # We can hardcode non-existent directories.
   if test "$hardcode_direct_GCJ" != no &&
      # If the only mechanism to avoid hardcoding is shlibpath_var, we
      # have to relink, otherwise we might link with an installed library

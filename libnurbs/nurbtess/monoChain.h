@@ -50,7 +50,7 @@ class monoChain{
   monoChain* prev;
   monoChain* nextPolygon; //a list of polygons
   
-  //cached informatin
+  //cached information
   //bounding box
   Real minX, maxX, minY, maxY;
   Int isIncrease;

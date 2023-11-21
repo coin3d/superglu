@@ -271,7 +271,7 @@ ArcTessellator::pwl( Arc *arc, REAL s1, REAL s2, REAL t1, REAL t2, REAL rate )
 
 
 /*-----------------------------------------------------------------------------
- * tessellateLinear - constuct a linear pwl arc and attach it to an Arc
+ * tessellateLinear - construct a linear pwl arc and attach it to an Arc
  *-----------------------------------------------------------------------------
  */
 
@@ -316,7 +316,7 @@ ArcTessellator::tessellateLinear( Arc *arc, REAL geo_stepsize, REAL arc_stepsize
 }
 
 /*-----------------------------------------------------------------------------
- * tessellateNonlinear - constuct a nonlinear pwl arc and attach it to an Arc
+ * tessellateNonlinear - construct a nonlinear pwl arc and attach it to an Arc
  *-----------------------------------------------------------------------------
  */
 
@@ -580,9 +580,9 @@ const REAL ArcTessellator::gl_Bernstein[][MAXORDER][MAXORDER] = {
  }};
 
 
-/*-----------------------------------------------------------------------------
- * trim_power_coeffs - compute power basis coefficients from bezier coeffients
- *-----------------------------------------------------------------------------
+/*------------------------------------------------------------------------------
+ * trim_power_coeffs - compute power basis coefficients from bezier coefficients
+ *------------------------------------------------------------------------------
  */
 void
 ArcTessellator::trim_power_coeffs( BezierArc *bez_arc, REAL *p, int coord )

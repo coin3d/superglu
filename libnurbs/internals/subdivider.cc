@@ -224,7 +224,7 @@ Subdivider::drawSurfaces( long nuid )
     qlist->getRange( from, to, spbrkpts, tpbrkpts );
 #ifdef OPTIMIZE_UNTRIMED_CASE
     //perform optimization only when the samplng method is 
-    //DOMAIN_DISTANCE and the display methdo is either 
+    //DOMAIN_DISTANCE and the display method is either 
     //fill or outline_polygon.
     int optimize = (is_domain_distance_sampling && (renderhints.display_method != N_OUTLINE_PATCH));
 #endif
@@ -673,7 +673,7 @@ Subdivider::findIrregularS( Bin& bin )
 	   (b[1]>=a[1] && b[1] >= c[1]))
 	  {
 	    //each arc (jarc, jarc->prev, jarc->next) is a 
-	    //monotone arc consisting of multiple line segements.
+	    //monotone arc consisting of multiple line segments.
 	    //it may happen that jarc->prev and jarc->next are the same,
 	    //that is, jarc->prev and jarc form a closed loop.
 	    //In such case, a and c will be the same.

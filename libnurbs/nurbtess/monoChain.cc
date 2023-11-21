@@ -118,7 +118,7 @@ monoChain::monoChain(directedLine* cHead, directedLine* cTail)
   else
     isIncrease = 0;
   
-  //initilize currrent, this is used for accelerating search
+  //initialize current, this is used for accelerating search
   if(isIncrease)
     current = chainHead;
   else
@@ -444,7 +444,7 @@ void monoChain::printAllLoops()
     temp->printChainLoop();
 }
 
-//return 1 if error occures
+//return 1 if error occurs
 Int MC_sweepY(Int nVertices, monoChain** sortedVertices, sweepRange** ret_ranges)
 {
   Int i;
@@ -715,7 +715,7 @@ directedLine* MC_partitionY(directedLine *polygons, sampledLine **retSampledLine
       directedLine* ret_p1;
       directedLine* ret_p2;
       
-      /*we ahve to determine whether v1 and v2 belong to the same polygon before
+      /*we have to determine whether v1 and v2 belong to the same polygon before
        *their structure are modified by connectDiagonal().
        */
 /*
@@ -762,7 +762,7 @@ ret_p2->rootLinkSet(root1);
        /*now that we have connected the diagonal v1 and v2, 
         *we have to check those unprocessed diagonals which 
         *have v1 or v2 as an end point. Notice that the head of v1
-        *has the same coodinates as the head of v2->prev, and the head of
+        *has the same coordinates as the head of v2->prev, and the head of
         *v2 has the same coordinate as the head of v1->prev. 
         *Suppose these is a diagonal (v1, x). If (v1,x) is still a valid
         *diagonal, then x should be on the left hand side of the directed line:        *v1->prev->head -- v1->head -- v1->tail. Otherwise, (v1,x) should be  
@@ -851,7 +851,7 @@ ret_p2->rootLinkSet(root1);
 	directedLine* ret_p1;
 	directedLine* ret_p2;
 
-	/*we ahve to determine whether v1 and v2 belong to the same polygon before
+	/*we have to determine whether v1 and v2 belong to the same polygon before
 	 *their structure are modified by connectDiagonal().
 	 */
 	directedLine *root1 = v1->findRoot();

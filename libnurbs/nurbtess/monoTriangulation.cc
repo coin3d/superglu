@@ -93,7 +93,7 @@ void monoTriangulationOpt(directedLine* poly, primStream* pStream)
     }
   else
     {
-      //we need a general partitionX funtion (supposed to be in partitionX.C,
+      //we need a general partitionX function (supposed to be in partitionX.C,
       //not implemented yet. XXX
       monoTriangulationFun(poly, compV2InY, pStream);    
     }
@@ -175,7 +175,7 @@ void monoTriangulationRecGenTBOpt(Real* topVertex, Real* botVertex,
 
 /*n_left>=1
  *n_right>=1
- *the strip is going top to bottom. compared to the funtion
+ *the strip is going top to bottom. compared to the function
  * triangulateXYmono()
  */
 void triangulateXYMonoTB(Int n_left, Real** leftVerts,
@@ -270,7 +270,7 @@ void triangulateXYMonoTB(Int n_left, Real** leftVerts,
 	  else /*leftVerts[i][1] < rightVerts[j][1]*/
 	    {
 	      pStream->begin();
-	      pStream->insert(leftVerts[i]);/*the origion of this fan*/
+	      pStream->insert(leftVerts[i]);/*the origin of this fan*/
 
 	      /*find the last k>=j such that
 	       *rightverts[k][1] > leftverts[i][1]*/
@@ -426,7 +426,7 @@ void  monoTriangulationRecGenOpt(Real* topVertex, Real* botVertex,
       }
     else
       {
-	//we need a general partitionX funtion (supposed to be in partitionX.C,
+	//we need a general partitionX function (supposed to be in partitionX.C,
 	//not implemented yet. XXX
 	//monoTriangulationFun(poly, compV2InY, pStream);    
 	
@@ -1023,7 +1023,7 @@ void monoTriangulationRec(Real* topVertex, Real* botVertex,
 
 /* the name here assumes that the polygon is Y-monotone, but 
  *this function also works for X-monotone polygons.
- * a monotne polygon consists of two extrem verteices: topVertex and botVertex, and
+ * a monotone polygon consists of two extreme vertices: topVertex and botVertex, and
  *two monotone chains: inc_chain, and dec_chain. The edges of the increasing chain (inc_chain)
  *is ordered by following pointer: next, while  the edges of the decreasing chain (dec_chain)
  *is ordered by following pointer: prev
@@ -1398,7 +1398,7 @@ static Real area(Real A[2], Real B[2], Real C[2])
 
 /*the chain is reflex, and the vertex v is
  *on the other side of the chain, so that
- *we can outout the fan with v as the
+ *we can output the fan with v as the
  *the center
  */
 void reflexChain::outputFan(Real v[2], primStream* pStream)

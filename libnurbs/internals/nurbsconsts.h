@@ -88,7 +88,7 @@
 #define 	N_NOMSG			0.0
 #define 	N_MSG			1.0
 
-/* GL 4.0 propeties not defined above */
+/* GL 4.0 properties not defined above */
 #ifndef N_PIXEL_TOLERANCE
 #define N_PIXEL_TOLERANCE	N_SAMPLING_TOLERANCE
 #define N_ERROR_TOLERANCE	20

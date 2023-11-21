@@ -786,7 +786,7 @@ OpenGLSurfaceEvaluator::bgnmap2f(long)
     {
       glPushAttrib((GLbitfield) GL_EVAL_BIT);
       
-      /*to avoid side effect, we restor the opengl state for GL_POLYGON_MODE
+      /*to avoid side effect, we restore the opengl state for GL_POLYGON_MODE
        */	
       glGetIntegerv(GL_POLYGON_MODE, gl_polygon_mode);
     }
@@ -865,7 +865,7 @@ glPopAttrib();
 }
 
 /*-------------------------------------------------------------------------
- * map2f - pass a desription of a surface map
+ * map2f - pass a description of a surface map
  *-------------------------------------------------------------------------
  */
 void

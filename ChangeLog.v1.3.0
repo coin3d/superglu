@@ -16,7 +16,7 @@ M	appveyor.yml
 
 2019-06-17 18:02:13 +0000  Volker Enderlein  <volkerenderlein@hotmail.com> (09ed5e4)
 
-	Reenabled all AppVeyor worker images.
+	Re-enabled all AppVeyor worker images.
 
 M	appveyor.yml
 
@@ -318,7 +318,7 @@ A	appveyor.yml
 
 2018-06-06 22:52:28 +0200  Volker Enderlein  <volkerenderlein@hotmail.com> (8ef5033)
 
-	Consequent use of CMake variables througout CMakeLists.txt
+	Consequent use of CMake variables throughout CMakeLists.txt
 
 M	CMakeLists.txt
 

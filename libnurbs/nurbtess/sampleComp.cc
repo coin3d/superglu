@@ -167,7 +167,7 @@ void sampleCompLeft(Real* topVertex, Real* botVertex,
 					   leftStartIndex,
 					   leftEndIndex);
 
-  midIndex2 = -1; /*initilization*/
+  midIndex2 = -1; /*initialization*/
   if(midIndex1<= leftEndIndex && gridIndex1<gridIndex2)
     if(leftChain->getVertex(midIndex1)[1] >= leftGridChain->get_v_value(gridIndex2))
       {
@@ -182,7 +182,7 @@ void sampleCompLeft(Real* topVertex, Real* botVertex,
       }
 
 
-  /*to interprete the corner information*/
+  /*to interpret the corner information*/
   Real* cornerTop;
   Real* cornerBot;
   Int cornerLeftStart;
@@ -347,7 +347,7 @@ void sampleLeftSingleTrimEdgeRegionGen(Real topVert[2], Real botVert[2],
 	    pStream->insert(gridChain->getGrid()->get_u_value(j), gridChain->get_v_value(i-1));
 	  pStream->end(PRIMITIVE_STREAM_FAN);
 	}
-      /*otherwisem, the two are equal, so there is no fan to outout*/	  
+      /*otherwise, the two are equal, so there is no fan to output*/	  
     }
 
   /*then append all the vertices on the down section of the right chain*/

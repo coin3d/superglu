@@ -116,7 +116,7 @@ struct Splinespec {		/* a non-uniform tensor element */
 void
 Quilt::toBezier( 
     Knotvector& knotvector,	/* a knot vector */
-    INREAL *ctlpts,		/* input contol points */
+    INREAL *ctlpts,		/* input control points */
     long ncoords )		/* number of coordinates per control point */
 {
     Splinespec spline( 1 );
@@ -132,7 +132,7 @@ void
 Quilt::toBezier( 
     Knotvector& sknotvector,	/* a knot vector */
     Knotvector& tknotvector,	/* a knot vector */
-    INREAL *ctlpts,		/* input contol points */
+    INREAL *ctlpts,		/* input control points */
     long ncoords )		/* number of coordinates per control point */
 {
     Splinespec spline( 2 );
@@ -308,7 +308,7 @@ Splinespec::transform( void )
 
 
 /*-----------------------------------------------------------------------------
- * Knotspec::Knotspec -  constuct a knot spec 
+ * Knotspec::Knotspec -  construct a knot spec 
  *-----------------------------------------------------------------------------
  */
 
@@ -601,7 +601,7 @@ Knotspec::transform( REAL *p )
 }
 
 /*-----------------------------------------------------------------------------
- * Knotspec::~Knotspec - free space alocated for knotspec
+ * Knotspec::~Knotspec - free space allocated for knotspec
  *-----------------------------------------------------------------------------
  */
 

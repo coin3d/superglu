@@ -56,7 +56,7 @@ Int primStream::num_triangles()
 
 	  
 
-/*the begining of inserting a new primitive. 
+/*the beginning of inserting a new primitive. 
  *reset counter to be 0.
  */
 void primStream::begin()

@@ -268,7 +268,7 @@ gluNurbsProperty(GLUnurbs *r, GLenum property, GLfloat value)
 	    nurbsValue = N_PARAMETRICDISTANCE;
 	} else if (value == GLU_DOMAIN_DISTANCE) {
 	    nurbsValue = N_DOMAINDISTANCE;
-            r->set_is_domain_distance_sampling(1); //optimzing untrimmed case
+            r->set_is_domain_distance_sampling(1); //optimizing untrimmed case
 
 	} else if (value == GLU_OBJECT_PARAMETRIC_ERROR) {
 	    nurbsValue = N_OBJECTSPACE_PARA;

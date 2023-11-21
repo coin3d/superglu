@@ -74,7 +74,7 @@ Backend::bgnsurf( int wiretris, int wirequads, long nuid )
      *It is more efficient to do this once at the beginning of
      *each surface than to do it for each primitive.
      *   The internal has more options: outline_triangle and outline_quad
-     *can be seperated. But since this is not in spec, and more importantly,
+     *can be separated. But since this is not in spec, and more importantly,
      *this is not so useful, so we don't need to keep this option.
      */
 
@@ -99,7 +99,7 @@ Backend::surfbbox( long type, REAL *from, REAL *to )
 }
 
 /*-------------------------------------------------------------------------
- * surfpts - pass a desription of a surface map
+ * surfpts - pass a description of a surface map
  *-------------------------------------------------------------------------
  */
 void 

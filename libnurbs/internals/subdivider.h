@@ -181,7 +181,7 @@ private:
 
    Bin*                 makePatchBoundary( const REAL *from, const REAL *to );
 
-   /*in domain distance method, the tessellation is controled by two numbers:
+   /*in domain distance method, the tessellation is controlled by two numbers:
     *GLU_U_STEP: number of u-segments per unit u length of domain
     *GLU_V_STEP: number of v-segments per unit v length of domain
     *These two numbers are normally stored in mapdesc->maxs(t)rate.

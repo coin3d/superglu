@@ -74,8 +74,8 @@ public:
 
 /*dynamic array of pointers to reals.
  *Intended to store an array of (u,v).
- *Notice that it doesn't allocate or dealocate the space
- *for the (u,v) themselfs. So it assums that someone else 
+ *Notice that it doesn't allocate or deallocate the space
+ *for the (u,v) themselves. So it assumes that someone else 
  *is taking care of them, while this class only plays with
  *the pointers.
  */
@@ -97,7 +97,7 @@ public:
   Int findIndexStrictBelowGen(Real v, Int startIndex, Int EndIndex);
   Int findIndexFirstAboveEqualGen(Real v, Int startIndex, Int endIndex);
   Int skipEqualityFromStart(Real v, Int start, Int end);
-  //return i such that fron [i+1, end] is strictly U-monotone (left to right
+  //return i such that from [i+1, end] is strictly U-monotone (left to right
   Int findDecreaseChainFromEnd(Int begin, Int end);
   void print();
 };

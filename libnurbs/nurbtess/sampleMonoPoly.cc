@@ -67,9 +67,9 @@
 //see work/newtess/internal/test/problems
 
 
-/*split a polygon so that each vertex correcpond to one edge
+/*split a polygon so that each vertex correspond to one edge
  *the head of the first edge of the returned plygon must be the head of the first
- *edge of the origianl polygon. This is crucial for the code in sampleMonoPoly function
+ *edge of the original polygon. This is crucial for the code in sampleMonoPoly function
  */
  directedLine*  polygonConvert(directedLine* polygon)
 {
@@ -493,7 +493,7 @@ rightChain->print();
 
 
       //we consider whether we can use botVertex as left corner. First check 
-      //if (leftGirdPoint, botVertex) interesects right chian or not.
+      //if (leftGridPoint, botVertex) intersects right chain or not.
      if(DBG_intersectChain(rightChain, rightChainStartIndex,rightChainEndIndex,
 				    leftGridPoint, botVertex))
        {
@@ -537,7 +537,7 @@ rightChain->print();
 
 
 	  //we consider whether we can use botVertex as a corner. So first we check 
-	  //whether (rightGridPoint, botVertex) interescts the left chain or not.
+	  //whether (rightGridPoint, botVertex) intersects the left chain or not.
 	  if(DBG_intersectChain(leftChain, leftChainStartIndex,leftChainEndIndex,
 				    rightGridPoint, botVertex))
 	    {
@@ -614,7 +614,7 @@ rightChain->print();
 	  tempI = index2;
 	  tempMin = rightChain->getVertex(index2)[0];
 	  
-	  /*find the minimum u for all the points on the right above the left poitn index1*/
+	  /*find the minimum u for all the points on the right above the left point index1*/
 	  for(i=index2+1; i<= rightChainEndIndex; i++)
 	    {
 	      if( rightChain->getVertex(i)[1] < leftChain->getVertex(index1)[1])
@@ -705,7 +705,7 @@ printf("***********enter findUpCorners\n");
 	    tempMin = rightChain->getVertex(i)[0];
 	    tempI = i;
 	  }
-      //chech whether (leftGridPoint, top) intersects rightchai,
+      //check whether (leftGridPoint, top) intersects rightChain,
       //if yes, use right corner as left corner
       //if not, use top or right[tempI] as left corner
       if(DBG_intersectChain(rightChain, rightChainStartIndex, rightChainEndIndex,
@@ -783,7 +783,7 @@ printf("***********enter findUpCorners\n");
 		  tempMax = leftChain->getVertex(i)[0];
 		}
 	    }
-	  //chek whether (rightChain(index2), rightGridPoint) intersects leftchian or not
+	  //check whether (rightChain(index2), rightGridPoint) intersects leftChain or not
 	  if(DBG_intersectChain(leftChain, leftChainStartIndex, leftChainEndIndex, rightGridPoint, rightChain->getVertex(index2)))
 	     {
 	       ret_rightCornerWhere = 0;
@@ -812,7 +812,7 @@ printf("***********enter findUpCorners\n");
 	  tempI = index2;
 	  tempMin = rightChain->getVertex(index2)[0];
 	  
-	  /*find the minimum u for all the points on the right below the left poitn index1*/
+	  /*find the minimum u for all the points on the right below the left point index1*/
 	  for(i=index2-1; i>= rightChainStartIndex; i--)
 	    {
 	      if( rightChain->getVertex(i)[1] > leftChain->getVertex(index1)[1])
@@ -823,7 +823,7 @@ printf("***********enter findUpCorners\n");
 		  tempMin = rightChain->getVertex(i)[0];
 		}
 	    }
-          //check whether (leftGRidPoint,left(index1)) interesect right chain 
+          //check whether (leftGridPoint,left(index1)) intersect right chain 
 	  if(DBG_intersectChain(rightChain, rightChainStartIndex, rightChainEndIndex,
 				leftGridPoint, leftChain->getVertex(index1)))
 	    {
@@ -848,7 +848,7 @@ printf("***********leave findUpCorners\n");
 #endif
 }
 
-//return 1 if neck exists, 0 othewise
+//return 1 if neck exists, 0 otherwise
 Int findNeckF(vertexArray *leftChain, Int botLeftIndex,
 	      vertexArray *rightChain, Int botRightIndex,
 	      gridBoundaryChain* leftGridChain,
@@ -1696,9 +1696,9 @@ void sampleLeftStrip(vertexArray* leftChain,
   assert(leftChain->getVertex(botLeftIndex-1)[1] > leftGridChain->get_v_value(leftGridChainEndIndex));
 
   /*
-   *(1)find the last grid line which doesn'; pass below
+   *(1)find the last grid line which doesn't pass below
    * this first edge, sample this region: one trim edge and 
-   * possily multiple grid lines.
+   * possibly multiple grid lines.
    */
   Real *upperVert, *lowerVert; /*the end points of the first trim edge*/
   upperVert = leftChain->getVertex(topLeftIndex);
@@ -1798,8 +1798,8 @@ void sampleLeftStripRec(vertexArray* leftChain,
  * be below the first gridline, and the tim vertex
  * of botLeftIndex is assumed to be above the last
  * grid line.
- * If botLeftIndex < topLeftIndex, then no connected componeent exists, and this funcion returns without
- * outputing any triangles.
+ * If botLeftIndex < topLeftIndex, then no connected component exists, and this function returns without
+ * outputting any triangles.
  * Otherwise botLeftIndex >= topLeftIndex, there is at least one triangle to output.
  */
 void sampleLeftStripRecF(vertexArray* leftChain,
@@ -1903,7 +1903,7 @@ void sampleLeftStripRecF(vertexArray* leftChain,
 /***************End RecF***********************/
 
 /*sample the left area in between one trim edge and multiple grid lines.
- * all the grid lines should be in between the two end poins of the
+ * all the grid lines should be in between the two end points of the
  *trim edge.
  */
 void sampleLeftSingleTrimEdgeRegion(Real upperVert[2], Real lowerVert[2],
@@ -1939,7 +1939,7 @@ void sampleLeftSingleTrimEdgeRegion(Real upperVert[2], Real lowerVert[2],
 	    pStream->insert(gridChain->getGrid()->get_u_value(j), gridChain->get_v_value(i-1));
 	  pStream->end(PRIMITIVE_STREAM_FAN);
 	}
-      /*otherwisem, the two are equal, so there is no fan to outout*/	  
+      /*otherwise, the two are equal, so there is no fan to output*/
     }
   
   monoTriangulation2(upperVert, lowerVert, &vArray, 0, endIndex-beginIndex, 
@@ -2094,7 +2094,7 @@ void sampleLeftOneGridStep(vertexArray* leftChain,
 	poly->insert(dline);       
       }
 
-    //the vertical grid line segement
+    //the vertical grid line segment
     vert1[0]=vert2[0] = grid->get_u_value(innerInd);
     vert2[1]=upperV;
     vert1[1]=lowerV;
@@ -2147,7 +2147,7 @@ void sampleLeftOneGridStep(vertexArray* leftChain,
 	  Int temp = beginLeftIndex;
 	  /*now from begin to j-1 is strictly u-monotone*/
 	  /*if j-1 is on the first grid line, then we want to skip to the vertex which is strictly
-	   *below the grid line. This vertexmust exist since there is a 'corner turn' inbetween the two grid lines
+	   *below the grid line. This vertex must exist since there is a 'corner turn' inbetween the two grid lines
 	   */
 	  if(j-1 == beginLeftIndex)
 	    {
@@ -2188,7 +2188,7 @@ void sampleLeftOneGridStep(vertexArray* leftChain,
 		     0 /*the grid line is below the trim lines*/
 		     );
       
-      /*monotone triangulate the remaining left chain togther with the
+      /*monotone triangulate the remaining left chain together with the
        *two vertices on the two grid v-lines.
        */
       Real vert[2][2];
@@ -2346,7 +2346,7 @@ void triangulateXYMono(Int n_upper, Real upperVerts[][2],
 	  else /*upperVerts[i][0] > lowerVerts[j][0]*/
 	    {
 	      pStream->begin();
-	      pStream->insert(upperVerts[i]);/*the origion of this fan*/
+	      pStream->insert(upperVerts[i]);/*the origin of this fan*/
 	      pStream->insert(leftMostV);
 	      /*find the last k>=j such that
 	       *lowerverts[k][0] < upperverts[i][0]*/

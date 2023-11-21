@@ -78,7 +78,7 @@ Int num_quads = 0;
 #endif
 
 #define max(a,b) ((a>b)? a:b)
-#define ZERO 0.00001 /*determing whether a loop is a rectngle or not*/
+#define ZERO 0.00001 /*determining whether a loop is a rectangle or not*/
 #define equalRect(a,b) ((fabs(a-b) <= ZERO)? 1:0) //only used in tessellating a rectangle
 
 static Int is_Convex(Arc_ptr loop)
@@ -600,7 +600,7 @@ static void triangulateRectCenter(int n_ulines, REAL* u_val,
     */
 }
 
-//it works for top, bot, left ad right, you need ot select correct arguments
+//it works for top, bottom, left and right, you need to select correct arguments
 static void triangulateRectTopGen(Arc_ptr arc, int n_ulines, REAL* u_val, Real v, int dir, int is_u, Backend& backend)
 {
 
@@ -668,7 +668,7 @@ static void triangulateRectTopGen(Arc_ptr arc, int n_ulines, REAL* u_val, Real v
 	
   //the following is a different version of the above code. If you comment
   //the above code, the following code will still work. The reason to leave
-  //the folliwng code here is purely for testing purpose.
+  //the following code here is purely for testing purpose.
   /*
   int i,j;
   PwlArc* parc = arc->pwlArc;

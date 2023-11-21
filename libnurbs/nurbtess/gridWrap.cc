@@ -289,5 +289,5 @@ void gridBoundaryChain::leftEndFan(Int i, primStream* pStream)
 	pStream->insert(grid->get_u_value(j), get_v_value(i-1));
       pStream->end(PRIMITIVE_STREAM_FAN);
     }
-  /*otherwisem, the two are equal, so there is no fan to outout*/	  
+  /*otherwise, the two are equal, so there is no fan to output*/
 }

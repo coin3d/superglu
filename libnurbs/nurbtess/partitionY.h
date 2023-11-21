@@ -37,13 +37,13 @@
  *partition a polygon into a Y-monotone polygon:
  * A polygon is Y-monotone if the boundary can be split into two polygon chains
  *A and B such that each chain is Y-monotonic that is the intersection of any
- *horizontal line intersects each chain has at most one connected componenets
+ *horizontal line intersects each chain has at most one connected component
  * (empty, single point or a single line).
  * 
- * A vertex is a cusp if both its ajacent vertices are either at or above v, 
- *or both at or below v. In addition, at least one of the ajacent verteces is
+ * A vertex is a cusp if both its adjacent vertices are either at or above v, 
+ *or both at or below v. In addition, at least one of the adjacent vertices is
  *strictly below or above v. 
- * A vertex is a relex vertex if the internals angle is strictly greater than 
+ * A vertex is a reflex vertex if the internal angle is strictly greater than 
  *180. In other words, if the signed area is negative:
  *(x1, y1), (x2, y2), (x3, y3) are the three vertices along a polygon, the 
  *order is such that left hand side is inside the polygon. Then (x2,y2) is

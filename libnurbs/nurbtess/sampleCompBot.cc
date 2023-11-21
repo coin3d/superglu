@@ -186,7 +186,7 @@ void sampleBotRightWithGridLinePost(Real* botVertex,
 	  monoTriangulation2(tempTop, botVertex, rightChain, segIndexMono, rightEnd, 0, pStream);
 	}
     }
-  else //the botVertex forms a fan witht eh grid points
+  else //the botVertex forms a fan with the grid points
     grid->outputFanWithPoint(gridV, leftU, rightU, botVertex, pStream);
 }
       
@@ -248,7 +248,7 @@ void sampleBotLeftWithGridLinePost(Real* botVertex,
       Real *tempBot; 
       if(segIndexPass <= leftEnd) //from corner to pass-1 is <u
 	tempBot = leftChain->getVertex(segIndexPass);
-      else //nothing is to the rigth of u
+      else //nothing is to the right of u
 	tempBot = botVertex;
       Real tempTop[2];
       tempTop[0] = grid->get_u_value(leftU);
@@ -325,7 +325,7 @@ Int findBotSeparator(vertexArray* leftChain,
     {
       oldLeftI = leftCorner-1;
       oldRightI = rightCorner;
-      leftMax = leftChain->getVertex(leftCorner)[0] - Real(1.0) ; //initilize to be left of leftCorner
+      leftMax = leftChain->getVertex(leftCorner)[0] - Real(1.0) ; //initialize to be left of leftCorner
       rightMin = rightChain->getVertex(rightCorner)[0]; 
     }
   else //rightlower
@@ -337,7 +337,7 @@ Int findBotSeparator(vertexArray* leftChain,
     }
 
   //i: the current working leftChain Index
-  //j: the curent working right chian index
+  //j: the current working rightChain index
   //if(left(i) is lower than right(j), then the two chains above right(j) are separated.
   //else the two chains below left(i) are separated.
   i = leftCorner;
@@ -346,7 +346,7 @@ Int findBotSeparator(vertexArray* leftChain,
     {
       newLeftI = oldLeftI;
       newRightI = oldRightI;
-      if(i> leftEnd) //left chain is doen , go through remaining right chain
+      if(i> leftEnd) //left chain is done , go through remaining right chain
 	{
 	  for(k=j+1; k<= rightEnd; k++)
 	    {
@@ -364,7 +364,7 @@ Int findBotSeparator(vertexArray* leftChain,
 	    }
 	  break; //the while loop
 	}
-      else if(j > rightEnd) //right Chain is doen
+      else if(j > rightEnd) //right Chain is done
 	{
 	  for(k=i+1; k<= leftEnd; k++)
 	    {
@@ -723,7 +723,7 @@ void sampleCompBot(Real* botVertex,
 	}
 #endif
     }//end id 0 2
-}//end if the functin
+}//end if the function
 
 				 
 void sampleCompBotSimple(Real* botVertex,

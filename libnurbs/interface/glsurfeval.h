@@ -64,7 +64,7 @@ class StoredVertex;
 #endif
 
 typedef struct surfEvalMachine{
-  REAL uprime;//cached previusly evaluated uprime.
+  REAL uprime;//cached previously evaluated uprime.
   REAL vprime;
   int k; /*the dimension*/
   REAL u1;
@@ -223,7 +223,7 @@ private:
 			
  /*the following global variables are only defined in this file. 
  *They are used to cache the precomputed Bezier polynomial values.
- *These calues may be used consecutively in which case we don't have 
+ *These values may be used consecutively in which case we don't have 
  *recompute these values again.
  */
  int global_uorder; /*store the uorder in the previous evaluation*/

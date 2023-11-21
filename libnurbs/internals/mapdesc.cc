@@ -348,7 +348,7 @@ Mapdesc::xformNonrational( Maxmatrix mat, REAL *d, REAL *s )
  * xformAndCullCheck - transform a set of points that may be EITHER 
  *	homogeneous or inhomogeneous depending on the map description and
  *	check if they are either completely inside, completely outside, 
- *	or intersecting the viewing frustrum.
+ *	or intersecting the viewing frustum.
  *--------------------------------------------------------------------------
  */
 int
@@ -386,7 +386,7 @@ Mapdesc::xformAndCullCheck(
 /*--------------------------------------------------------------------------
  * cullCheck - check if a set of homogeneous transformed points are 
  *	either completely inside, completely outside, 
- *	or intersecting the viewing frustrum.
+ *	or intersecting the viewing frustum.
  *--------------------------------------------------------------------------
  */
 int
@@ -418,7 +418,7 @@ Mapdesc::cullCheck( REAL *pts, int uorder, int ustride, int vorder, int vstride 
 /*--------------------------------------------------------------------------
  * cullCheck - check if a set of homogeneous transformed points are 
  *	either completely inside, completely outside, 
- *	or intersecting the viewing frustrum.
+ *	or intersecting the viewing frustum.
  *--------------------------------------------------------------------------
  */
 int

@@ -154,7 +154,7 @@ void bezierPatchEval(bezierPatch *b, float u, float v, float ret[])
     bezierSurfEval(b->umin, b->umax, b->uorder, b->vmin, b->vmax, b->vorder, b->dimension, b->ctlpoints, b->dimension * b->vorder, b->dimension, u, v, ret);    
 }
 
-/*the returned normal is normlized
+/*the returned normal is normalized
  */
 void bezierPatchEvalNormal(bezierPatch *b, float u, float v, float ret[])
 {

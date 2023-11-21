@@ -75,7 +75,7 @@ void sampleCompRight(Real* topVertex, Real* botVertex,
   midIndex1 = rightChain->findIndexBelowGen(rightGridChain->get_v_value(gridIndex1),
 					    rightStartIndex,
 					    rightEndIndex);
-  midIndex2 = -1; //initilization
+  midIndex2 = -1; //initialization
   if(midIndex1 <= rightEndIndex && gridIndex1 < gridIndex2)
     if(rightChain->getVertex(midIndex1)[1] >= rightGridChain->get_v_value(gridIndex2))
       {
@@ -112,7 +112,7 @@ void sampleCompRight(Real* topVertex, Real* botVertex,
 
 
   
-  //to interprete the corner information
+  //to interpret the corner information
   Real* cornerTop;
   Real* cornerBot;
   Int cornerRightStart;
@@ -289,16 +289,16 @@ void sampleRightSingleTrimEdgeRegion(Real upperVert[2], Real lowerVert[2],
 
 /*the gridlines from rightGridChainStartIndex to 
  *rightGridChainEndIndex are assumed to form a 
- *connected componenet
+ *connected component
  *the trm vertex of topRightIndex is assumed to be below
  *or equal the first gridLine, and the trm vertex of
  *botRightIndex is assumed to be above or equal the last gridline
- **there could be multipe trm vertices equal to the last gridline, but
+ **there could be multiple trim vertices equal to the last gridline, but
  **only one could be equal to top gridline. shape: ____| (recall that
  **for left chain recF, we allow shape: |----
- *if botRightIndex<topRightIndex, then no connected componenet exists, and 
+ *if botRightIndex<topRightIndex, then no connected component exists, and 
  *no triangles are generated.
- *Othewise, botRightIndex>= topRightIndex, there is at least one triangles to 
+ *Otherwise, botRightIndex>= topRightIndex, there is at least one triangles to 
  *output
  */
 void sampleRightStripRecF(vertexArray* rightChain,
@@ -511,7 +511,7 @@ void sampleRightOneGridStep(vertexArray* rightChain,
   //from beginRightIndex to i-1 is strictly U-monotne
   //if(i-1==beginRightIndex and the vertex of rightchain is on the first 
   //gridline, then we should use 2 vertices  on the right chain. Of we only 
-  //use one (begin), we would output degenrate triangles.
+  //use one (begin), we would output degenerate triangles.
   if(i-1 == beginRightIndex && rightChain->getVertex(beginRightIndex)[1] == rightGridChain->get_v_value(rightGridChainStartIndex))
     i++;
   
@@ -521,8 +521,8 @@ void sampleRightOneGridStep(vertexArray* rightChain,
       j = rightChain->findDecreaseChainFromEnd(i-1/*beginRightIndex*/, endRightIndex);
       Int temp = endRightIndex;
       //now from j+1 to end is strictly U-monotone.
-      //if j+1 is on the last grid line, then we wat to skip to the vertex   
-      //whcih is strictly above the second grid line. This vertex must exist 
+      //if j+1 is on the last grid line, then we want to skip to the vertex   
+      //which is strictly above the second grid line. This vertex must exist 
       //since there is a middle vertex
       if(j+1 == endRightIndex)
 	{

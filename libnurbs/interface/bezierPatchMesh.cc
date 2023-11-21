@@ -218,7 +218,7 @@ void bezierPatchMeshPutPatch(bezierPatchMesh *bpm, int maptype, float umin, floa
 
 /*delete everything including the arrays. So if you want to output the
  *pointers of the arrays, you should not use this function to deallocate space.
- *you should dealocate manually
+ *you should deallocate manually
  */
 void bezierPatchMeshDelete(bezierPatchMesh *bpm)
 {

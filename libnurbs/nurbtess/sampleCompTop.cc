@@ -48,7 +48,7 @@
 //from [small, large] is strictly U-monotne,
 //from [large+1, end] is <u
 //and vertex[large][0] is >= u
-//if eveybody is <u, the large = start-1.
+//if everybody is <u, the large = start-1.
 //otherwise both large and small are meaningful and we have start<=small<=large<=end
 void findTopLeftSegment(vertexArray* leftChain,
                         Int leftStart,
@@ -363,7 +363,7 @@ Int findTopSeparator(vertexArray* leftChain,
       newLeftI = oldLeftI;
       newRightI = oldRightI;
 
-      if(i<leftStartIndex) //left chain is done, go through remining right chain.
+      if(i<leftStartIndex) //left chain is done, go through remaining right chain.
 	{
 	  for(k=j-1; k>= rightStartIndex; k--)
 	    {
@@ -377,7 +377,7 @@ Int findTopSeparator(vertexArray* leftChain,
 		    }
 		}
 	      else  //there is a conflict
-		break; //the for-loop. below right(k-1) is seperated: oldLeftI, oldRightI.
+		break; //the for-loop. below right(k-1) is separated: oldLeftI, oldRightI.
 	    }
 	  break; //the while loop
 	}
@@ -727,7 +727,7 @@ void sampleCompTop(Real* topVertex,
 				      rightChain, rightStartIndex,segRightSmall,
 				      pStream);
 
-	    }//end left out rigth in
+	    }//end left out right in
 	  else //left out , right out
 	    {
 
@@ -745,7 +745,7 @@ void sampleCompTop(Real* topVertex,
 				  up_rightCornerIndex,
 				  pStream);	      	      
 	    }//end leftout, right out
-	}//end if separator exixts.
+	}//end if separator exists.
       else //no separator
 	{
 
@@ -915,7 +915,7 @@ void sampleCompTopSimple(Real* topVertex,
                    Int up_rightCornerIndex,
                    primStream* pStream)
 {
-  //the plan is to use monotriangulation algortihm.
+  //the plan is to use monotriangulation algorithm.
   Int i,k;
   Real* ActualTop;
   Real* ActualBot;
@@ -943,7 +943,7 @@ void sampleCompTopSimple(Real* topVertex,
     ActualRightStart = up_leftCornerIndex+1; //up_leftCornerIndex will be the ActualTop
   
   if(up_rightCornerWhere != 2) //right corner is not on right chain
-    ActualRightEnd = rightStartIndex-1; //meaning that there is no actual rigth section
+    ActualRightEnd = rightStartIndex-1; //meaning that there is no actual right section
   else
     ActualRightEnd = up_rightCornerIndex;
   

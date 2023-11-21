@@ -44,7 +44,7 @@
 directedLine* bin_to_DLineLoops(Bin& bin);
 
 /*transform the pwlcurve into a number of directedline lines
- *insert these directedlines into orignal which is supposed to be
+ *insert these directedlines into original which is supposed to be
  *the part of the trimming loop obtained so far.
  *return the updated trimkming loop.
  */

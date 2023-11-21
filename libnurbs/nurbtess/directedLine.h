@@ -161,8 +161,8 @@ public:
   directedLine* rootLinkFindRoot();
 
   //the chain from begin to end is deleted (the space is deallocated)
-  //and a new edge(which connectes the head of begin and the tail of end)
-  // is inserted. The new polygon is returned.
+  //and a new edge(which connects the head of begin and the tail of end)
+  //is inserted. The new polygon is returned.
   //notice that "this" is arbitrary
   directedLine* deleteChain(directedLine* begin, directedLine* end);
 };

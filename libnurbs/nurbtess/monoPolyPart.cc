@@ -50,7 +50,7 @@
 #include "directedLine.h"
 #include "monoPolyPart.h"
 
-/*a vertex is u_maximal if both of its two neightbors are to the left of this 
+/*a vertex is u_maximal if both of its two neighbors are to the left of this 
  *vertex
  */
 static Int is_u_maximal(directedLine* v)
@@ -62,7 +62,7 @@ static Int is_u_maximal(directedLine* v)
     return 0;
 }
 
-/*a vertex is u_minimal if both of its two neightbors are to the right of this 
+/*a vertex is u_minimal if both of its two neighbors are to the right of this 
  *vertex
  */
 static Int is_u_minimal(directedLine* v)
@@ -89,7 +89,7 @@ directedLine* monoPolyPart(directedLine* polygon)
   if(polygon->getPrev()->getPrev() == polygon->getNext())
     return polygon;
 
-  //find the top and bottom vertexes
+  //find the top and bottom vertices
   directedLine *tempV, *topV, *botV;
   topV = botV = polygon;
   for(tempV = polygon->getNext(); tempV != polygon; tempV = tempV->getNext())
@@ -102,7 +102,7 @@ directedLine* monoPolyPart(directedLine* polygon)
       }
     }
 
-  //initilization
+  //initialization
   directedLine *A, *B, *C, *D, *G, *H;
   //find A:the first u_maximal vertex on the left chain
   //and C: the left most vertex between top and A

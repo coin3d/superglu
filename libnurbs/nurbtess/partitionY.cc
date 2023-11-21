@@ -323,7 +323,7 @@ static Int compEdges(directedLine *e1, directedLine *e2)
   else return 1;
 }
   
-/*used by sort precedures
+/*used by sort procedures
  */
 static Int compInY(directedLine* v1, directedLine* v2)
 {
@@ -504,7 +504,7 @@ num_diagonals=deleteRepeatDiagonals(num_diagonals, diagonal_vertices, diagonal_v
       directedLine* ret_p1;
       directedLine* ret_p2;
       
-      /*we ahve to determine whether v1 and v2 belong to the same polygon before
+      /*we have to determine whether v1 and v2 belong to the same polygon before
        *their structure are modified by connectDiagonal().
        */
 /*
@@ -551,7 +551,7 @@ ret_p2->rootLinkSet(root1);
        /*now that we have connected the diagonal v1 and v2, 
         *we have to check those unprocessed diagonals which 
         *have v1 or v2 as an end point. Notice that the head of v1
-        *has the same coodinates as the head of v2->prev, and the head of
+        *has the same coordinates as the head of v2->prev, and the head of
         *v2 has the same coordinate as the head of v1->prev. 
         *Suppose these is a diagonal (v1, x). If (v1,x) is still a valid
         *diagonal, then x should be on the left hand side of the directed line:        *v1->prev->head -- v1->head -- v1->tail. Otherwise, (v1,x) should be  
@@ -637,7 +637,7 @@ ret_p2->rootLinkSet(root1);
 	directedLine* ret_p1;
 	directedLine* ret_p2;
 
-	/*we ahve to determine whether v1 and v2 belong to the same polygon before
+	/*we have to determine whether v1 and v2 belong to the same polygon before
 	 *their structure are modified by connectDiagonal().
 	 */
 	directedLine *root1 = v1->findRoot();
@@ -831,6 +831,6 @@ void sweepY(Int nVertices, directedLine** sortedVertices, sweepRange** ret_range
 	}
     }
 
-  /*finaly clean up space: delete the search tree*/
+  /*finally clean up space: delete the search tree*/
   TreeNodeDeleteWholeTree(searchTree);
 }

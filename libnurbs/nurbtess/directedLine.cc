@@ -84,7 +84,7 @@ directedLine* directedLine::deleteChain(directedLine* begin, directedLine* end)
 void directedLine::deleteSingleLine(directedLine* dline)
 {
   //make sure that dline->prev->tail is the same as 
-  //dline->next->head. This is for numerical erros.
+  //dline->next->head. This is for numerical errors.
   //for example, if we delete a line which is almost degeneate 
   //within (epsilon), then we want to make that the polygon after deletion
   //is still a valid polygon
@@ -438,7 +438,7 @@ Int directedLine::compInX(directedLine* nl)
   return 1;
 }
 
-/*used by sort precedures
+/*used by sort procedures
  */
 static Int compInY2(directedLine* v1, directedLine* v2)
 {
@@ -600,11 +600,11 @@ Real directedLine::polyArea()
 }
 
 /*******************split or combine polygons begin********************/
-/*conect a diagonal of a single simple polygon or  two simple polygons.
+/*connect a diagonal of a single simple polygon or two simple polygons.
  *If the two vertices v1 (head) and v2 (head) are in the same simple polygon,
  *then we actually split the simple polygon into two polygons. 
- *If instead two vertices velong to two difference polygons,
- *then we combine the  two polygons into one polygon.
+ *If instead two vertices belong to two different polygons,
+ *then we combine the two polygons into one polygon.
  *It is upto the caller to decide whether this is a split or a 
  *combination.
  *

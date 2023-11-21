@@ -180,7 +180,7 @@ Quilt::isCulled( void )
 }
 
 /*---------------------------------------------------------------------------
- * Quilt::getRange - retrieve the valid paramater range of a set of quilts
+ * Quilt::getRange - retrieve the valid parameter range of a set of quilts
  *---------------------------------------------------------------------------
  */
 void
@@ -191,7 +191,7 @@ Quilt::getRange( REAL *from, REAL *to, Flist& slist, Flist &tlist )
 }
 
 /*---------------------------------------------------------------------------
- * Quilt::getRange - retrieve the valid paramater range of a set of quilts
+ * Quilt::getRange - retrieve the valid parameter range of a set of quilts
  *---------------------------------------------------------------------------
  */
 void

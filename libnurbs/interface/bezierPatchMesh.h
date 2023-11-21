@@ -77,7 +77,7 @@ extern "C" {
 
 bezierPatchMesh *bezierPatchMeshMake(int maptype, float umin, float umax, int ustride, int uorder, float vmin, float vmax, int vstride, int vorder, float *ctlpoints,  int size_UVarray, int size_length_array);
 
-/*initilize patches to be null*/
+/*initialize patches to be null*/
 bezierPatchMesh *bezierPatchMeshMake2(int size_UVarray, int size_length_array);
 
 void bezierPatchMeshPutPatch(bezierPatchMesh *bpm, int maptype, float umin, float umax, int ustride, int uorder, float vmin, float vmax, int vstride, int vorder, float *ctlpoints);

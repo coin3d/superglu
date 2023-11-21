@@ -188,7 +188,7 @@ Int DBG_edgesIntersect(directedLine* l1, directedLine* l2)
 
 /*whether AB and CD intersect
  *return 1 if they do
- *retur 0 otheriwse
+ *return 0 otherwise
  */
 Int DBG_edgesIntersectGen(Real A[2], Real B[2], Real C[2], Real D[2])
 {
@@ -206,7 +206,7 @@ Int DBG_edgesIntersectGen(Real A[2], Real B[2], Real C[2], Real D[2])
     return 0;
 }
 	
-/*determien whether    (A,B) interesect chain[start] to [end]
+/*determine whether    (A,B) intersect chain[start] to [end]
  */
 Int DBG_intersectChain(vertexArray* chain, Int start, Int end, Real A[2], Real B[2])
 {
@@ -302,7 +302,7 @@ Int DBG_isCounterclockwise(directedLine* poly)
 /*ray: v0 with direction (dx,dy).
  *edge: v1-v2.
  * the extra point v10[2] is given for the information at 
- *v1. Basically this edge is connectd to edge
+ *v1. Basically this edge is connected to edge
  * v10-v1. If v1 is on the ray, 
  * then we need v10  to determine whether this ray intersects
  * the edge or not (that is, return 1 or return 0). 
@@ -401,7 +401,7 @@ poly->printList();
     return 0;
 }
 
-/*return the number of polygons which contain thie polygon
+/*return the number of polygons which contain this polygon
  * as a subset
  */
 Int DBG_enclosingPolygons(directedLine* poly, directedLine* list)
@@ -470,7 +470,7 @@ Int DBG_checkConnectivity(directedLine *polygon)
 }
 
 /*print out error message.
- *If it cannot modify the polygon list to make it satify the
+ *If it cannot modify the polygon list to make it satisfy the
  *requirements, return 1.
  *otherwise modify the polygon list, and return 0
  */
@@ -523,7 +523,7 @@ Int DBG_check(directedLine *polyList)
 }
 
 /**************handle self intersections*****************/
-//determine whether e interects [begin, end] or not
+//determine whether e intersects [begin, end] or not
 static directedLine* DBG_edgeIntersectChainD(directedLine *e, 
 			       directedLine *begin, directedLine *end)
 {

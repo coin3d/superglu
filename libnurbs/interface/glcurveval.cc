@@ -192,7 +192,7 @@ OpenGLCurveEvaluator::endmap1f(void)
 }
 
 /*-------------------------------------------------------------------------
- * map1f - pass a desription of a curve map
+ * map1f - pass a description of a curve map
  *-------------------------------------------------------------------------
  */
 void
