@@ -46,13 +46,13 @@ jobs:
           query-filters:
             # Specifically hide the results of these queries.
             - exclude:
-              id: cpp/assignment-does-not-return-this
+                id: cpp/assignment-does-not-return-this
             - exclude:
-              id: cpp/fixme-comment
+                id: cpp/fixme-comment
             - exclude:
-              id: cpp/rule-of-two
+                id: cpp/rule-of-two
             - exclude:
-              id: cpp/use-of-goto
+                id: cpp/use-of-goto
         #config-file: ./lgtm.yml
 
     #- name: Autobuild
