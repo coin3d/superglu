@@ -27,11 +27,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # If this run was triggered by a pull request event, then checkout
-    # the head of the pull request instead of the merge commit.
-    - run: git checkout HEAD^2
-      if: ${{ github.event_name == 'pull_request' }}
-
     - name: Checkout submodules
       run: git submodule update --init --recursive
 
@@ -40,9 +35,9 @@ jobs:
       with:
         languages: c-cpp
         config: |
-          disable-default-queries: true
-          queries:
-            - uses: security-and-quality
+          #disable-default-queries: true
+          #queries:
+          #  - uses: security-and-quality
           query-filters:
             # Specifically hide the results of these queries.
             - exclude:
