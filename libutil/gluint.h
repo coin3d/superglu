@@ -36,9 +36,9 @@
 #ifndef __gluint_h__
 #define __gluint_h__
 
-extern const char *__gluNURBSErrorString( int errno );
+extern const char *__gluNURBSErrorString( int error_code );
 
-extern const char *__gluTessErrorString( int errno );
+extern const char *__gluTessErrorString( int error_code );
 
 #ifdef _EXTENSIONS_
 #define COS cosf

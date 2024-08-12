@@ -77,9 +77,9 @@ static char *__gluNurbsErrors[] = {
     "duplicate point on piecewise linear trimming curve",
 };
 
-const char *__gluNURBSErrorString( int errno )
+const char *__gluNURBSErrorString( int error_code )
 {
-    return __gluNurbsErrors[errno];
+    return __gluNurbsErrors[error_code];
 }
 
 static char *__gluTessErrors[] = {
@@ -92,7 +92,7 @@ static char *__gluTessErrors[] = {
     "need combine callback",
 };
 
-const char *__gluTessErrorString( int errno )
+const char *__gluTessErrorString( int error_code )
 {
-    return __gluTessErrors[errno];
+    return __gluTessErrors[error_code];
 } /* __glTessErrorString() */

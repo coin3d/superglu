@@ -58,12 +58,12 @@ Subdivider::bbox( TrimVertex *a, TrimVertex *b, TrimVertex *c, int p )
 int
 Subdivider::ccwTurn_sr( Arc_ptr j1, Arc_ptr j2 ) // dir = 1
 {
-    register TrimVertex *v1	= &j1->pwlArc->pts[j1->pwlArc->npts-1];
-    register TrimVertex *v1last	= &j1->pwlArc->pts[0];
-    register TrimVertex *v2	= &j2->pwlArc->pts[0];
-    register TrimVertex *v2last	= &j2->pwlArc->pts[j2->pwlArc->npts-1];
-    register TrimVertex *v1next	= v1-1;
-    register TrimVertex *v2next	= v2+1;
+    TrimVertex *v1	= &j1->pwlArc->pts[j1->pwlArc->npts-1];
+    TrimVertex *v1last	= &j1->pwlArc->pts[0];
+    TrimVertex *v2	= &j2->pwlArc->pts[0];
+    TrimVertex *v2last	= &j2->pwlArc->pts[j2->pwlArc->npts-1];
+    TrimVertex *v1next	= v1-1;
+    TrimVertex *v2next	= v2+1;
     int sgn;
 
     assert( v1 != v1last );
@@ -171,12 +171,12 @@ Subdivider::ccwTurn_sr( Arc_ptr j1, Arc_ptr j2 ) // dir = 1
 int
 Subdivider::ccwTurn_sl( Arc_ptr j1, Arc_ptr j2 ) // dir = 0
 {
-    register TrimVertex *v1	= &j1->pwlArc->pts[j1->pwlArc->npts-1];
-    register TrimVertex *v1last	= &j1->pwlArc->pts[0];
-    register TrimVertex *v2	= &j2->pwlArc->pts[0];
-    register TrimVertex *v2last	= &j2->pwlArc->pts[j2->pwlArc->npts-1];
-    register TrimVertex *v1next	= v1-1;
-    register TrimVertex *v2next	= v2+1;
+    TrimVertex *v1	= &j1->pwlArc->pts[j1->pwlArc->npts-1];
+    TrimVertex *v1last	= &j1->pwlArc->pts[0];
+    TrimVertex *v2	= &j2->pwlArc->pts[0];
+    TrimVertex *v2last	= &j2->pwlArc->pts[j2->pwlArc->npts-1];
+    TrimVertex *v1next	= v1-1;
+    TrimVertex *v2next	= v2+1;
     int sgn;
 
     assert( v1 != v1last );
@@ -284,12 +284,12 @@ Subdivider::ccwTurn_sl( Arc_ptr j1, Arc_ptr j2 ) // dir = 0
 int
 Subdivider::ccwTurn_tr( Arc_ptr j1, Arc_ptr j2 ) // dir = 1
 {
-    register TrimVertex *v1	= &j1->pwlArc->pts[j1->pwlArc->npts-1];
-    register TrimVertex *v1last	= &j1->pwlArc->pts[0];
-    register TrimVertex *v2	= &j2->pwlArc->pts[0];
-    register TrimVertex *v2last	= &j2->pwlArc->pts[j2->pwlArc->npts-1];
-    register TrimVertex *v1next	= v1-1;
-    register TrimVertex *v2next	= v2+1;
+    TrimVertex *v1	= &j1->pwlArc->pts[j1->pwlArc->npts-1];
+    TrimVertex *v1last	= &j1->pwlArc->pts[0];
+    TrimVertex *v2	= &j2->pwlArc->pts[0];
+    TrimVertex *v2last	= &j2->pwlArc->pts[j2->pwlArc->npts-1];
+    TrimVertex *v1next	= v1-1;
+    TrimVertex *v2next	= v2+1;
     int sgn;
 
     assert( v1 != v1last );
@@ -397,12 +397,12 @@ Subdivider::ccwTurn_tr( Arc_ptr j1, Arc_ptr j2 ) // dir = 1
 int
 Subdivider::ccwTurn_tl( Arc_ptr j1, Arc_ptr j2 )
 {
-    register TrimVertex *v1	= &j1->pwlArc->pts[j1->pwlArc->npts-1];
-    register TrimVertex *v1last	= &j1->pwlArc->pts[0];
-    register TrimVertex *v2	= &j2->pwlArc->pts[0];
-    register TrimVertex *v2last	= &j2->pwlArc->pts[j2->pwlArc->npts-1];
-    register TrimVertex *v1next	= v1-1;
-    register TrimVertex *v2next	= v2+1;
+    TrimVertex *v1	= &j1->pwlArc->pts[j1->pwlArc->npts-1];
+    TrimVertex *v1last	= &j1->pwlArc->pts[0];
+    TrimVertex *v2	= &j2->pwlArc->pts[0];
+    TrimVertex *v2last	= &j2->pwlArc->pts[j2->pwlArc->npts-1];
+    TrimVertex *v1next	= v1-1;
+    TrimVertex *v2next	= v2+1;
     int sgn;
 
     assert( v1 != v1last );
@@ -510,12 +510,12 @@ Subdivider::ccwTurn_tl( Arc_ptr j1, Arc_ptr j2 )
 
 #ifdef SUBDIVIDER_DEBUG
 int
-Subdivider::bbox( register REAL sa, register REAL sb, register REAL sc,
-      register REAL ta, register REAL tb, register REAL tc )
+Subdivider::bbox( REAL sa, REAL sb, REAL sc,
+      REAL ta, REAL tb, REAL tc )
 #else
 int
-Subdivider::bbox( register REAL sa, register REAL sb, register REAL sc,
-      register REAL   , register REAL   , register REAL    )
+Subdivider::bbox( REAL sa, REAL sb, REAL sc,
+      REAL   , REAL   , REAL    )
 #endif
 {
 #ifdef SUBDIVIDER_DEBUG
