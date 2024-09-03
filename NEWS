@@ -1,3 +1,8 @@
+New in v1.3.2 (2024-09-04):
+* bugfixes:
+  - Fixed warnings about deprecated features, errno is a reserved function name.
+  - Fixed typos found with codespell.
+
 New in v1.3.1 (2022-04-09):
 * new:
   - Add LGTM static analysis configuration file
