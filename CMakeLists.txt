@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.0...3.29)
 
 project(superglu VERSION 1.3.2)
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
