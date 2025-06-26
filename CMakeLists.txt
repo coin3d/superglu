@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0...3.29)
 
-project(superglu VERSION 1.3.2)
+project(superglu VERSION 1.3.3)
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 
 string(TIMESTAMP SUPERGLU_BUILD_YEAR "%Y")
