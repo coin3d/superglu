@@ -1,3 +1,8 @@
+New in v1.3.3 (2025-06-26):
+* bugfixes:
+  - Updated cmake_minimum_required command to support CMake >= 3.30
+  - Fixed specs line endings (#12)
+
 New in v1.3.2 (2024-09-04):
 * bugfixes:
   - Fixed warnings about deprecated features, errno is a reserved function name.
