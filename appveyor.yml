@@ -117,13 +117,23 @@ environment:
 #      CMAKE_ARCHITECTURE: x64
 #      CMAKE_PLATFORM: x64
 #      COMPILER_ID: msvc18
+#
+#    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
+#      CMAKE_GENERATOR: 'MSYS Makefiles'
+#      CMAKE_PLATFORM: i686
+#      COMPILER_ID: mingw32
+#
+#    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
+#      CMAKE_GENERATOR: 'MSYS Makefiles'
+#      CMAKE_PLATFORM: x86_64
+#      COMPILER_ID: mingw64
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2026
       CMAKE_GENERATOR: 'MSYS Makefiles'
       CMAKE_PLATFORM: i686
       COMPILER_ID: mingw32
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2026
       CMAKE_GENERATOR: 'MSYS Makefiles'
       CMAKE_PLATFORM: x86_64
       COMPILER_ID: mingw64
